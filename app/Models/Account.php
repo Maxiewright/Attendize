@@ -85,7 +85,7 @@ class Account extends MyBaseModel
     /**
      * The currency associated with the account.
      *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function currency()
     {
