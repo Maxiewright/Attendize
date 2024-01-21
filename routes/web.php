@@ -39,11 +39,7 @@ use App\Http\Controllers\UserLoginController;
 use App\Http\Controllers\UserLogoutController;
 use App\Http\Controllers\UserSignupController;
 
-Route::group(
-    [
-        'prefix' => LaravelLocalization::setLocale(),
-        'middleware' => ['localeSessionRedirect', 'localizationRedirect', 'localeViewPath'],
-    ], function () {
+Route::prefix(LaravelLocalization::setLocale())->middleware('localeSessionRedirect', 'localizationRedirect', 'localeViewPath')->group(function () {
 
         /*
          * -------------------------
@@ -73,7 +69,7 @@ Route::group(
             [UserLogoutController::class, 'doLogout']
         )->name('logout');
 
-        Route::group(['middleware' => ['installed']], function () {
+        Route::middleware('installed')->group(function () {
 
             /*
              * Login
@@ -129,7 +125,7 @@ Route::group(
         /*
          * Public organiser page routes
          */
-        Route::group(['prefix' => 'o'], function () {
+        Route::prefix('o')->group(function () {
 
             Route::get('/{organiser_id}/{organier_slug?}',
                 [OrganiserViewController::class, 'showOrganiserHome']
@@ -140,7 +136,7 @@ Route::group(
         /*
          * Public event page routes
          */
-        Route::group(['prefix' => 'e'], function () {
+        Route::prefix('e')->group(function () {
 
             /*
              * Embedded events
@@ -211,12 +207,12 @@ Route::group(
         /*
          * Backend routes
          */
-        Route::group(['middleware' => ['auth', 'first.run']], function () {
+        Route::middleware('auth', 'first.run')->group(function () {
 
             /*
              * Edit User
              */
-            Route::group(['prefix' => 'user'], function () {
+            Route::prefix('user')->group(function () {
 
                 Route::get('/',
                     [UserController::class, 'showEditUser']
@@ -231,7 +227,7 @@ Route::group(
             /*
              * Manage account
              */
-            Route::group(['prefix' => 'account'], function () {
+            Route::prefix('account')->group(function () {
 
                 Route::get('/',
                     [ManageAccountController::class, 'showEditAccount']
@@ -258,7 +254,7 @@ Route::group(
             /*
              * Organiser routes
              */
-            Route::group(['prefix' => 'organiser'], function () {
+            Route::prefix('organiser')->group(function () {
 
                 Route::get('{organiser_id}/dashboard',
                     [OrganiserDashboardController::class, 'showDashboard']
@@ -292,7 +288,7 @@ Route::group(
             /*
              * Events dashboard
              */
-            Route::group(['prefix' => 'events'], function () {
+            Route::prefix('events')->group(function () {
 
                 /*
                  * ----------
@@ -318,7 +314,7 @@ Route::group(
             /*
              * Event management routes
              */
-            Route::group(['prefix' => 'event'], function () {
+            Route::prefix('event')->group(function () {
 
                 /*
                  * Dashboard
