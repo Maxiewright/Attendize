@@ -12,7 +12,7 @@
     "type": "project",
     "homepage": "https://www.attendize.com",
     "require": {
-        "php": "^8.1",
+        "php": "^8.3",
         "ext-json": "*",
         "doctrine/dbal": "^3.5",
         "dompdf/dompdf": "^1.0",

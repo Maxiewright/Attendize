@@ -115,7 +115,7 @@ class User extends Authenticatable
     /**
      * Set the remember token for the user.
      */
-    public function setRememberToken(string $value)
+    public function setRememberToken($value)
     {
         $this->remember_token = $value;
     }
@@ -152,7 +152,7 @@ class User extends Authenticatable
     /**
      * Send the password reset notification.
      */
-    public function sendPasswordResetNotification(string $token): void
+    public function sendPasswordResetNotification($token): void
     {
         $this->notify(new UserResetPassword($token));
     }

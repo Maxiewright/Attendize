@@ -27,7 +27,7 @@ class Authenticate extends Middleware
      *
      * @throws \Illuminate\Auth\AuthenticationException
      */
-    public function handle(Request $request, Closure $next, array ...$guards): Response
+    public function handle($request, Closure $next, ...$guards): Response
     {
         if (Auth::guard($guards)->guest()) {
             if ($request->is('api/*') || $request->ajax() || $request->wantsJson()) {
