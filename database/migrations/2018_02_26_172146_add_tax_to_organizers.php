@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddTaxToOrganizers extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class AddTaxToOrganizers extends Migration
             $table->dropColumn('taxvalue');
         });
     }
-}
+};

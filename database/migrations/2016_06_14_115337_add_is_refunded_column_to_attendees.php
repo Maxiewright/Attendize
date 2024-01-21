@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddIsRefundedColumnToAttendees extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -27,4 +27,4 @@ class AddIsRefundedColumnToAttendees extends Migration
             $t->dropColumn('is_refunded');
         });
     }
-}
+};

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTicketEventAccessCodeTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -35,4 +35,4 @@ class CreateTicketEventAccessCodeTable extends Migration
         Schema::dropIfExists('ticket_event_access_code');
         Schema::enableForeignKeyConstraints();
     }
-}
+};

@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class OrganiserPageDesignUpdate extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -37,4 +37,4 @@ class OrganiserPageDesignUpdate extends Migration
             $table->dropColumn('page_text_color');
         });
     }
-}
+};
