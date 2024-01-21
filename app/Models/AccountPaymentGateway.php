@@ -8,7 +8,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class AccountPaymentGateway extends MyBaseModel
 {
     use HasFactory;
-
     use softDeletes;
 
     /**

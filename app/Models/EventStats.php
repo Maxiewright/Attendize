@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Cookie;
 use DB;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class EventStats extends \Illuminate\Database\Eloquent\Model
 {
