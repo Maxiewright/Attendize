@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Event;
+use Illuminate\View\View;
 
 class EventViewEmbeddedController extends Controller
 {

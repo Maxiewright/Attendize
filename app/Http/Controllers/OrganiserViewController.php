@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Attendize\Utils;
 use App\Models\Organiser;
 use Auth;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class OrganiserViewController extends Controller

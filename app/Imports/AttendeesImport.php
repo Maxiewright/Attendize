@@ -2,7 +2,6 @@
 
 namespace App\Imports;
 
-use Illuminate\Database\Eloquent\Model;
 use App\Jobs\SendAttendeeInviteJob;
 use App\Models\Attendee;
 use App\Models\Event;
@@ -11,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Ticket;
 use Auth;
+use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;

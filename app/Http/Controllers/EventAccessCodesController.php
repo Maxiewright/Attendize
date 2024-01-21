@@ -75,7 +75,6 @@ class EventAccessCodesController extends MyBaseController
     }
 
     /**
-     *
      * @throws \Exception
      */
     public function postDelete(int $event_id, int $access_code_id): JsonResponse

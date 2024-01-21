@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Timezone;
 use Exception;
 use GuzzleHttp\Client;
@@ -15,6 +14,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\MessageBag;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Utils;
 
 class InstallerController extends Controller

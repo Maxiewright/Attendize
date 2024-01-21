@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\RedirectResponse;
 use App\Models\Event;
 use App\Models\EventStats;
 use Carbon\Carbon;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class EventDashboardController extends MyBaseController
 {

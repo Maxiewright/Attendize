@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 use App\Rules\Passcheck;
 use Auth;
 use Hash;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Validator;
 
 class UserController extends Controller

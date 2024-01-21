@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreEventQuestionRequest;
 use App\Models\Attendee;
 use App\Models\Event;
@@ -11,7 +9,9 @@ use App\Models\Question;
 use App\Models\QuestionAnswer;
 use App\Models\QuestionType;
 use Excel;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use JavaScript;
 
 /*

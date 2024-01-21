@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\JsonResponse;
-use Illuminate\View\View;
 use App\Attendize\PaymentUtils;
 use App\Jobs\SendOrderAttendeeTicketJob;
 use App\Jobs\SendOrderConfirmationJob;
@@ -21,7 +19,9 @@ use App\Services\Order as OrderService;
 use Carbon\Carbon;
 use Cookie;
 use DB;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Log;
 use Omnipay;
 use PDF;

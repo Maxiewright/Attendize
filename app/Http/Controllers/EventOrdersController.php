@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 use App\Cancellation\OrderCancellation;
 use App\Cancellation\OrderRefundException;
 use App\Exports\OrdersExport;
@@ -13,8 +11,10 @@ use App\Models\Event;
 use App\Models\Order;
 use App\Services\Order as OrderService;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 use Log;
 use Mail;
 use Session;

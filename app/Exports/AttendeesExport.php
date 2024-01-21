@@ -2,10 +2,10 @@
 
 namespace App\Exports;
 
-use Illuminate\Support\Query;
 use App\Models\Attendee;
 use Auth;
 use DB;
+use Illuminate\Support\Query;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithEvents;

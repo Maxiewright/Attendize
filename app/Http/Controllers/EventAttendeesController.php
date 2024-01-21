@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Symfony\Component\HttpFoundation\BinaryFileResponse;
-use Illuminate\View\View;
-use Illuminate\Http\JsonResponse;
 use App\Cancellation\OrderCancellation;
 use App\Exports\AttendeesExport;
 use App\Imports\AttendeesImport;
@@ -24,11 +21,14 @@ use App\Services\Order as OrderService;
 use Auth;
 use DB;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 use Log;
 use Mail;
 use PDF;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Validator;
 
 class EventAttendeesController extends MyBaseController

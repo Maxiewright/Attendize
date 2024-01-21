@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\Response;
-use Illuminate\Http\JsonResponse;
 use App\Attendize\Utils;
 use App\Models\Affiliate;
 use App\Models\Event;
@@ -12,8 +9,11 @@ use App\Models\EventAccessCodes;
 use App\Models\EventStats;
 use Auth;
 use Cookie;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 use Mail;
 use Redirect;
 use Services\Captcha\Factory;

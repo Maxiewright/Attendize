@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 /*
   Attendize.com   - Event Management & Ticketing

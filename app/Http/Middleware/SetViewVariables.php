@@ -2,14 +2,14 @@
 
 namespace App\Http\Middleware;
 
-use Symfony\Component\HttpFoundation\Response;
-use Illuminate\Http\Request;
 use App\Attendize\Utils;
 use App\Models\Organiser;
 use Closure;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
 use JavaScript;
+use Symfony\Component\HttpFoundation\Response;
 
 class SetViewVariables
 {

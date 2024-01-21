@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class RemindersController extends Controller
@@ -68,7 +68,7 @@ class RemindersController extends Controller
     /**
      * Display the password reset view for the given token.
      */
-    public function getReset(string $token = null): Response
+    public function getReset(?string $token = null): Response
     {
         if (is_null($token)) {
             \App::abort(404);

@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
 use App\Models\Organiser;
 use Carbon\Carbon;
+use Illuminate\View\View;
 
 class OrganiserDashboardController extends MyBaseController
 {
