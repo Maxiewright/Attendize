@@ -16,7 +16,6 @@
         "ext-json": "*",
         "doctrine/dbal": "^2.13",
         "dompdf/dompdf": "^0.8",
-        "fruitcake/laravel-cors": "^2.0",
         "graham-campbell/markdown": "^13.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "guzzlehttp/psr7": "^1.6",
