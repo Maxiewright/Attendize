@@ -21,13 +21,6 @@ class Account extends MyBaseModel
     ];
 
     /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    public $dates = ['deleted_at'];
-
-    /**
      * The validation error messages.
      *
      * @var array
