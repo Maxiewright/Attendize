@@ -11,7 +11,7 @@ class TicketStatusFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         $selection = ['Sold Out', 'Sales Have Ended', 'Not On Sale Yet', 'On Sale'];
 

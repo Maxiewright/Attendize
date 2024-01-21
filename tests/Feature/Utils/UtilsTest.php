@@ -10,7 +10,7 @@ class UtilsTest extends TestCase
     /**
      * @test
      */
-    public function parse_version_correctly()
+    public function parse_version_correctly(): void
     {
         $parsed_version = Utils::parse_version('1.1.0');
         $this->assertEquals($parsed_version, '1.1.0');

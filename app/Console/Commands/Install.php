@@ -32,7 +32,7 @@ class Install extends Command
      *
      * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         $version = file_get_contents(base_path('VERSION'));
         try {

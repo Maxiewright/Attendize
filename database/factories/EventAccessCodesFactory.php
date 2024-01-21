@@ -12,7 +12,7 @@ class EventAccessCodesFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'event_id' => function () {

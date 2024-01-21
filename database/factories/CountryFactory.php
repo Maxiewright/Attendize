@@ -11,7 +11,7 @@ class CountryFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         $countries = json_decode(file_get_contents(database_path().'/seeds/countries.json'), true);
         // Choose a random entry from the countries list

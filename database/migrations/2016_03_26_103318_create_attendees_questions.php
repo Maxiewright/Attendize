@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         /**
          * Checkbox, dropdown, radio, text etc.
@@ -85,7 +85,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         $tables = [
             'question_types',

@@ -37,7 +37,7 @@ class SendOrderNotificationJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $mail = new SendOrderNotificationMail($this->order, $this->orderService);
         Mail::to($this->order->event->organiser->email)

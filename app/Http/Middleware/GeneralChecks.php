@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Symfony\Component\HttpFoundation\Response;
+use Illuminate\Http\Request;
 use Closure;
 
 class GeneralChecks
@@ -14,7 +16,7 @@ class GeneralChecks
      *
      * @throws \Illuminate\Session\TokenMismatchException
      */
-    public function handle($request, Closure $next)
+    public function handle(Request $request, Closure $next): Response
     {
 
         // Show message to IE 8 and before users

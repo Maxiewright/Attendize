@@ -12,7 +12,7 @@ class OrganiserFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'account_id' => function () {

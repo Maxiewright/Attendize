@@ -13,7 +13,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('attendees', function (Blueprint $table) {
             $table->string('private_reference_number', 15)->change();
@@ -25,7 +25,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         // Schema::table('attendees', function ($table) {
         //     $table->integer('private_reference_number')->change();

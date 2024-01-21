@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('events', function (Blueprint $table) {
             $table->string('questions_collection_type', 10)->default('buyer'); // buyer or attendee
@@ -23,7 +23,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('events', function (Blueprint $table) {
             $table->dropColumn(['checkout_timeout_after', 'questions_collection_type']);

@@ -11,7 +11,7 @@ class TimezoneSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         // \App\Models\DateTimeFormat::create([
         //     'format' => 'd/M/Y g:i a',

@@ -37,7 +37,7 @@ class SendOrderConfirmationJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         GenerateTicketsJob::dispatchSync($this->order);
         $mail = new SendOrderConfirmationMail($this->order, $this->orderService);

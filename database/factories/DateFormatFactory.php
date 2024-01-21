@@ -11,7 +11,7 @@ class DateFormatFactory extends Factory
      *
      * @return array
      */
-    public function definition()
+    public function definition(): array
     {
         return [
             'format' => 'Y-m-d',

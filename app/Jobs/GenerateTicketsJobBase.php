@@ -27,7 +27,7 @@ class GenerateTicketsJobBase implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $file_path = public_path(config('attendize.event_pdf_tickets_path')).'/'.$this->file_name;
         $file_with_ext = $file_path.'.pdf';

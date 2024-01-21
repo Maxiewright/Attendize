@@ -2,7 +2,7 @@
 
 class EventTest extends TestCase
 {
-    public function test_event_is_created_successfully()
+    public function test_event_is_created_successfully(): void
     {
         $this->actingAs($this->test_user);
 
@@ -31,7 +31,7 @@ class EventTest extends TestCase
         ]);
     }
 
-    public function test_event_is_not_created_and_validation_error_messages_show()
+    public function test_event_is_not_created_and_validation_error_messages_show(): void
     {
         $this->actingAs($this->test_user);
 
@@ -50,7 +50,7 @@ class EventTest extends TestCase
         ]);
     }
 
-    public function test_event_can_be_edited()
+    public function test_event_can_be_edited(): void
     {
         $organiser = \App\Models\Organiser::factory()->create(['account_id' => 1]);
         $event = \App\Models\Event::factory()->create([

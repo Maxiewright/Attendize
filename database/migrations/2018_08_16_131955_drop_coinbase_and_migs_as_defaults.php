@@ -10,7 +10,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         PaymentGateway::where('name', 'Coinbase')->delete();
         PaymentGateway::where('name', 'Migs_ThreeParty')->delete();
@@ -21,7 +21,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         //
     }

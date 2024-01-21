@@ -11,7 +11,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('failed_jobs', function (Blueprint $table) {
             $table->bigIncrements('id')->change();
@@ -25,7 +25,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('failed_jobs', function (Blueprint $table) {
             $table->increments('id')->change();

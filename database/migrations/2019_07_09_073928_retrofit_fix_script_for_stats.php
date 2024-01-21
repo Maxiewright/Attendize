@@ -15,7 +15,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         /*
          * Link tickets to their orders based on the order items on each order record. It will try and
@@ -262,7 +262,7 @@ return new class extends Migration
     /**
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         // Nothing to do here. This can run multiple times and will only attempt to fix the stats across events,
         // tickets and orders in the database.

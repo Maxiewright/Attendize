@@ -35,7 +35,7 @@ class SendMessageToAttendeesJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         if ($this->message->recipients == 'all') {
             $recipients = $this->message->event->attendees;

@@ -9,7 +9,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('organisers', function ($table) {
             $table->string('taxid', 100)->default('');
@@ -21,7 +21,7 @@ return new class extends Migration
      *
      * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('organisers', function ($table) {
             $table->dropColumn('taxid');

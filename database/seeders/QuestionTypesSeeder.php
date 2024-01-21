@@ -12,7 +12,7 @@ class QuestionTypesSeeder extends Seeder
      *
      * @return void
      */
-    public function run()
+    public function run(): void
     {
         DB::table('question_types')->insert([
             [
