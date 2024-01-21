@@ -12,7 +12,7 @@ class Utils
      *
      * @return bool
      */
-    public static function isRegistered()
+    public static function isRegistered(): bool
     {
         return Auth::check() && Auth::user()->is_registered;
     }
@@ -22,7 +22,7 @@ class Utils
      *
      * @return bool
      */
-    public static function isConfirmed()
+    public static function isConfirmed(): bool
     {
         return Auth::check() && Auth::user()->is_confirmed;
     }
@@ -32,7 +32,7 @@ class Utils
      *
      * @return bool
      */
-    public static function isDatabaseSetup()
+    public static function isDatabaseSetup(): bool
     {
         try {
             if (Schema::hasTable('accounts')) {
@@ -48,7 +48,7 @@ class Utils
      *
      * @return bool
      */
-    public static function isAttendize()
+    public static function isAttendize(): bool
     {
         return self::isAttendizeCloud() || self::isAttendizeDev();
     }
@@ -58,7 +58,7 @@ class Utils
      *
      * @return bool
      */
-    public static function isAttendizeCloud()
+    public static function isAttendizeCloud(): bool
     {
         return isset($_ENV['ATTENDIZE_CLOUD']) && $_ENV['ATTENDIZE_CLOUD'] == 'true';
     }
@@ -68,7 +68,7 @@ class Utils
      *
      * @return bool
      */
-    public static function isAttendizeDev()
+    public static function isAttendizeDev(): bool
     {
         return isset($_ENV['ATTENDIZE_DEV']) && $_ENV['ATTENDIZE_DEV'] == 'true';
     }
@@ -85,7 +85,7 @@ class Utils
      *
      * @return bool
      */
-    public static function userOwns($object)
+    public static function userOwns($object): bool
     {
         if (! Auth::check()) {
             return false;
@@ -133,7 +133,7 @@ class Utils
      *
      * @return float
      */
-    public static function parse_size($size)
+    public static function parse_size($size): float
     {
         $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
         $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.

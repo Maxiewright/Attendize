@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Event;
 use App\Models\Organiser;
 use Illuminate\Http\Request;
@@ -13,7 +14,7 @@ class OrganiserEventsController extends MyBaseController
      *
      * @return mixed
      */
-    public function showEvents(Request $request, $organiser_id)
+    public function showEvents(Request $request, $organiser_id): View
     {
         $organiser = Organiser::scope()->findOrfail($organiser_id);
 

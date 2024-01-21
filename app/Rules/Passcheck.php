@@ -25,7 +25,7 @@ class Passcheck implements Rule
      * @param  mixed  $value
      * @return bool
      */
-    public function passes($attribute, $value)
+    public function passes(string $attribute, $value): bool
     {
         return Hash::check($value, Auth::user()->getAuthPassword());
     }
@@ -35,7 +35,7 @@ class Passcheck implements Rule
      *
      * @return string
      */
-    public function message()
+    public function message(): string
     {
         return trans('Controllers.error.password.passcheck');
     }

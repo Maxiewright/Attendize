@@ -41,7 +41,7 @@ class SendMessageToAttendeeMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         return $this->subject($this->subject)
             ->from(config('attendize.outgoing_email_noreply'), $this->event->organiser->name)

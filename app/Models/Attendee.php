@@ -64,7 +64,7 @@ class Attendee extends MyBaseModel
     /**
      * @return Collection
      */
-    public static function findFromSelection(array $attendeeIds = [])
+    public static function findFromSelection(array $attendeeIds = []): Collection
     {
         return (new static)->whereIn('id', $attendeeIds)->get();
     }
@@ -74,7 +74,7 @@ class Attendee extends MyBaseModel
      *
      * @return BelongsTo
      */
-    public function order()
+    public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class);
     }
@@ -84,7 +84,7 @@ class Attendee extends MyBaseModel
      *
      * @return BelongsTo
      */
-    public function ticket()
+    public function ticket(): BelongsTo
     {
         return $this->belongsTo(Ticket::class);
     }
@@ -94,7 +94,7 @@ class Attendee extends MyBaseModel
      *
      * @return BelongsTo
      */
-    public function event()
+    public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
     }
@@ -102,7 +102,7 @@ class Attendee extends MyBaseModel
     /**
      * @return HasMany
      */
-    public function answers()
+    public function answers(): HasMany
     {
         return $this->hasMany(QuestionAnswer::class);
     }
@@ -129,7 +129,7 @@ class Attendee extends MyBaseModel
      *
      * @return string
      */
-    public function getReferenceAttribute()
+    public function getReferenceAttribute(): string
     {
         return $this->order->order_reference.'-'.$this->reference_index;
     }
@@ -139,7 +139,7 @@ class Attendee extends MyBaseModel
      *
      * @return string
      */
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return $this->first_name.' '.$this->last_name;
     }
@@ -149,7 +149,7 @@ class Attendee extends MyBaseModel
      *
      * @return array $dates
      */
-    public function getDates()
+    public function getDates(): array
     {
         return ['created_at', 'updated_at', 'arrival_time'];
     }

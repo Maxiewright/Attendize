@@ -36,7 +36,7 @@ class SendOrderAttendeeTicketMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         $file_name = $this->attendee->getReferenceAttribute();
         $file_path = public_path(config('attendize.event_pdf_tickets_path')).'/'.$file_name.'.pdf';

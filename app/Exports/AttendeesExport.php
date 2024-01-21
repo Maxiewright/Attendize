@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use Illuminate\Support\Query;
 use App\Models\Attendee;
 use Auth;
 use DB;
@@ -23,7 +24,7 @@ class AttendeesExport implements FromQuery, WithEvents, WithHeadings
     /**
      * @return \Illuminate\Support\Query
      */
-    public function query()
+    public function query(): Query
     {
         $yes = strtoupper(trans('basic.yes'));
         $no = strtoupper(trans('basic.no'));

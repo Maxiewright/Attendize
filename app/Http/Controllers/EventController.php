@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use App\Models\Event;
 use App\Models\EventImage;
 use App\Models\Organiser;
@@ -18,7 +21,7 @@ class EventController extends MyBaseController
      *
      * @return \Illuminate\View\View
      */
-    public function showCreateEvent(Request $request)
+    public function showCreateEvent(Request $request): View
     {
         $data = [
             'modal_id' => $request->get('modal_id'),
@@ -34,7 +37,7 @@ class EventController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCreateEvent(Request $request)
+    public function postCreateEvent(Request $request): JsonResponse
     {
         $event = Event::createNew();
 
@@ -201,7 +204,7 @@ class EventController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEvent(Request $request, $event_id)
+    public function postEditEvent(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -307,7 +310,7 @@ class EventController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postUploadEventImage(Request $request)
+    public function postUploadEventImage(Request $request): JsonResponse
     {
         if ($request->hasFile('event_image')) {
             $the_file = \File::get($request->file('event_image')->getRealPath());
@@ -342,7 +345,7 @@ class EventController extends MyBaseController
      * @param  int|false  $event_id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function postMakeEventLive($event_id = false)
+    public function postMakeEventLive($event_id = false): RedirectResponse
     {
         $event = Event::scope()->findOrFail($event_id);
         $event->is_live = 1;

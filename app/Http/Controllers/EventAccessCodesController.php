@@ -18,7 +18,7 @@ class EventAccessCodesController extends MyBaseController
     /**
      * @return mixed
      */
-    public function show($event_id)
+    public function show($event_id): View
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -30,7 +30,7 @@ class EventAccessCodesController extends MyBaseController
     /**
      * @return Factory|View
      */
-    public function showCreate($event_id)
+    public function showCreate($event_id): View
     {
         return view('ManageEvent.Modals.CreateAccessCode', [
             'event' => Event::scope()->find($event_id),
@@ -42,7 +42,7 @@ class EventAccessCodesController extends MyBaseController
      *
      * @return JsonResponse
      */
-    public function postCreate(Request $request, $event_id)
+    public function postCreate(Request $request, $event_id): JsonResponse
     {
         $eventAccessCode = new EventAccessCodes();
 
@@ -86,7 +86,7 @@ class EventAccessCodesController extends MyBaseController
      *
      * @throws \Exception
      */
-    public function postDelete($event_id, $access_code_id)
+    public function postDelete(int $event_id, int $access_code_id): JsonResponse
     {
         /** @var Event $event */
         $event = Event::scope()->findOrFail($event_id);

@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\Response;
+use Illuminate\Http\JsonResponse;
 use App\Attendize\Utils;
 use App\Models\Affiliate;
 use App\Models\Event;
@@ -35,7 +38,7 @@ class EventViewController extends Controller
      * @param  bool  $preview
      * @return mixed
      */
-    public function showEventHome(Request $request, $event_id, $slug = '', $preview = false)
+    public function showEventHome(Request $request, $event_id, string $slug = '', bool $preview = false): View
     {
         $event = Event::findOrFail($event_id);
 
@@ -142,7 +145,7 @@ class EventViewController extends Controller
         ]);
     }
 
-    public function showCalendarIcs(Request $request, $event_id)
+    public function showCalendarIcs(Request $request, $event_id): Response
     {
         $event = Event::findOrFail($event_id);
 
@@ -157,7 +160,7 @@ class EventViewController extends Controller
     /**
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postShowHiddenTickets(Request $request, $event_id)
+    public function postShowHiddenTickets(Request $request, $event_id): JsonResponse
     {
         $event = Event::findOrFail($event_id);
 

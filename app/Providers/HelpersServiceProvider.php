@@ -25,7 +25,7 @@ class HelpersServiceProvider extends ServiceProvider
      *
      * @return void
      */
-    public function paymentUtils()
+    public function paymentUtils(): void
     {
         Blade::if(
             'isFree',

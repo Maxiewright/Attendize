@@ -18,7 +18,7 @@ class EventAccessCodes extends MyBaseModel
      * @param  string  $accessCode
      * @return void
      */
-    public static function logUsage($event_id, $accessCode)
+    public static function logUsage(int $event_id, string $accessCode): void
     {
         (new static)::where('event_id', $event_id)
             ->where('code', $accessCode)
@@ -28,7 +28,7 @@ class EventAccessCodes extends MyBaseModel
     /**
      * @return Collection
      */
-    public static function findFromCode($code, $event_id)
+    public static function findFromCode($code, $event_id): Collection
     {
         return (new static())
             ->where('code', $code)
@@ -41,7 +41,7 @@ class EventAccessCodes extends MyBaseModel
      *
      * @return array $rules
      */
-    public function rules()
+    public function rules(): array
     {
         return [
             'code' => 'required|string',
@@ -53,7 +53,7 @@ class EventAccessCodes extends MyBaseModel
      *
      * @return BelongsTo
      */
-    public function event()
+    public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class, 'event_id', 'id');
     }
@@ -61,7 +61,7 @@ class EventAccessCodes extends MyBaseModel
     /**
      * @return BelongsToMany
      */
-    public function tickets()
+    public function tickets(): BelongsToMany
     {
         return $this->belongsToMany(
             Ticket::class,

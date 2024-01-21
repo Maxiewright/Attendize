@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class IndexController extends Controller
@@ -12,7 +13,7 @@ class IndexController extends Controller
      * @param  Request  $request http request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function showIndex(Request $request)
+    public function showIndex(Request $request): RedirectResponse
     {
         return redirect()->route('showSelectOrganiser');
     }

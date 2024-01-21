@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Redirect;
@@ -50,7 +51,7 @@ class UserLoginController extends Controller
      *
      * @return mixed
      */
-    public function postLogin(Request $request)
+    public function postLogin(Request $request): RedirectResponse
     {
         $email = $request->get('email');
         $password = $request->get('password');

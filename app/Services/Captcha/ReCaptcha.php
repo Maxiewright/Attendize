@@ -36,7 +36,7 @@ class ReCaptcha
      *
      * @return bool
      */
-    public function isHuman(Request $request)
+    public function isHuman(Request $request): bool
     {
         $this->recaptcha = $request->get('g-recaptcha-response');
         $this->ip = $request->ip();

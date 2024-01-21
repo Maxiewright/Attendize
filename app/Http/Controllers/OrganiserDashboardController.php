@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Organiser;
 use Carbon\Carbon;
 
@@ -12,7 +13,7 @@ class OrganiserDashboardController extends MyBaseController
      *
      * @return mixed
      */
-    public function showDashboard($organiser_id)
+    public function showDashboard($organiser_id): View
     {
         $organiser = Organiser::scope()->findOrFail($organiser_id);
         $upcoming_events = $organiser->events()->where('end_date', '>=', Carbon::now())->get();

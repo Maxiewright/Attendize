@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use App\Attendize\Utils;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -67,7 +70,7 @@ class Account extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function users()
+    public function users(): HasMany
     {
         return $this->hasMany(\App\Models\User::class);
     }
@@ -77,7 +80,7 @@ class Account extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(\App\Models\Order::class);
     }
@@ -87,7 +90,7 @@ class Account extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function currency()
+    public function currency(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Currency::class);
     }
@@ -97,7 +100,7 @@ class Account extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function account_payment_gateways()
+    public function account_payment_gateways(): HasMany
     {
         return $this->hasMany(\App\Models\AccountPaymentGateway::class);
     }
@@ -107,7 +110,7 @@ class Account extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function gateways()
+    public function gateways(): HasMany
     {
         return $this->account_payment_gateways();
     }
@@ -117,7 +120,7 @@ class Account extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function active_payment_gateway()
+    public function active_payment_gateway(): HasOne
     {
         return $this->hasOne(\App\Models\AccountPaymentGateway::class, 'payment_gateway_id', 'payment_gateway_id')->where('account_id', $this->id);
     }

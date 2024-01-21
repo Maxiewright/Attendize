@@ -53,7 +53,7 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
      * @param  bool  $ignore_user_id
      * @return \className
      */
-    public static function createNew($account_id = false, $user_id = false, $ignore_user_id = false)
+    public static function createNew($account_id = false, $user_id = false, bool $ignore_user_id = false): className
     {
         $className = static::class;
         $entity = new $className();
@@ -83,7 +83,7 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
      *
      * @return bool
      */
-    public function validate($data)
+    public function validate($data): bool
     {
         $rules = (method_exists($this, 'rules') ? $this->rules() : $this->rules);
         $v = Validator::make($data, $rules, $this->messages, $this->attributes);
@@ -104,7 +104,7 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
      * @param  bool  $returnArray
      * @return mixed
      */
-    public function errors($returnArray = true)
+    public function errors(bool $returnArray = true)
     {
         return $returnArray ? $this->errors->toArray() : $this->errors;
     }
@@ -130,7 +130,7 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
      * @param  bool  $accountId
      * @return mixed
      */
-    public function scopeScope($query, $accountId = false)
+    public function scopeScope($query, bool $accountId = false)
     {
 
         /*

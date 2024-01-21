@@ -16,7 +16,7 @@ class Authenticate extends Middleware
      * @param  \Illuminate\Http\Request  $request
      * @return string
      */
-    protected function redirectTo($request): string
+    protected function redirectTo(Request $request): string
     {
         if (! $request->expectsJson()) {
             return route('login');
@@ -32,7 +32,7 @@ class Authenticate extends Middleware
      *
      * @throws \Illuminate\Auth\AuthenticationException
      */
-    public function handle(Request $request, Closure $next, ...$guards): Response
+    public function handle(Request $request, Closure $next, array ...$guards): Response
     {
         if (Auth::guard($guards)->guest()) {
             if ($request->is('api/*') || $request->ajax() || $request->wantsJson()) {

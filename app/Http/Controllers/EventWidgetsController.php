@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Event;
 use Illuminate\Http\Request;
 
@@ -16,7 +17,7 @@ class EventWidgetsController extends MyBaseController
      *
      * @return mixed
      */
-    public function showEventWidgets(Request $request, $event_id)
+    public function showEventWidgets(Request $request, $event_id): View
     {
         $event = Event::scope()->findOrFail($event_id);
 

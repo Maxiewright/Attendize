@@ -28,7 +28,7 @@ class EventStats extends \Illuminate\Database\Eloquent\Model
      * @param  bool  $deduct
      * @return bool
      */
-    public function updateTicketRevenue($ticket_id, $amount, $deduct = false)
+    public function updateTicketRevenue(int $ticket_id, float $amount, bool $deduct = false): bool
     {
         $ticket = Ticket::find($ticket_id);
 
@@ -47,7 +47,7 @@ class EventStats extends \Illuminate\Database\Eloquent\Model
      *
      * @return bool
      */
-    public function updateViewCount($event_id)
+    public function updateViewCount($event_id): bool
     {
         $stats = $this->updateOrCreate([
             'event_id' => $event_id,
@@ -88,7 +88,7 @@ class EventStats extends \Illuminate\Database\Eloquent\Model
      *
      * @return bool
      */
-    public function updateTicketsSoldCount($event_id, $count)
+    public function updateTicketsSoldCount($event_id, $count): bool
     {
         $stats = $this->updateOrCreate([
             'event_id' => $event_id,

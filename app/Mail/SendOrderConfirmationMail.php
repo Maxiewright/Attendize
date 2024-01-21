@@ -45,7 +45,7 @@ class SendOrderConfirmationMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         $file_name = $this->order->order_reference;
         $file_path = public_path(config('attendize.event_pdf_tickets_path')).'/'.$file_name.'.pdf';

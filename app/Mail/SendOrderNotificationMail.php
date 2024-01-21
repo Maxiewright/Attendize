@@ -45,7 +45,7 @@ class SendOrderNotificationMail extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(): static
     {
         $subject = trans('Controllers.new_order_received', ['event' => $this->order->event->title, 'order' => $this->order->order_reference]);
 

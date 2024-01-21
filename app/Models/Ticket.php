@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Superbalist\Money\Currency;
 use App\Attendize\PaymentUtils;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,7 +26,7 @@ class Ticket extends MyBaseModel
      *
      * @return array $rules
      */
-    public function rules()
+    public function rules(): array
     {
         $format = config('attendize.default_datetime_format');
 
@@ -56,7 +58,7 @@ class Ticket extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function event()
+    public function event(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Event::class);
     }
@@ -66,7 +68,7 @@ class Ticket extends MyBaseModel
      *
      * @return BelongsToMany
      */
-    public function orders()
+    public function orders(): BelongsToMany
     {
         return $this->belongsToMany(
             Order::class,
@@ -81,7 +83,7 @@ class Ticket extends MyBaseModel
      *
      * @return BelongsToMany
      */
-    public function questions()
+    public function questions(): BelongsToMany
     {
         return $this->belongsToMany(\App\Models\Question::class);
     }
@@ -89,7 +91,7 @@ class Ticket extends MyBaseModel
     /**
      * @return BelongsToMany
      */
-    public function event_access_codes()
+    public function event_access_codes(): BelongsToMany
     {
         return $this->belongsToMany(
             EventAccessCodes::class,
@@ -111,7 +113,7 @@ class Ticket extends MyBaseModel
      *
      * @param  string  $date DateTime
      */
-    public function setStartSaleDateAttribute($date)
+    public function setStartSaleDateAttribute(string $date)
     {
         if (! $date) {
             $this->attributes['start_sale_date'] = Carbon::now();
@@ -128,7 +130,7 @@ class Ticket extends MyBaseModel
      *
      * @param  string|null  $date DateTime
      */
-    public function setEndSaleDateAttribute($date)
+    public function setEndSaleDateAttribute(?string $date)
     {
         if (! $date) {
             $this->attributes['end_sale_date'] = null;
@@ -234,7 +236,7 @@ class Ticket extends MyBaseModel
      *
      * @return array
      */
-    public function getTicketMaxMinRangAttribute()
+    public function getTicketMaxMinRangAttribute(): array
     {
         $range = [];
 
@@ -250,7 +252,7 @@ class Ticket extends MyBaseModel
      *
      * @return bool
      */
-    public function getIsFreeAttribute()
+    public function getIsFreeAttribute(): bool
     {
         return PaymentUtils::isFree($this->price);
     }
@@ -260,7 +262,7 @@ class Ticket extends MyBaseModel
      *
      * @return int
      */
-    public function getSaleStatusAttribute()
+    public function getSaleStatusAttribute(): int
     {
         if ($this->start_sale_date !== null && $this->start_sale_date->isFuture()) {
             return config('attendize.ticket_status_before_sale_date');
@@ -288,7 +290,7 @@ class Ticket extends MyBaseModel
      *
      * @return Money
      */
-    public function getTicketRevenueAmount()
+    public function getTicketRevenueAmount(): Money
     {
         $currency = $this->getEventCurrency();
 
@@ -301,7 +303,7 @@ class Ticket extends MyBaseModel
     /**
      * @return \Superbalist\Money\Currency
      */
-    private function getEventCurrency()
+    private function getEventCurrency(): Currency
     {
         // Get the event currency
         $eventCurrency = $this->event()->first()->currency()->first();

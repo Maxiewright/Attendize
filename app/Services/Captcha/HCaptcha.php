@@ -36,7 +36,7 @@ class HCaptcha
      *
      * @return bool
      */
-    public function isHuman(Request $request)
+    public function isHuman(Request $request): bool
     {
         $this->hcaptcha = $request->get('h-captcha-response');
         $this->ip = $request->ip();

@@ -2,6 +2,7 @@
 
 namespace App\Exports;
 
+use Illuminate\Support\Query;
 use App\Models\Order;
 use DB;
 use Maatwebsite\Excel\Concerns\Exportable;
@@ -22,7 +23,7 @@ class OrdersExport implements FromQuery, WithEvents, WithHeadings
     /**
      * @return \Illuminate\Support\Query
      */
-    public function query()
+    public function query(): Query
     {
         $yes = strtoupper(trans('basic.yes'));
         $no = strtoupper(trans('basic.no'));

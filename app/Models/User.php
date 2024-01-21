@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use App\Notifications\UserResetPassword;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -63,7 +65,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function account()
+    public function account(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Account::class);
     }
@@ -73,7 +75,7 @@ class User extends Authenticatable
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function activity()
+    public function activity(): HasMany
     {
         return $this->hasMany(\App\Models\Activity::class);
     }
@@ -93,7 +95,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getAuthPassword()
+    public function getAuthPassword(): string
     {
         return $this->password;
     }
@@ -103,7 +105,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getReminderEmail()
+    public function getReminderEmail(): string
     {
         return $this->email;
     }
@@ -123,7 +125,7 @@ class User extends Authenticatable
      *
      * @param  string  $value
      */
-    public function setRememberToken($value)
+    public function setRememberToken(string $value)
     {
         $this->remember_token = $value;
     }
@@ -133,7 +135,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getRememberTokenName()
+    public function getRememberTokenName(): string
     {
         return 'remember_token';
     }
@@ -143,7 +145,7 @@ class User extends Authenticatable
      *
      * @return string
      */
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return $this->first_name.' '.$this->last_name;
     }
@@ -167,7 +169,7 @@ class User extends Authenticatable
      * @param  string  $token
      * @return void
      */
-    public function sendPasswordResetNotification($token)
+    public function sendPasswordResetNotification(string $token): void
     {
         $this->notify(new UserResetPassword($token));
     }

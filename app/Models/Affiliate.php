@@ -27,7 +27,7 @@ class Affiliate extends \Illuminate\Database\Eloquent\Model
      *
      * @return array $dates
      */
-    public function getDates()
+    public function getDates(): array
     {
         return ['created_at', 'updated_at'];
     }

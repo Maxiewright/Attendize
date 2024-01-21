@@ -20,7 +20,7 @@ trait DatabaseSetup
     /**
      * @return bool
      */
-    protected function isInMemory()
+    protected function isInMemory(): bool
     {
         return config('database.connections')[config('database.default')]['database'] == ':memory:';
     }
@@ -59,7 +59,7 @@ trait DatabaseSetup
     /**
      * @return array
      */
-    protected function connectionsToTransact()
+    protected function connectionsToTransact(): array
     {
         return property_exists($this, 'connectionsToTransact')
             ? $this->connectionsToTransact : [null];

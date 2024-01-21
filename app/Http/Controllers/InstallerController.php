@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Timezone;
 use Exception;
 use GuzzleHttp\Client;
@@ -41,7 +42,7 @@ class InstallerController extends Controller
      *
      * @return mixed
      */
-    public function showInstaller()
+    public function showInstaller(): View
     {
         /**
          * If we're already installed display user friendly message and direct them to the appropriate next steps.
@@ -127,7 +128,7 @@ class InstallerController extends Controller
      *
      * @return array
      */
-    protected function constructUpgraderData()
+    protected function constructUpgraderData(): array
     {
         $data = [
             'remote_version' => null,
@@ -156,7 +157,7 @@ class InstallerController extends Controller
      *
      * @return mixed
      */
-    public function showUpgrader()
+    public function showUpgrader(): View
     {
         /**
          * If we haven't yet installed, redirect to installer page.
@@ -177,7 +178,7 @@ class InstallerController extends Controller
      *
      * @return JsonResponse|RedirectResponse
      */
-    public function postUpgrader(Request $request)
+    public function postUpgrader(Request $request): View
     {
         //  Do not run the installation if it is already installed
         if (! $this->canUpgrade()) {

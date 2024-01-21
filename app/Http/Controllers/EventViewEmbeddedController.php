@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Event;
 
 class EventViewEmbeddedController extends Controller
@@ -11,7 +12,7 @@ class EventViewEmbeddedController extends Controller
      *
      * @return mixed
      */
-    public function showEmbeddedEvent($event_id)
+    public function showEmbeddedEvent($event_id): View
     {
         $event = Event::findOrFail($event_id);
 

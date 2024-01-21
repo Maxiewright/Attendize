@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use App\Http\Requests\StoreEventQuestionRequest;
 use App\Models\Attendee;
 use App\Models\Event;
@@ -23,7 +25,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return mixed
      */
-    public function showEventSurveys(Request $request, $event_id)
+    public function showEventSurveys(Request $request, $event_id): View
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -47,7 +49,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return \Illuminate\Http\Response
      */
-    public function showCreateEventQuestion(Request $request, $event_id)
+    public function showCreateEventQuestion(Request $request, $event_id): View
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -62,7 +64,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCreateEventQuestion(StoreEventQuestionRequest $request, $event_id)
+    public function postCreateEventQuestion(StoreEventQuestionRequest $request, $event_id): JsonResponse
     {
         // Get the event or display a 'not found' warning.
         $event = Event::findOrFail($event_id);
@@ -109,7 +111,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return mixed
      */
-    public function showEditEventQuestion(Request $request, $event_id, $question_id)
+    public function showEditEventQuestion(Request $request, $event_id, $question_id): View
     {
         $question = Question::scope()->findOrFail($question_id);
         $event = Event::scope()->findOrFail($event_id);
@@ -128,7 +130,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventQuestion(Request $request, $event_id, $question_id)
+    public function postEditEventQuestion(Request $request, $event_id, $question_id): JsonResponse
     {
         // Get the event or display a 'not found' warning.
         $event = Event::scope()->findOrFail($event_id);
@@ -181,7 +183,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postDeleteEventQuestion(Request $request, $event_id)
+    public function postDeleteEventQuestion(Request $request, $event_id): JsonResponse
     {
         $question_id = $request->get('question_id');
 
@@ -212,7 +214,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return mixed
      */
-    public function showEventQuestionAnswers(Request $request, $event_id, $question_id)
+    public function showEventQuestionAnswers(Request $request, $event_id, $question_id): View
     {
         $answers = QuestionAnswer::scope()->where('question_id', $question_id)->get();
         $question = Question::scope()->withTrashed()->find($question_id);
@@ -235,7 +237,7 @@ class EventSurveyController extends MyBaseController
      *
      * @param  string  $export_as
      */
-    public function showExportAnswers(Request $request, $event_id, $export_as = 'xlsx')
+    public function showExportAnswers(Request $request, $event_id, string $export_as = 'xlsx')
     {
         Excel::create('answers-as-of-'.date('d-m-Y-g.i.a'), function ($excel) use ($event_id) {
 
@@ -264,7 +266,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEnableQuestion(Request $request, $event_id, $question_id)
+    public function postEnableQuestion(Request $request, $event_id, $question_id): JsonResponse
     {
         $question = Question::scope()->find($question_id);
 
@@ -290,7 +292,7 @@ class EventSurveyController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postUpdateQuestionsOrder(Request $request)
+    public function postUpdateQuestionsOrder(Request $request): JsonResponse
     {
         $question_ids = $request->get('question_ids');
         $sort = 1;

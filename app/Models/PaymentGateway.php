@@ -16,7 +16,7 @@ class PaymentGateway extends MyBaseModel
     /**
      * @return array
      */
-    public static function getAllWithDefaultSet()
+    public static function getAllWithDefaultSet(): array
     {
         $payment_gateways = PaymentGateway::all()->toArray();
         $payment_gateway = PaymentGateway::select('id')->where('default', 1)->get()->first();

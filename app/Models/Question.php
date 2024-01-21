@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
@@ -18,7 +21,7 @@ class Question extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
-    public function events()
+    public function events(): BelongsToMany
     {
         return $this->belongsToMany(\App\Models\Event::class);
     }
@@ -28,7 +31,7 @@ class Question extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function question_type()
+    public function question_type(): HasOne
     {
         return $this->belongsTo(\App\Models\QuestionType::class);
     }
@@ -43,7 +46,7 @@ class Question extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
-    public function options()
+    public function options(): HasOne
     {
         return $this->hasMany(\App\Models\QuestionOption::class);
     }
@@ -58,7 +61,7 @@ class Question extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Builder
      */
-    public function scopeIsEnabled($query)
+    public function scopeIsEnabled($query): Builder
     {
         return $query->where('is_enabled', 1);
     }

@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use App\Models\Event;
 use App\Models\Ticket;
 use Illuminate\Http\Request;
@@ -53,7 +55,7 @@ class EventTicketsController extends MyBaseController
      *
      * @return mixed
      */
-    public function showEditTicket($event_id, $ticket_id)
+    public function showEditTicket($event_id, $ticket_id): View
     {
         $data = [
             'event' => Event::scope()->find($event_id),
@@ -68,7 +70,7 @@ class EventTicketsController extends MyBaseController
      *
      * @return \Illuminate\Contracts\View\View
      */
-    public function showCreateTicket($event_id)
+    public function showCreateTicket($event_id): View
     {
         return view('ManageEvent.Modals.CreateTicket', [
             'event' => Event::scope()->find($event_id),
@@ -80,7 +82,7 @@ class EventTicketsController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCreateTicket(Request $request, $event_id)
+    public function postCreateTicket(Request $request, $event_id): JsonResponse
     {
         $ticket = Ticket::createNew();
 
@@ -130,7 +132,7 @@ class EventTicketsController extends MyBaseController
      *
      * @return mixed
      */
-    public function postPauseTicket(Request $request)
+    public function postPauseTicket(Request $request): JsonResponse
     {
         $ticket_id = $request->get('ticket_id');
 
@@ -162,7 +164,7 @@ class EventTicketsController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postDeleteTicket(Request $request)
+    public function postDeleteTicket(Request $request): JsonResponse
     {
         $ticket_id = $request->get('ticket_id');
 
@@ -203,7 +205,7 @@ class EventTicketsController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditTicket(Request $request, $event_id, $ticket_id)
+    public function postEditTicket(Request $request, $event_id, $ticket_id): JsonResponse
     {
         $ticket = Ticket::scope()->findOrFail($ticket_id);
 
@@ -263,7 +265,7 @@ class EventTicketsController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postUpdateTicketsOrder(Request $request)
+    public function postUpdateTicketsOrder(Request $request): JsonResponse
     {
         $ticket_ids = $request->get('ticket_ids');
         $sort = 1;

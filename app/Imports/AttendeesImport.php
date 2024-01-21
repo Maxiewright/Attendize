@@ -2,6 +2,7 @@
 
 namespace App\Imports;
 
+use Illuminate\Database\Eloquent\Model;
 use App\Jobs\SendAttendeeInviteJob;
 use App\Models\Attendee;
 use App\Models\Event;
@@ -30,7 +31,7 @@ class AttendeesImport implements OnEachRow, WithHeadingRow
      * @param  array  $row
      * @return \Illuminate\Database\Eloquent\Model|null
      */
-    public function onRow(Row $row)
+    public function onRow(Row $row): ?Model
     {
         $rowArr = $row->toArray();
         $firstName = $rowArr['first_name'];

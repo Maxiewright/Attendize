@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use App\Models\Attendee;
 use App\Models\Event;
 use Carbon\Carbon;
@@ -16,7 +18,7 @@ class EventCheckInController extends MyBaseController
      *
      * @return \Illuminate\View\View
      */
-    public function showCheckIn($event_id)
+    public function showCheckIn($event_id): View
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -34,7 +36,7 @@ class EventCheckInController extends MyBaseController
         return view('ManageEvent.CheckIn', $data);
     }
 
-    public function showQRCodeModal(Request $request, $event_id)
+    public function showQRCodeModal(Request $request, $event_id): View
     {
         return view('ManageEvent.Modals.QrcodeCheckIn');
     }
@@ -44,7 +46,7 @@ class EventCheckInController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCheckInSearch(Request $request, $event_id)
+    public function postCheckInSearch(Request $request, $event_id): JsonResponse
     {
         $searchQuery = $request->get('q');
 
@@ -88,7 +90,7 @@ class EventCheckInController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCheckInAttendee(Request $request)
+    public function postCheckInAttendee(Request $request): JsonResponse
     {
         $attendee_id = $request->get('attendee_id');
         $checking = $request->get('checking');
@@ -124,7 +126,7 @@ class EventCheckInController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postCheckInAttendeeQr($event_id, Request $request)
+    public function postCheckInAttendeeQr($event_id, Request $request): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 

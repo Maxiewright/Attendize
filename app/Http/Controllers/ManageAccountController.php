@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
 use App\Models\Account;
 use App\Models\AccountPaymentGateway;
 use App\Models\Currency;
@@ -30,7 +31,7 @@ class ManageAccountController extends MyBaseController
      *
      * @return mixed
      */
-    public function showEditAccount(Request $request)
+    public function showEditAccount(Request $request): View
     {
         $data = [
             'account' => Account::find(Auth::user()->account_id),
@@ -78,7 +79,7 @@ class ManageAccountController extends MyBaseController
      *
      * @return JsonResponse
      */
-    public function postEditAccount(Request $request)
+    public function postEditAccount(Request $request): JsonResponse
     {
         $account = Account::find(Auth::user()->account_id);
 
@@ -108,7 +109,7 @@ class ManageAccountController extends MyBaseController
      *
      * @return mixed
      */
-    public function postEditAccountPayment(Request $request)
+    public function postEditAccountPayment(Request $request): JsonResponse
     {
         $account = Account::find(Auth::user()->account_id);
         $gateway_id = $request->get('payment_gateway');
@@ -160,7 +161,7 @@ class ManageAccountController extends MyBaseController
      *
      * @return JsonResponse
      */
-    public function postInviteUser(Request $request)
+    public function postInviteUser(Request $request): JsonResponse
     {
         $rules = [
             'email' => ['required', 'email', 'unique:users,email,NULL,id,account_id,'.Auth::user()->account_id],

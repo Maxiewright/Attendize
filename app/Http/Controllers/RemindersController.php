@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Contracts\Auth\PasswordBroker;
 use Illuminate\Http\Request;
@@ -35,7 +36,7 @@ class RemindersController extends Controller
      *
      * @return string
      */
-    protected function getEmailSubject()
+    protected function getEmailSubject(): string
     {
         return isset($this->subject) ? $this->subject : trans('Controllers.your_password_reset_link');
     }
@@ -45,7 +46,7 @@ class RemindersController extends Controller
      *
      * @return Response
      */
-    public function getRemind()
+    public function getRemind(): Response
     {
         return \View::make('Public.LoginAndRegister.ForgotPassword');
     }
@@ -55,7 +56,7 @@ class RemindersController extends Controller
      *
      * @return Response
      */
-    public function postRemind(Request $request)
+    public function postRemind(Request $request): RedirectResponse
     {
         $this->validate($request, ['email' => 'required']);
 
@@ -76,7 +77,7 @@ class RemindersController extends Controller
      * @param  string  $token
      * @return Response
      */
-    public function getReset($token = null)
+    public function getReset(string $token = null): Response
     {
         if (is_null($token)) {
             \App::abort(404);
@@ -90,7 +91,7 @@ class RemindersController extends Controller
      *
      * @return Response
      */
-    public function postReset(Request $request)
+    public function postReset(Request $request): RedirectResponse
     {
         $this->validate($request, [
             'token' => 'required',

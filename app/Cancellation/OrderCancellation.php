@@ -66,7 +66,7 @@ class OrderCancellation
      *
      * @return Money
      */
-    public function getRefundAmount()
+    public function getRefundAmount(): Money
     {
         if ($this->orderRefund === null) {
             return new Money('0');

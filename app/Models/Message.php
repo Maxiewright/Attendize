@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 /*
   Attendize.com   - Event Management & Ticketing
  */
@@ -29,7 +31,7 @@ class Message extends MyBaseModel
      *
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function event()
+    public function event(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Event::class);
     }
@@ -39,7 +41,7 @@ class Message extends MyBaseModel
      *
      * @return string
      */
-    public function getRecipientsLabelAttribute()
+    public function getRecipientsLabelAttribute(): string
     {
         if ($this->recipients == 0) {
             return 'All Attendees';
@@ -55,7 +57,7 @@ class Message extends MyBaseModel
      *
      * @return array $dates
      */
-    public function getDates()
+    public function getDates(): array
     {
         return ['created_at', 'updated_at', 'sent_at'];
     }

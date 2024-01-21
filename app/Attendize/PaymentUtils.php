@@ -15,7 +15,7 @@ class PaymentUtils
      * @param  int  $amount  Amount of money to check
      * @return bool true if requires payment, false if not
      */
-    public static function requiresPayment($amount)
+    public static function requiresPayment(int $amount): bool
     {
         return ! self::isFree($amount);
     }
@@ -26,7 +26,7 @@ class PaymentUtils
      * @param  int  $amount  Amount of money to check
      * @return bool true if is free, false if not
      */
-    public static function isFree($amount)
+    public static function isFree(int $amount): bool
     {
         return ceil($amount) <= 0;
     }

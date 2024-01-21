@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use App\Models\Organiser;
 use Illuminate\Http\Request;
 use Validator;
@@ -13,7 +15,7 @@ class OrganiserCustomizeController extends MyBaseController
      *
      * @return mixed
      */
-    public function showCustomize($organiser_id)
+    public function showCustomize($organiser_id): View
     {
         $data = [
             'organiser' => Organiser::scope()->findOrFail($organiser_id),
@@ -27,7 +29,7 @@ class OrganiserCustomizeController extends MyBaseController
      *
      * @return mixed
      */
-    public function postEditOrganiser(Request $request, $organiser_id)
+    public function postEditOrganiser(Request $request, $organiser_id): JsonResponse
     {
         $organiser = Organiser::scope()->find($organiser_id);
 
@@ -80,7 +82,7 @@ class OrganiserCustomizeController extends MyBaseController
      *
      * @return mixed
      */
-    public function postEditOrganiserPageDesign(Request $request, $organiser_id)
+    public function postEditOrganiserPageDesign(Request $request, $organiser_id): JsonResponse
     {
         $organiser = Organiser::scope()->findOrFail($organiser_id);
 

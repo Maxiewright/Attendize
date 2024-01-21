@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\View\View;
+use Illuminate\Http\JsonResponse;
 use App\Models\Currency;
 use App\Models\Event;
 use File;
@@ -18,7 +20,7 @@ class EventCustomizeController extends MyBaseController
      * @param  array  $additional_data
      * @return array
      */
-    public function getEventViewData($event_id, $additional_data = [])
+    public function getEventViewData(int $event_id, array $additional_data = [])
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -41,7 +43,7 @@ class EventCustomizeController extends MyBaseController
      * @param  string  $tab
      * @return \Illuminate\View\View
      */
-    public function showCustomize($event_id = '', $tab = '')
+    public function showCustomize(string $event_id = '', string $tab = ''): View
     {
         $data = $this->getEventViewData($event_id, [
             'currencies' => Currency::pluck('title', 'id'),
@@ -94,7 +96,7 @@ class EventCustomizeController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventSocial(Request $request, $event_id)
+    public function postEditEventSocial(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -139,7 +141,7 @@ class EventCustomizeController extends MyBaseController
      *
      * @return mixed
      */
-    public function postEditEventTicketDesign(Request $request, $event_id)
+    public function postEditEventTicketDesign(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -182,7 +184,7 @@ class EventCustomizeController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventFees(Request $request, $event_id)
+    public function postEditEventFees(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -220,7 +222,7 @@ class EventCustomizeController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventOrderPage(Request $request, $event_id)
+    public function postEditEventOrderPage(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -254,7 +256,7 @@ class EventCustomizeController extends MyBaseController
      *
      * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventDesign(Request $request, $event_id)
+    public function postEditEventDesign(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
