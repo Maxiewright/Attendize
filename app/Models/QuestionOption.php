@@ -22,8 +22,6 @@ class QuestionOption extends MyBaseModel
 
     /**
      * The question associated with the question option.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function question(): BelongsTo
     {

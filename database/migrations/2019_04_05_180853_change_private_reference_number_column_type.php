@@ -10,8 +10,6 @@ return new class extends Migration
      * Run the migrations.
      * Change Private Reference Number from INT to VARCHAR ColumnType
      * and increases the character count to 15
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -22,8 +20,6 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
     public function down(): void
     {

@@ -9,9 +9,6 @@ class BusServiceProvider extends ServiceProvider
 {
     /**
      * Bootstrap any application services.
-     *
-     *
-     * @return void
      */
     public function boot(Dispatcher $dispatcher): void
     {
@@ -24,8 +21,6 @@ class BusServiceProvider extends ServiceProvider
 
     /**
      * Register any application services.
-     *
-     * @return void
      */
     public function register(): void
     {

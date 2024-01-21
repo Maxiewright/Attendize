@@ -12,8 +12,6 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
     public function up(): void
     {
@@ -259,9 +257,6 @@ return new class extends Migration
         // This was rough I know but it was worth it.
     }
 
-    /**
-     * @return void
-     */
     public function down(): void
     {
         // Nothing to do here. This can run multiple times and will only attempt to fix the stats across events,

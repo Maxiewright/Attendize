@@ -11,7 +11,6 @@ class IndexController extends Controller
      * redirect index page
      *
      * @param  Request  $request http request
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function showIndex(Request $request): RedirectResponse
     {

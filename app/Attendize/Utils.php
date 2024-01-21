@@ -9,8 +9,6 @@ class Utils
 {
     /**
      * Check if the current user is registered
-     *
-     * @return bool
      */
     public static function isRegistered(): bool
     {
@@ -19,8 +17,6 @@ class Utils
 
     /**
      * Check if the current user is confirmed
-     *
-     * @return bool
      */
     public static function isConfirmed(): bool
     {
@@ -29,8 +25,6 @@ class Utils
 
     /**
      * Check if the DB has been set up
-     *
-     * @return bool
      */
     public static function isDatabaseSetup(): bool
     {
@@ -45,8 +39,6 @@ class Utils
 
     /**
      * Are we the cloud version of attendize or in dev enviornment?
-     *
-     * @return bool
      */
     public static function isAttendize(): bool
     {
@@ -55,8 +47,6 @@ class Utils
 
     /**
      * Are we the cloud version of Attendize?
-     *
-     * @return bool
      */
     public static function isAttendizeCloud(): bool
     {
@@ -65,8 +55,6 @@ class Utils
 
     /**
      * Are we in a dev enviornment?
-     *
-     * @return bool
      */
     public static function isAttendizeDev(): bool
     {
@@ -82,8 +70,6 @@ class Utils
      * Check if a user has admin access to events etc.
      *
      * @todo - This is a temp fix until user roles etc. are implemented
-     *
-     * @return bool
      */
     public static function userOwns($object): bool
     {
@@ -130,8 +116,6 @@ class Utils
 
     /**
      * Parses the given size
-     *
-     * @return float
      */
     public static function parse_size($size): float
     {

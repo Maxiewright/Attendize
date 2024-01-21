@@ -47,9 +47,6 @@ class UserLoginController extends Controller
 
     /**
      * Handles the login request.
-     *
-     *
-     * @return mixed
      */
     public function postLogin(Request $request): RedirectResponse
     {

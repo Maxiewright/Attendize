@@ -12,8 +12,6 @@ class OrganiserCustomizeController extends MyBaseController
 {
     /**
      * Show organiser setting page
-     *
-     * @return mixed
      */
     public function showCustomize($organiser_id): View
     {
@@ -26,8 +24,6 @@ class OrganiserCustomizeController extends MyBaseController
 
     /**
      * Edits organiser settings / design etc.
-     *
-     * @return mixed
      */
     public function postEditOrganiser(Request $request, $organiser_id): JsonResponse
     {
@@ -79,8 +75,6 @@ class OrganiserCustomizeController extends MyBaseController
 
     /**
      * Edits organiser profile page colors / design
-     *
-     * @return mixed
      */
     public function postEditOrganiserPageDesign(Request $request, $organiser_id): JsonResponse
     {

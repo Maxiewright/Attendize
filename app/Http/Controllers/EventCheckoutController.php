@@ -741,8 +741,6 @@ class EventCheckoutController extends Controller
 
     /**
      * Show the order details page
-     *
-     * @return \Illuminate\View\View
      */
     public function showOrderDetails(Request $request, $order_reference): View
     {
@@ -772,8 +770,6 @@ class EventCheckoutController extends Controller
 
     /**
      * Shows the tickets for an order - either HTML or PDF
-     *
-     * @return \Illuminate\View\View
      */
     public function showOrderTickets(Request $request, $order_reference): View
     {

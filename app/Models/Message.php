@@ -28,8 +28,6 @@ class Message extends MyBaseModel
 
     /**
      * The event associated with the message.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function event(): BelongsTo
     {
@@ -38,8 +36,6 @@ class Message extends MyBaseModel
 
     /**
      * Get the recipient label of the model.
-     *
-     * @return string
      */
     public function getRecipientsLabelAttribute(): string
     {

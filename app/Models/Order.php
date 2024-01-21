@@ -63,8 +63,6 @@ class Order extends MyBaseModel
 
     /**
      * The items associated with the order.
-     *
-     * @return HasMany
      */
     public function orderItems(): HasMany
     {
@@ -73,8 +71,6 @@ class Order extends MyBaseModel
 
     /**
      * The attendees associated with the order.
-     *
-     * @return HasMany
      */
     public function attendees(): HasMany
     {
@@ -83,8 +79,6 @@ class Order extends MyBaseModel
 
     /**
      * The account associated with the order.
-     *
-     * @return BelongsTo
      */
     public function account(): BelongsTo
     {
@@ -93,8 +87,6 @@ class Order extends MyBaseModel
 
     /**
      * The event associated with the order.
-     *
-     * @return BelongsTo
      */
     public function event(): BelongsTo
     {
@@ -103,8 +95,6 @@ class Order extends MyBaseModel
 
     /**
      * The tickets associated with the order.
-     *
-     * @return BelongsToMany
      */
     public function tickets(): BelongsToMany
     {
@@ -116,9 +106,6 @@ class Order extends MyBaseModel
         );
     }
 
-    /**
-     * @return BelongsTo
-     */
     public function payment_gateway(): BelongsTo
     {
         return $this->belongsTo(PaymentGateway::class);
@@ -126,8 +113,6 @@ class Order extends MyBaseModel
 
     /**
      * The status associated with the order.
-     *
-     * @return BelongsTo
      */
     public function orderStatus(): BelongsTo
     {
@@ -156,8 +141,6 @@ class Order extends MyBaseModel
 
     /**
      * Get the full name of the order.
-     *
-     * @return string
      */
     public function getFullNameAttribute(): string
     {
@@ -168,8 +151,6 @@ class Order extends MyBaseModel
      * Generate and save the PDF tickets.
      *
      * @todo Move this from the order model
-     *
-     * @return bool
      */
     public function generatePdfTickets(): bool
     {
@@ -220,9 +201,6 @@ class Order extends MyBaseModel
         });
     }
 
-    /**
-     * @return Money
-     */
     public function getOrderAmount(): Money
     {
         // We need to show if an order has been refunded
@@ -236,9 +214,6 @@ class Order extends MyBaseModel
         return $orderValue->add($bookingFee);
     }
 
-    /**
-     * @return Money
-     */
     public function getOrderTaxAmount(): Money
     {
         $currency = $this->getEventCurrency();
@@ -247,9 +222,6 @@ class Order extends MyBaseModel
         return $taxAmount;
     }
 
-    /**
-     * @return Money
-     */
     public function getMaxAmountRefundable(): Money
     {
         $currency = $this->getEventCurrency();
@@ -259,9 +231,6 @@ class Order extends MyBaseModel
         return $organiserAmount->subtract($refundedAmount);
     }
 
-    /**
-     * @return Money
-     */
     public function getRefundedAmountExcludingTax(): Money
     {
         // Setup the currency on the event for transformation
@@ -272,25 +241,16 @@ class Order extends MyBaseModel
         return $amountRefunded->subtract($taxAmount);
     }
 
-    /**
-     * @return Money
-     */
     public function getRefundedAmountIncludingTax(): Money
     {
         return new Money($this->amount_refunded, $this->getEventCurrency());
     }
 
-    /**
-     * @return Money
-     */
     public function getPartiallyRefundedAmount(): Money
     {
         return new Money($this->amount_refunded, $this->getEventCurrency());
     }
 
-    /**
-     * @return \Superbalist\Money\Currency
-     */
     public function getEventCurrency(): Currency
     {
         // Get the event currency
@@ -305,9 +265,6 @@ class Order extends MyBaseModel
         );
     }
 
-    /**
-     * @return bool
-     */
     public function canRefund(): bool
     {
         // Guard against orders that does not contain a payment gateway, ex: Free tickets
@@ -318,9 +275,6 @@ class Order extends MyBaseModel
         return $this->payment_gateway->can_refund;
     }
 
-    /**
-     * @return Collection
-     */
     public function getAllNonCancelledAttendees(): Collection
     {
         return $this->attendees()->where('is_cancelled', false)->get();

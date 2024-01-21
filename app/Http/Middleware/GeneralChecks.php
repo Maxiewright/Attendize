@@ -11,8 +11,6 @@ class GeneralChecks
     /**
      * Handle an incoming request.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return mixed
      *
      * @throws \Illuminate\Session\TokenMismatchException
      */

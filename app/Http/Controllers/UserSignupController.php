@@ -48,9 +48,6 @@ class UserSignupController extends Controller
 
     /**
      * Creates an account.
-     *
-     *
-     * @return Redirect
      */
     public function postSignup(Request $request): RedirectResponse
     {

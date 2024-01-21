@@ -10,8 +10,6 @@ class OrganiserDashboardController extends MyBaseController
 {
     /**
      * Show the organiser dashboard
-     *
-     * @return mixed
      */
     public function showDashboard($organiser_id): View
     {

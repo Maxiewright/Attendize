@@ -59,8 +59,6 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
 
     /**
      * The account associated with the organiser
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function account(): BelongsTo
     {
@@ -69,8 +67,6 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
 
     /**
      * The events associated with the organizer.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function events(): HasMany
     {
@@ -79,8 +75,6 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
 
     /**
      * The attendees associated with the organizer.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function attendees(): HasManyThrough
     {
@@ -89,8 +83,6 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
 
     /**
      * Get the orders related to an organiser
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
     public function orders(): HasManyThrough
     {
@@ -113,8 +105,6 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
 
     /**
      * Get the url of the organizer.
-     *
-     * @return string
      */
     public function getOrganiserUrlAttribute(): string
     {

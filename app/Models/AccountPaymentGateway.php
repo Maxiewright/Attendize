@@ -24,8 +24,6 @@ class AccountPaymentGateway extends MyBaseModel
 
     /**
      * Account associated with gateway
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function account(): BelongsTo
     {
@@ -34,8 +32,6 @@ class AccountPaymentGateway extends MyBaseModel
 
     /**
      * Parent payment gateway
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function payment_gateway(): BelongsTo
     {

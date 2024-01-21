@@ -61,8 +61,6 @@ class Event extends MyBaseModel
 
     /**
      * The questions associated with the event.
-     *
-     * @return BelongsToMany
      */
     public function questions(): BelongsToMany
     {
@@ -71,8 +69,6 @@ class Event extends MyBaseModel
 
     /**
      * The questions associated with the event.
-     *
-     * @return BelongsToMany
      */
     public function questions_with_trashed(): BelongsToMany
     {
@@ -81,8 +77,6 @@ class Event extends MyBaseModel
 
     /**
      * The images associated with the event.
-     *
-     * @return HasMany
      */
     public function images(): HasMany
     {
@@ -101,8 +95,6 @@ class Event extends MyBaseModel
 
     /**
      * The tickets associated with the event.
-     *
-     * @return HasMany
      */
     public function tickets(): HasMany
     {
@@ -111,8 +103,6 @@ class Event extends MyBaseModel
 
     /**
      * The affiliates associated with the event.
-     *
-     * @return HasMany
      */
     public function affiliates(): HasMany
     {
@@ -121,8 +111,6 @@ class Event extends MyBaseModel
 
     /**
      * The orders associated with the event.
-     *
-     * @return HasMany
      */
     public function orders(): HasMany
     {
@@ -131,8 +119,6 @@ class Event extends MyBaseModel
 
     /**
      * The account associated with the event.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function account(): BelongsTo
     {
@@ -141,8 +127,6 @@ class Event extends MyBaseModel
 
     /**
      * The organizer associated with the event.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function organiser(): BelongsTo
     {
@@ -233,8 +217,6 @@ class Event extends MyBaseModel
 
     /**
      * Indicates whether the event is currently happening.
-     *
-     * @return bool
      */
     public function getHappeningNowAttribute(): bool
     {
@@ -243,8 +225,6 @@ class Event extends MyBaseModel
 
     /**
      * Get the currency symbol.
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function getCurrencySymbolAttribute(): Collection
     {
@@ -253,8 +233,6 @@ class Event extends MyBaseModel
 
     /**
      * Get the currency code.
-     *
-     * @return \Illuminate\Support\Collection
      */
     public function getCurrencyCodeAttribute(): Collection
     {
@@ -263,8 +241,6 @@ class Event extends MyBaseModel
 
     /**
      * Return an array of attendees and answers they gave to questions at checkout
-     *
-     * @return array
      */
     public function getSurveyAnswersAttribute(): array
     {
@@ -301,8 +277,6 @@ class Event extends MyBaseModel
 
     /**
      * The attendees associated with the event.
-     *
-     * @return HasMany
      */
     public function attendees(): HasMany
     {
@@ -311,8 +285,6 @@ class Event extends MyBaseModel
 
     /**
      * Get the embed html code.
-     *
-     * @return string
      */
     public function getEmbedHtmlCodeAttribute(): string
     {
@@ -339,8 +311,6 @@ class Event extends MyBaseModel
 
     /**
      * Get the big image url.
-     *
-     * @return string
      */
     public function getBgImageUrlAttribute(): string
     {
@@ -397,8 +367,6 @@ ICSTemplate;
 
     /**
      * Get the url of the event.
-     *
-     * @return string
      */
     public function getEventUrlAttribute(): string
     {
@@ -406,10 +374,6 @@ ICSTemplate;
         //return URL::to('/') . '/e/' . $this->id . '/' . Str::slug($this->title);
     }
 
-    /**
-     * @param  int  $accessCodeId
-     * @return bool
-     */
     public function hasAccessCode(int $accessCodeId): bool
     {
         return is_null($this->access_codes()->where('id', $accessCodeId)->first()) === false;
@@ -417,17 +381,12 @@ ICSTemplate;
 
     /**
      * The access codes associated with the event.
-     *
-     * @return HasMany
      */
     public function access_codes(): HasMany
     {
         return $this->hasMany(EventAccessCodes::class, 'event_id', 'id');
     }
 
-    /**
-     * @return Money
-     */
     public function getEventRevenueAmount(): Money
     {
         $currency = $this->getEventCurrency();
@@ -442,9 +401,6 @@ ICSTemplate;
         return new Money($eventRevenue, $currency);
     }
 
-    /**
-     * @return \Superbalist\Money\Currency
-     */
     private function getEventCurrency(): Currency
     {
         // Get the event currency
@@ -463,8 +419,6 @@ ICSTemplate;
 
     /**
      * The currency associated with the event.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function currency(): BelongsTo
     {
@@ -473,8 +427,6 @@ ICSTemplate;
 
     /**
      * The stats associated with the event.
-     *
-     * @return HasMany
      */
     public function stats(): HasMany
     {

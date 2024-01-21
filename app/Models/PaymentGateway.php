@@ -13,9 +13,6 @@ class PaymentGateway extends MyBaseModel
 
     public $timestamps = false;
 
-    /**
-     * @return array
-     */
     public static function getAllWithDefaultSet(): array
     {
         $payment_gateways = PaymentGateway::all()->toArray();

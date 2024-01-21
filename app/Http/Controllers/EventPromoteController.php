@@ -6,9 +6,6 @@ use Illuminate\View\View;
 
 class EventPromoteController extends MyBaseController
 {
-    /**
-     * @return mixed
-     */
     public function showPromote($event_id): View
     {
         $data = [

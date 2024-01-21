@@ -12,8 +12,6 @@ class OrganiserController extends MyBaseController
 {
     /**
      * Show the select organiser page
-     *
-     * @return \Illuminate\Contracts\View\View
      */
     public function showSelectOrganiser(): View
     {
@@ -22,8 +20,6 @@ class OrganiserController extends MyBaseController
 
     /**
      * Show the create organiser page
-     *
-     * @return \Illuminate\Contracts\View\View
      */
     public function showCreateOrganiser(): View
     {
@@ -34,7 +30,6 @@ class OrganiserController extends MyBaseController
      * Create the organiser
      *
      *
-     * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Symfony\Component\HttpFoundation\File\Exception\FileException
      */

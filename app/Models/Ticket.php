@@ -55,8 +55,6 @@ class Ticket extends MyBaseModel
 
     /**
      * The event associated with the ticket.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function event(): BelongsTo
     {
@@ -65,8 +63,6 @@ class Ticket extends MyBaseModel
 
     /**
      * The order associated with the ticket.
-     *
-     * @return BelongsToMany
      */
     public function orders(): BelongsToMany
     {
@@ -80,17 +76,12 @@ class Ticket extends MyBaseModel
 
     /**
      * The questions associated with the ticket.
-     *
-     * @return BelongsToMany
      */
     public function questions(): BelongsToMany
     {
         return $this->belongsToMany(\App\Models\Question::class);
     }
 
-    /**
-     * @return BelongsToMany
-     */
     public function event_access_codes(): BelongsToMany
     {
         return $this->belongsToMany(
@@ -233,8 +224,6 @@ class Ticket extends MyBaseModel
 
     /**
      * Get the maximum and minimum range of the ticket.
-     *
-     * @return array
      */
     public function getTicketMaxMinRangAttribute(): array
     {
@@ -249,8 +238,6 @@ class Ticket extends MyBaseModel
 
     /**
      * Indicates if the ticket is free.
-     *
-     * @return bool
      */
     public function getIsFreeAttribute(): bool
     {
@@ -259,8 +246,6 @@ class Ticket extends MyBaseModel
 
     /**
      * Return the maximum figure to go to on dropdowns.
-     *
-     * @return int
      */
     public function getSaleStatusAttribute(): int
     {
@@ -287,8 +272,6 @@ class Ticket extends MyBaseModel
      * Ticket revenue is calculated as:
      *
      * Sales Volume + Organiser Booking Fees - Partial Refunds
-     *
-     * @return Money
      */
     public function getTicketRevenueAmount(): Money
     {
@@ -300,9 +283,6 @@ class Ticket extends MyBaseModel
         return $salesVolume->add($organiserFeesVolume);
     }
 
-    /**
-     * @return \Superbalist\Money\Currency
-     */
     private function getEventCurrency(): Currency
     {
         // Get the event currency

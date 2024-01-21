@@ -52,8 +52,6 @@ class EventTicketsController extends MyBaseController
 
     /**
      * Show the edit ticket modal
-     *
-     * @return mixed
      */
     public function showEditTicket($event_id, $ticket_id): View
     {
@@ -67,8 +65,6 @@ class EventTicketsController extends MyBaseController
 
     /**
      * Show the create ticket modal
-     *
-     * @return \Illuminate\Contracts\View\View
      */
     public function showCreateTicket($event_id): View
     {
@@ -79,8 +75,6 @@ class EventTicketsController extends MyBaseController
 
     /**
      * Creates a ticket
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postCreateTicket(Request $request, $event_id): JsonResponse
     {
@@ -129,8 +123,6 @@ class EventTicketsController extends MyBaseController
 
     /**
      * Pause ticket / take it off sale
-     *
-     * @return mixed
      */
     public function postPauseTicket(Request $request): JsonResponse
     {
@@ -161,8 +153,6 @@ class EventTicketsController extends MyBaseController
 
     /**
      * Deleted a ticket
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postDeleteTicket(Request $request): JsonResponse
     {
@@ -202,8 +192,6 @@ class EventTicketsController extends MyBaseController
 
     /**
      * Edit a ticket
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEditTicket(Request $request, $event_id, $ticket_id): JsonResponse
     {
@@ -262,8 +250,6 @@ class EventTicketsController extends MyBaseController
 
     /**
      * Updates the sort order of tickets
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postUpdateTicketsOrder(Request $request): JsonResponse
     {

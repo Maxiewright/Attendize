@@ -16,8 +16,6 @@ class EventCustomizeController extends MyBaseController
     /**
      * Returns data which is required in each view, optionally combined with additional data.
      *
-     * @param  int  $event_id
-     * @param  array  $additional_data
      * @return array
      */
     public function getEventViewData(int $event_id, array $additional_data = [])
@@ -38,10 +36,6 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Show the event customize page
-     *
-     * @param  string  $event_id
-     * @param  string  $tab
-     * @return \Illuminate\View\View
      */
     public function showCustomize(string $event_id = '', string $tab = ''): View
     {
@@ -93,8 +87,6 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit social settings of an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEditEventSocial(Request $request, $event_id): JsonResponse
     {
@@ -138,8 +130,6 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Update ticket details
-     *
-     * @return mixed
      */
     public function postEditEventTicketDesign(Request $request, $event_id): JsonResponse
     {
@@ -181,8 +171,6 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit fees of an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEditEventFees(Request $request, $event_id): JsonResponse
     {
@@ -219,8 +207,6 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit the event order page settings
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEditEventOrderPage(Request $request, $event_id): JsonResponse
     {
@@ -253,8 +239,6 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit event page design/colors etc.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEditEventDesign(Request $request, $event_id): JsonResponse
     {

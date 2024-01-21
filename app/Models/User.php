@@ -62,8 +62,6 @@ class User extends Authenticatable
 
     /**
      * The account associated with the user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function account(): BelongsTo
     {
@@ -72,8 +70,6 @@ class User extends Authenticatable
 
     /**
      * The activity associated with the user.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function activity(): HasMany
     {
@@ -92,8 +88,6 @@ class User extends Authenticatable
 
     /**
      * Get the password for the user.
-     *
-     * @return string
      */
     public function getAuthPassword(): string
     {
@@ -102,8 +96,6 @@ class User extends Authenticatable
 
     /**
      * Get the e-mail address where password reminders are sent.
-     *
-     * @return string
      */
     public function getReminderEmail(): string
     {
@@ -122,8 +114,6 @@ class User extends Authenticatable
 
     /**
      * Set the remember token for the user.
-     *
-     * @param  string  $value
      */
     public function setRememberToken(string $value)
     {
@@ -132,8 +122,6 @@ class User extends Authenticatable
 
     /**
      * Get the name of the remember token for the user.
-     *
-     * @return string
      */
     public function getRememberTokenName(): string
     {
@@ -142,8 +130,6 @@ class User extends Authenticatable
 
     /**
      * Get the full name of the user.
-     *
-     * @return string
      */
     public function getFullNameAttribute(): string
     {
@@ -165,9 +151,6 @@ class User extends Authenticatable
 
     /**
      * Send the password reset notification.
-     *
-     * @param  string  $token
-     * @return void
      */
     public function sendPasswordResetNotification(string $token): void
     {

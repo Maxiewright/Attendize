@@ -6,8 +6,6 @@ class UserSignUpTest extends TestCase
 {
     /**
      * Test sign up page is successful
-     *
-     * @return void
      */
     public function test_signup_is_successful(): void
     {
@@ -31,8 +29,6 @@ class UserSignUpTest extends TestCase
 
     /**
      * Test sign up page is unsuccessful
-     *
-     * @return void
      */
     public function test_signup_is_unsuccessful_because_of_no_values(): void
     {
@@ -43,8 +39,6 @@ class UserSignUpTest extends TestCase
 
     /**
      * Test sign up page is unsuccessful
-     *
-     * @return void
      */
     public function test_signup_is_unsuccessful_because_of_invalid_email(): void
     {
@@ -60,8 +54,6 @@ class UserSignUpTest extends TestCase
 
     /**
      * Test sign up page is unsuccessful
-     *
-     * @return void
      */
     public function test_signup_is_unsuccessful_because_of_unmatched_password(): void
     {

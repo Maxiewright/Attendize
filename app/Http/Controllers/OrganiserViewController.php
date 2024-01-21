@@ -12,10 +12,6 @@ class OrganiserViewController extends Controller
 {
     /**
      * Show the public organiser page
-     *
-     * @param  string  $slug
-     * @param  bool  $preview
-     * @return View
      */
     public function showOrganiserHome(Request $request, $organiser_id, string $slug = '', bool $preview = false): \Illuminate\View\View
     {

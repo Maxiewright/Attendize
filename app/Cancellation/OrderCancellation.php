@@ -63,8 +63,6 @@ class OrderCancellation
 
     /**
      * Returns the return amount
-     *
-     * @return Money
      */
     public function getRefundAmount(): Money
     {

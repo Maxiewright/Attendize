@@ -28,8 +28,6 @@ class ManageAccountController extends MyBaseController
 {
     /**
      * Show the account modal
-     *
-     * @return mixed
      */
     public function showEditAccount(Request $request): View
     {
@@ -76,8 +74,6 @@ class ManageAccountController extends MyBaseController
 
     /**
      * Edit an account
-     *
-     * @return JsonResponse
      */
     public function postEditAccount(Request $request): JsonResponse
     {
@@ -106,8 +102,6 @@ class ManageAccountController extends MyBaseController
 
     /**
      * Save account payment information
-     *
-     * @return mixed
      */
     public function postEditAccountPayment(Request $request): JsonResponse
     {
@@ -158,8 +152,6 @@ class ManageAccountController extends MyBaseController
 
     /**
      * Invite a user to the application
-     *
-     * @return JsonResponse
      */
     public function postInviteUser(Request $request): JsonResponse
     {

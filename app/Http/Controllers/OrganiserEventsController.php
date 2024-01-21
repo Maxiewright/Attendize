@@ -11,8 +11,6 @@ class OrganiserEventsController extends MyBaseController
 {
     /**
      * Show the organiser events page
-     *
-     * @return mixed
      */
     public function showEvents(Request $request, $organiser_id): View
     {

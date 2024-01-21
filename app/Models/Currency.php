@@ -41,8 +41,6 @@ class Currency extends \Illuminate\Database\Eloquent\Model
 
     /**
      * The event associated with the currency.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function event(): BelongsTo
     {

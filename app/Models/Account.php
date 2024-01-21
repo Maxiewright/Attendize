@@ -67,8 +67,6 @@ class Account extends MyBaseModel
 
     /**
      * The users associated with the account.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function users(): HasMany
     {
@@ -77,8 +75,6 @@ class Account extends MyBaseModel
 
     /**
      * The orders associated with the account.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function orders(): HasMany
     {
@@ -87,8 +83,6 @@ class Account extends MyBaseModel
 
     /**
      * The currency associated with the account.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
     public function currency(): BelongsTo
     {
@@ -97,8 +91,6 @@ class Account extends MyBaseModel
 
     /**
      * Payment gateways associated with an account
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function account_payment_gateways(): HasMany
     {
@@ -107,8 +99,6 @@ class Account extends MyBaseModel
 
     /**
      * Alias for $this->account_payment_gateways()
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
     public function gateways(): HasMany
     {
@@ -117,8 +107,6 @@ class Account extends MyBaseModel
 
     /**
      * Get an accounts active payment gateway
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function active_payment_gateway(): HasOne
     {

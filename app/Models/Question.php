@@ -18,8 +18,6 @@ class Question extends MyBaseModel
 
     /**
      * The events associated with the question.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
     public function events(): BelongsToMany
     {
@@ -28,8 +26,6 @@ class Question extends MyBaseModel
 
     /**
      * The type associated with the question.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function question_type(): HasOne
     {
@@ -43,8 +39,6 @@ class Question extends MyBaseModel
 
     /**
      * The options associated with the question.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasOne
      */
     public function options(): HasOne
     {
@@ -58,8 +52,6 @@ class Question extends MyBaseModel
 
     /**
      * Scope a query to only include active questions.
-     *
-     * @return \Illuminate\Database\Eloquent\Builder
      */
     public function scopeIsEnabled($query): Builder
     {

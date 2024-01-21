@@ -17,8 +17,6 @@ class UserLogoutController extends Controller
 
     /**
      * Log a user out and redirect them
-     *
-     * @return mixed
      */
     public function doLogout(): RedirectResponse
     {

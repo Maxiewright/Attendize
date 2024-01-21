@@ -35,8 +35,6 @@ class EventAttendeesController extends MyBaseController
 {
     /**
      * Show the attendees list
-     *
-     * @return View
      */
     public function showAttendees(Request $request, $event_id): View
     {
@@ -106,8 +104,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Invite an attendee
-     *
-     * @return mixed
      */
     public function postInviteAttendee(Request $request, $event_id): JsonResponse
     {
@@ -257,8 +253,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Import attendees
-     *
-     * @return mixed
      */
     public function postImportAttendee(Request $request, $event_id): JsonResponse
     {
@@ -299,8 +293,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the printable attendee list
-     *
-     * @return View
      */
     public function showPrintAttendees($event_id): View
     {
@@ -312,8 +304,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the 'Message Attendee' modal
-     *
-     * @return View
      */
     public function showMessageAttendee(Request $request, $attendee_id): View
     {
@@ -329,8 +319,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Send a message to an attendee
-     *
-     * @return mixed
      */
     public function postMessageAttendee(Request $request, $attendee_id): JsonResponse
     {
@@ -367,8 +355,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Shows the 'Message Attendees' modal
-     *
-     * @return View
      */
     public function showMessageAttendees(Request $request, $event_id): View
     {
@@ -382,8 +368,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Send a message to attendees
-     *
-     * @return mixed
      */
     public function postMessageAttendees(Request $request, $event_id): JsonResponse
     {
@@ -420,9 +404,6 @@ class EventAttendeesController extends MyBaseController
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
-     */
     public function showExportTicket($event_id, $attendee_id): BinaryFileResponse
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
@@ -457,8 +438,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the 'Edit Attendee' modal
-     *
-     * @return View
      */
     public function showEditAttendee(Request $request, $event_id, $attendee_id): View
     {
@@ -475,8 +454,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Updates an attendee
-     *
-     * @return mixed
      */
     public function postEditAttendee(Request $request, $event_id, $attendee_id): JsonResponse
     {
@@ -514,8 +491,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Shows the 'Cancel Attendee' modal
-     *
-     * @return View
      */
     public function showCancelAttendee(Request $request, $event_id, $attendee_id): View
     {
@@ -532,8 +507,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Cancels an attendee
-     *
-     * @return mixed
      */
     public function postCancelAttendee(Request $request, $event_id, $attendee_id): JsonResponse
     {
@@ -603,8 +576,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the 'Message Attendee' modal
-     *
-     * @return View
      */
     public function showResendTicketToAttendee(Request $request, $attendee_id): View
     {
@@ -620,8 +591,6 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Send a message to an attendee
-     *
-     * @return mixed
      */
     public function postResendTicketToAttendee(Request $request, $attendee_id): JsonResponse
     {

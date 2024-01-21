@@ -27,10 +27,6 @@ class AttendeesImport implements OnEachRow, WithHeadingRow
         $this->emailAttendees = $emailAttendees;
     }
 
-    /**
-     * @param  array  $row
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
     public function onRow(Row $row): ?Model
     {
         $rowArr = $row->toArray();

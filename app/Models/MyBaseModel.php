@@ -50,8 +50,6 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
      *
      * @param  int|bool  $account_id
      * @param  int|bool  $user_id
-     * @param  bool  $ignore_user_id
-     * @return \className
      */
     public static function createNew($account_id = false, $user_id = false, bool $ignore_user_id = false): className
     {
@@ -79,9 +77,6 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
 
     /**
      * Validate the model instance.
-     *
-     *
-     * @return bool
      */
     public function validate($data): bool
     {
@@ -101,7 +96,6 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
     /**
      * Gets the validation error messages.
      *
-     * @param  bool  $returnArray
      * @return mixed
      */
     public function errors(bool $returnArray = true)
@@ -127,7 +121,6 @@ class MyBaseModel extends \Illuminate\Database\Eloquent\Model
     /**
      * Ensures each query looks for account_id
      *
-     * @param  bool  $accountId
      * @return mixed
      */
     public function scopeScope($query, bool $accountId = false)

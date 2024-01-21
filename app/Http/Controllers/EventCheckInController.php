@@ -15,8 +15,6 @@ class EventCheckInController extends MyBaseController
 {
     /**
      * Show the check-in page
-     *
-     * @return \Illuminate\View\View
      */
     public function showCheckIn($event_id): View
     {
@@ -43,8 +41,6 @@ class EventCheckInController extends MyBaseController
 
     /**
      * Search attendees
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postCheckInSearch(Request $request, $event_id): JsonResponse
     {
@@ -87,8 +83,6 @@ class EventCheckInController extends MyBaseController
 
     /**
      * Check in/out an attendee
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postCheckInAttendee(Request $request): JsonResponse
     {
@@ -123,8 +117,6 @@ class EventCheckInController extends MyBaseController
 
     /**
      * Check in an attendee
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postCheckInAttendeeQr($event_id, Request $request): JsonResponse
     {

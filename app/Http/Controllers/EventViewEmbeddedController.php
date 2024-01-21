@@ -9,8 +9,6 @@ class EventViewEmbeddedController extends Controller
 {
     /**
      * Show an embedded version of the event page
-     *
-     * @return mixed
      */
     public function showEmbeddedEvent($event_id): View
     {

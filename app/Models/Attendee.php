@@ -61,9 +61,6 @@ class Attendee extends MyBaseModel
 
     }
 
-    /**
-     * @return Collection
-     */
     public static function findFromSelection(array $attendeeIds = []): Collection
     {
         return (new static)->whereIn('id', $attendeeIds)->get();
@@ -71,8 +68,6 @@ class Attendee extends MyBaseModel
 
     /**
      * The order associated with the attendee.
-     *
-     * @return BelongsTo
      */
     public function order(): BelongsTo
     {
@@ -81,8 +76,6 @@ class Attendee extends MyBaseModel
 
     /**
      * The ticket associated with the attendee.
-     *
-     * @return BelongsTo
      */
     public function ticket(): BelongsTo
     {
@@ -91,17 +84,12 @@ class Attendee extends MyBaseModel
 
     /**
      * The event associated with the attendee.
-     *
-     * @return BelongsTo
      */
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
     }
 
-    /**
-     * @return HasMany
-     */
     public function answers(): HasMany
     {
         return $this->hasMany(QuestionAnswer::class);
@@ -126,8 +114,6 @@ class Attendee extends MyBaseModel
      *
      * The reference attribute is a string containing the order reference
      * and the attendee's reference index.
-     *
-     * @return string
      */
     public function getReferenceAttribute(): string
     {
@@ -136,8 +122,6 @@ class Attendee extends MyBaseModel
 
     /**
      * Get the full name of the attendee.
-     *
-     * @return string
      */
     public function getFullNameAttribute(): string
     {

@@ -33,10 +33,6 @@ class EventViewController extends Controller
 
     /**
      * Show the homepage for an event
-     *
-     * @param  string  $slug
-     * @param  bool  $preview
-     * @return mixed
      */
     public function showEventHome(Request $request, $event_id, string $slug = '', bool $preview = false): View
     {
@@ -157,9 +153,6 @@ class EventViewController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
     public function postShowHiddenTickets(Request $request, $event_id): JsonResponse
     {
         $event = Event::findOrFail($event_id);

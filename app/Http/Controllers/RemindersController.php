@@ -33,8 +33,6 @@ class RemindersController extends Controller
 
     /**
      * Get the e-mail subject line to be used for the reset link email.
-     *
-     * @return string
      */
     protected function getEmailSubject(): string
     {
@@ -43,8 +41,6 @@ class RemindersController extends Controller
 
     /**
      * Display the password reminder view.
-     *
-     * @return Response
      */
     public function getRemind(): Response
     {
@@ -53,8 +49,6 @@ class RemindersController extends Controller
 
     /**
      * Handle a POST request to remind a user of their password.
-     *
-     * @return Response
      */
     public function postRemind(Request $request): RedirectResponse
     {
@@ -73,9 +67,6 @@ class RemindersController extends Controller
 
     /**
      * Display the password reset view for the given token.
-     *
-     * @param  string  $token
-     * @return Response
      */
     public function getReset(string $token = null): Response
     {
@@ -88,8 +79,6 @@ class RemindersController extends Controller
 
     /**
      * Handle a POST request to reset a user's password.
-     *
-     * @return Response
      */
     public function postReset(Request $request): RedirectResponse
     {

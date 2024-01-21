@@ -15,9 +15,6 @@ use Illuminate\View\View;
 
 class EventAccessCodesController extends MyBaseController
 {
-    /**
-     * @return mixed
-     */
     public function show($event_id): View
     {
         $event = Event::scope()->findOrFail($event_id);
@@ -39,8 +36,6 @@ class EventAccessCodesController extends MyBaseController
 
     /**
      * Creates a ticket
-     *
-     * @return JsonResponse
      */
     public function postCreate(Request $request, $event_id): JsonResponse
     {
@@ -80,9 +75,6 @@ class EventAccessCodesController extends MyBaseController
     }
 
     /**
-     * @param  int  $event_id
-     * @param  int  $access_code_id
-     * @return JsonResponse
      *
      * @throws \Exception
      */

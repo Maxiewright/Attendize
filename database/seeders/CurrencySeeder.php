@@ -7,9 +7,6 @@ use Illuminate\Database\Seeder;
 
 class CurrencySeeder extends Seeder
 {
-    /**
-     * @return void
-     */
     public function run(): void
     {
         $currencies = [

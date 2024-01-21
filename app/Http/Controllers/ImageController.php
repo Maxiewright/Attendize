@@ -6,10 +6,6 @@ class ImageController extends Controller
 {
     /**
      * Generate a thumbnail for a given image
-     *
-     * @param  bool  $width
-     * @param  bool  $height
-     * @param  int  $quality
      */
     public function generateThumbnail($image_src, bool $width = false, bool $height = false, int $quality = 90)
     {

@@ -13,11 +13,6 @@ class EventAccessCodes extends MyBaseModel
     use HasFactory;
     use SoftDeletes;
 
-    /**
-     * @param  int  $event_id
-     * @param  string  $accessCode
-     * @return void
-     */
     public static function logUsage(int $event_id, string $accessCode): void
     {
         (new static)::where('event_id', $event_id)
@@ -25,9 +20,6 @@ class EventAccessCodes extends MyBaseModel
             ->increment('usage_count');
     }
 
-    /**
-     * @return Collection
-     */
     public static function findFromCode($code, $event_id): Collection
     {
         return (new static())
@@ -50,17 +42,12 @@ class EventAccessCodes extends MyBaseModel
 
     /**
      * The Event associated with the event access code.
-     *
-     * @return BelongsTo
      */
     public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class, 'event_id', 'id');
     }
 
-    /**
-     * @return BelongsToMany
-     */
     public function tickets(): BelongsToMany
     {
         return $this->belongsToMany(

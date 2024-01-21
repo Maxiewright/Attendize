@@ -21,9 +21,6 @@ class AttendeesExport implements FromQuery, WithEvents, WithHeadings
         $this->event_id = $event_id;
     }
 
-    /**
-     * @return \Illuminate\Support\Query
-     */
     public function query(): Query
     {
         $yes = strtoupper(trans('basic.yes'));

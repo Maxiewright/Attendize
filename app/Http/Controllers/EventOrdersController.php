@@ -24,9 +24,6 @@ class EventOrdersController extends MyBaseController
 {
     /**
      * Show event orders page
-     *
-     * @param  string  $event_id
-     * @return mixed
      */
     public function showOrders(Request $request, string $event_id = ''): View
     {
@@ -73,8 +70,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Shows  'Manage Order' modal
-     *
-     * @return mixed
      */
     public function manageOrder(Request $request, $order_id): View
     {
@@ -93,8 +88,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Shows 'Edit Order' modal
-     *
-     * @return mixed
      */
     public function showEditOrder(Request $request, $order_id): View
     {
@@ -112,8 +105,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Shows 'Cancel Order' modal
-     *
-     * @return mixed
      */
     public function showCancelOrder(Request $request, $order_id): View
     {
@@ -131,9 +122,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Resend an entire order
-     *
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function resendOrder($order_id): JsonResponse
     {
@@ -150,8 +138,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Cancels an order
-     *
-     * @return mixed
      */
     public function postEditOrder(Request $request, $order_id): JsonResponse
     {
@@ -189,7 +175,6 @@ class EventOrdersController extends MyBaseController
     /**
      * Cancels attendees in an order
      *
-     * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Exception
      */
@@ -249,8 +234,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * shows 'Message Order Creator' modal
-     *
-     * @return mixed
      */
     public function showMessageOrder(Request $request, $event_id, $order_id): View
     {
@@ -266,8 +249,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Sends message to order creator
-     *
-     * @return mixed
      */
     public function postMessageOrder(Request $request, $event_id, $order_id): JsonResponse
     {
@@ -319,8 +300,6 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Mark an order as payment received
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postMarkPaymentReceived(Request $request, $order_id): JsonResponse
     {

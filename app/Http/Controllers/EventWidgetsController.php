@@ -14,8 +14,6 @@ class EventWidgetsController extends MyBaseController
 {
     /**
      * Show the event widgets page
-     *
-     * @return mixed
      */
     public function showEventWidgets(Request $request, $event_id): View
     {

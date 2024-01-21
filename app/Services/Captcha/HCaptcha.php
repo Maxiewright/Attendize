@@ -33,8 +33,6 @@ class HCaptcha
 
     /**
      * Determine if request was submitted by a human
-     *
-     * @return bool
      */
     public function isHuman(Request $request): bool
     {

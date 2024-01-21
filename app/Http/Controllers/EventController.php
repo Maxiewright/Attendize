@@ -18,8 +18,6 @@ class EventController extends MyBaseController
 {
     /**
      * Show the 'Create Event' Modal
-     *
-     * @return \Illuminate\View\View
      */
     public function showCreateEvent(Request $request): View
     {
@@ -34,8 +32,6 @@ class EventController extends MyBaseController
 
     /**
      * Create an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postCreateEvent(Request $request): JsonResponse
     {
@@ -201,8 +197,6 @@ class EventController extends MyBaseController
 
     /**
      * Edit an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEditEvent(Request $request, $event_id): JsonResponse
     {
@@ -307,8 +301,6 @@ class EventController extends MyBaseController
 
     /**
      * Upload event image
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postUploadEventImage(Request $request): JsonResponse
     {
@@ -343,7 +335,6 @@ class EventController extends MyBaseController
      * Puplish event and redirect
      *
      * @param  int|false  $event_id
-     * @return \Illuminate\Http\RedirectResponse
      */
     public function postMakeEventLive($event_id = false): RedirectResponse
     {

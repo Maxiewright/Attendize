@@ -64,7 +64,6 @@ class Order
     }
 
     /**
-     * @param  bool  $currencyFormatted
      * @return float|string
      */
     public function getOrderTotalWithBookingFee(bool $currencyFormatted = false)
@@ -78,7 +77,6 @@ class Order
     }
 
     /**
-     * @param  bool  $currencyFormatted
      * @return float|string
      */
     public function getTaxAmount(bool $currencyFormatted = false)
@@ -92,7 +90,6 @@ class Order
     }
 
     /**
-     * @param  bool  $currencyFormatted
      * @return float|string
      */
     public function getGrandTotal(bool $currencyFormatted = false)
@@ -106,9 +103,6 @@ class Order
 
     }
 
-    /**
-     * @return string
-     */
     public function getVatFormattedInBrackets(): string
     {
         return '(+'.$this->getTaxAmount(true).' '.$this->event->organiser->tax_name.')';

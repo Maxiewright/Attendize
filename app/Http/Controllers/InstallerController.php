@@ -39,8 +39,6 @@ class InstallerController extends Controller
 
     /**
      * Show the application installer
-     *
-     * @return mixed
      */
     public function showInstaller(): View
     {
@@ -125,8 +123,6 @@ class InstallerController extends Controller
 
     /**
      * Get data needed before upgrading the system
-     *
-     * @return array
      */
     protected function constructUpgraderData(): array
     {
@@ -154,8 +150,6 @@ class InstallerController extends Controller
 
     /**
      * Show the application upgrader
-     *
-     * @return mixed
      */
     public function showUpgrader(): View
     {

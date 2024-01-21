@@ -14,8 +14,6 @@ class UserController extends Controller
 {
     /**
      * Show the edit user modal
-     *
-     * @return \Illuminate\Contracts\View\View
      */
     public function showEditUser(): View
     {
@@ -28,8 +26,6 @@ class UserController extends Controller
 
     /**
      * Updates the current user
-     *
-     * @return mixed
      */
     public function postEditUser(Request $request): JsonResponse
     {

@@ -4,8 +4,6 @@ class UserLoginTest extends TestCase
 {
     /**
      * Test login page is successful
-     *
-     * @return void
      */
     public function test_login_is_successful(): void
     {
@@ -18,8 +16,6 @@ class UserLoginTest extends TestCase
 
     /**
      * Test login page is unsuccessful with wrong password
-     *
-     * @return void
      */
     public function test_login_is_unsuccessful_with_wrong_password(): void
     {
@@ -33,8 +29,6 @@ class UserLoginTest extends TestCase
 
     /**
      * Test login page is unsuccessful with wrong email address
-     *
-     * @return void
      */
     public function test_login_is_unsuccessful_with_wrong_email_address(): void
     {

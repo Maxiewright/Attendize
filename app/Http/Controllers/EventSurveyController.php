@@ -22,8 +22,6 @@ class EventSurveyController extends MyBaseController
 {
     /**
      * Show the event survey page
-     *
-     * @return mixed
      */
     public function showEventSurveys(Request $request, $event_id): View
     {
@@ -46,8 +44,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
      */
     public function showCreateEventQuestion(Request $request, $event_id): View
     {
@@ -61,8 +57,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Store a newly created resource in storage.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postCreateEventQuestion(StoreEventQuestionRequest $request, $event_id): JsonResponse
     {
@@ -108,8 +102,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Show the Edit Question Modal
-     *
-     * @return mixed
      */
     public function showEditEventQuestion(Request $request, $event_id, $question_id): View
     {
@@ -127,8 +119,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Edit a question
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEditEventQuestion(Request $request, $event_id, $question_id): JsonResponse
     {
@@ -180,8 +170,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Delete a question
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postDeleteEventQuestion(Request $request, $event_id): JsonResponse
     {
@@ -211,8 +199,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Show all attendees answers to questions
-     *
-     * @return mixed
      */
     public function showEventQuestionAnswers(Request $request, $event_id, $question_id): View
     {
@@ -234,8 +220,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Export answers to xls, csv etc.
-     *
-     * @param  string  $export_as
      */
     public function showExportAnswers(Request $request, $event_id, string $export_as = 'xlsx')
     {
@@ -263,8 +247,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Toggle the enabled status of question
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postEnableQuestion(Request $request, $event_id, $question_id): JsonResponse
     {
@@ -289,8 +271,6 @@ class EventSurveyController extends MyBaseController
 
     /**
      * Updates the sort order of event questions
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
     public function postUpdateQuestionsOrder(Request $request): JsonResponse
     {
