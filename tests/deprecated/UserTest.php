@@ -6,7 +6,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        \App\Models\Organiser::factory()->create(['account_id' => 1]);
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
@@ -39,7 +39,7 @@ class UserTest extends TestCase
 
         $previousPassword = $this->test_user->password;
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        \App\Models\Organiser::factory()->create(['account_id' => 1]);
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
@@ -74,7 +74,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        \App\Models\Organiser::factory()->create(['account_id' => 1]);
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
@@ -98,7 +98,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        \App\Models\Organiser::factory()->create(['account_id' => 1]);
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
@@ -121,7 +121,7 @@ class UserTest extends TestCase
     {
         $this->actingAs($this->test_user);
 
-        factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        \App\Models\Organiser::factory()->create(['account_id' => 1]);
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 

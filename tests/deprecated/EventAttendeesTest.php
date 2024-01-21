@@ -5,15 +5,15 @@ class EventAttendeesTest extends TestCase
     public function test_event_attendees_are_displayed()
     {
         // Create organiser with account id = 1 to skip first run
-        $organiser = factory(App\Models\Organiser::class)->create([
+        $organiser = \App\Models\Organiser::factory()->create([
             'account_id' => 1,
         ]);
 
-        $event = factory(App\Models\Event::class)->create([
+        $event = \App\Models\Event::factory()->create([
             'account_id' => $organiser->account_id,
         ]);
 
-        $attendee = factory(App\Models\Attendee::class)->create([
+        $attendee = \App\Models\Attendee::factory()->create([
             'account_id' => $organiser->account_id,
             'event_id' => $event->id,
             'first_name' => 'Test First Name',

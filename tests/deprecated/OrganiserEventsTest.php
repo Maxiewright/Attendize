@@ -4,15 +4,15 @@ class OrganiserEventsTest extends TestCase
 {
     public function test_show_events_displays_events()
     {
-        $organiser = factory(App\Models\Organiser::class)->create(['account_id' => 1]);
+        $organiser = \App\Models\Organiser::factory()->create(['account_id' => 1]);
 
-        $event1 = factory(App\Models\Event::class)->create([
+        $event1 = \App\Models\Event::factory()->create([
             'account_id' => $organiser->account_id,
             'organiser_id' => $organiser->id,
             'user_id' => $this->test_user->id,
         ]);
 
-        $event2 = factory(App\Models\Event::class)->create([
+        $event2 = \App\Models\Event::factory()->create([
             'account_id' => $organiser->account_id,
             'organiser_id' => $organiser->id,
             'user_id' => $this->test_user->id,

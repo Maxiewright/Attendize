@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Http\UploadedFile;
 use Image;
 use Str;
@@ -11,6 +12,7 @@ use Str;
 class Organiser extends MyBaseModel implements AuthenticatableContract
 {
     use Authenticatable;
+    use HasFactory;
 
     /**
      * The validation rules for the model.

@@ -1,8 +1,11 @@
 <?php
 
-use Illuminate\Database\Seeder;
+namespace Database\Seeders;
 
-class TicketStatusSeeder extends Seeder
+use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+
+class OrderStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,29 +14,25 @@ class TicketStatusSeeder extends Seeder
      */
     public function run()
     {
-        $ticket_statuses = [
+        $order_statuses = [
             [
                 'id' => 1,
-                'name' => 'Sold Out',
+                'name' => 'Completed',
             ],
             [
                 'id' => 2,
-                'name' => 'Sales Have Ended',
+                'name' => 'Refunded',
             ],
             [
                 'id' => 3,
-                'name' => 'Not On Sale Yet',
+                'name' => 'Partially Refunded',
             ],
             [
                 'id' => 4,
-                'name' => 'On Sale',
-            ],
-            [
-                'id' => 5,
-                'name' => 'On Sale',
+                'name' => 'Cancelled',
             ],
         ];
 
-        DB::table('ticket_statuses')->insert($ticket_statuses);
+        DB::table('order_statuses')->insert($order_statuses);
     }
 }

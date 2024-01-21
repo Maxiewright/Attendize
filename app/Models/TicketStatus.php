@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 /*
   Attendize.com   - Event Management & Ticketing
  */
@@ -13,5 +15,7 @@ namespace App\Models;
  */
 class TicketStatus extends \Illuminate\Database\Eloquent\Model
 {
+    use HasFactory;
+
     public $timestamps = false;
 }

@@ -3,10 +3,12 @@
 namespace App\Models;
 
 use App\Attendize\Utils;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Account extends MyBaseModel
 {
+    use HasFactory;
     use SoftDeletes;
 
     /**
@@ -19,13 +21,6 @@ class Account extends MyBaseModel
         'last_name' => ['required'],
         'email' => ['required', 'email'],
     ];
-
-    /**
-     * The attributes that should be mutated to dates.
-     *
-     * @var array
-     */
-    public $dates = ['deleted_at'];
 
     /**
      * The validation error messages.

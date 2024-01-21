@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\Attendize\PaymentUtils;
 use Carbon\Carbon;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\DB;
@@ -11,6 +12,7 @@ use Superbalist\Money\Money;
 
 class Ticket extends MyBaseModel
 {
+    use HasFactory;
     use SoftDeletes;
 
     protected $dates = ['start_sale_date', 'end_sale_date'];
