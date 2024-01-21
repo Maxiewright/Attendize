@@ -455,7 +455,7 @@ class InstallerController extends Controller
             'DB_DATABASE' => $this->installation_data['database']['name'],
             'DB_USERNAME' => $this->installation_data['database']['username'],
             'DB_PASSWORD' => $this->installation_data['database']['password'],
-            'MAIL_DRIVER' => $this->installation_data['mail']['driver'],
+            'MAIL_MAILER' => $this->installation_data['mail']['driver'],
             'MAIL_PORT' => $this->installation_data['mail']['port'],
             'MAIL_ENCRYPTION' => $this->installation_data['mail']['encryption'],
             'MAIL_HOST' => $this->installation_data['mail']['host'],
