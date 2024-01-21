@@ -12,13 +12,15 @@
     "type": "project",
     "homepage": "https://www.attendize.com",
     "require": {
-        "php": "^7.3",
+        "php": "^7.3||^8.0",
         "ext-json": "*",
         "doctrine/dbal": "^2.13",
         "dompdf/dompdf": "^0.8",
+        "fruitcake/laravel-cors": "^2.0",
         "graham-campbell/markdown": "^13.1",
         "guzzlehttp/guzzle": "^7.0.1",
         "guzzlehttp/psr7": "^1.6",
+        "http-interop/http-factory-guzzle": "^1.2",
         "intervention/image": "^2.5",
         "laracasts/utilities": "^3.2",
         "laravel/framework": "^8.83",
@@ -36,20 +38,19 @@
         "omnipay/dummy": "^3.0",
         "omnipay/paypal": "^3.0",
         "omnipay/stripe": "^3.1",
-        "php-http/curl-client": "^1.7",
+        "php-http/curl-client": "^2",
         "php-http/message": "^1.6",
         "predis/predis": "~1.1",
         "stripe/stripe-php": "^7.1",
         "superbalist/php-money": "^2.0",
-        "vinelab/http": "~1.5",
-        "fruitcake/laravel-cors": "^2.0"
+        "vinelab/http": "~1.5"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.8",
         "facade/ignition": "^2.5",
         "mockery/mockery": "^1.4.4",
         "nunomaduro/collision": "^5.10",
-        "phpspec/phpspec": "^6.0",
+        "phpspec/phpspec": "^7.0",
         "phpunit/phpunit": "^9.5.10",
         "symfony/css-selector": "^5.4",
         "symfony/dom-crawler": "^5.4",
@@ -104,7 +105,10 @@
     "config": {
         "optimize-autoloader": true,
         "preferred-install": "dist",
-        "sort-packages": true
+        "sort-packages": true,
+        "allow-plugins": {
+            "php-http/discovery": true
+        }
     },
     "extra": {
         "laravel": {
