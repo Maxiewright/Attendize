@@ -30,8 +30,8 @@ class TicketFactory extends Factory
             'event_id' => function () {
                 return \App\Models\Event::factory()->create()->id;
             },
-            'title' => $this->faker->name,
-            'description' => $this->faker->text,
+            'title' => $this->faker->name(),
+            'description' => $this->faker->text(),
             'price' => 50.00,
             'max_per_person' => 4,
             'min_per_person' => 1,

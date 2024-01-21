@@ -11,10 +11,10 @@ class OrganiserCustomizeTest extends TestCase
 
         $this->actingAs($organiser)
             ->visit(route('showOrganiserCustomize', ['organiser_id' => $organiser->id]))
-            ->type($this->faker->name, 'name')
-            ->type($this->faker->email, 'email')
-            ->type($this->faker->word, 'facebook')
-            ->type($this->faker->word, 'twitter')
+            ->type($this->faker->name(), 'name')
+            ->type($this->faker->email(), 'email')
+            ->type($this->faker->word(), 'facebook')
+            ->type($this->faker->word(), 'twitter')
             ->press('Save Organiser')
             ->seeJson([
                 'status' => 'success',

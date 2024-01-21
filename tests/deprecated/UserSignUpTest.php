@@ -12,9 +12,9 @@ class UserSignUpTest extends TestCase
     public function test_signup_is_successful()
     {
         $this->visit(route('showSignup'))
-            ->type($this->faker->firstName, 'first_name')
-            ->type($this->faker->lastName, 'last_name')
-            ->type($this->faker->email, 'email')
+            ->type($this->faker->firstName(), 'first_name')
+            ->type($this->faker->lastName(), 'last_name')
+            ->type($this->faker->email(), 'email')
             ->type('password', 'password')
             ->type('password', 'password_confirmation');
 
@@ -49,8 +49,8 @@ class UserSignUpTest extends TestCase
     public function test_signup_is_unsuccessful_because_of_invalid_email()
     {
         $this->visit(route('showSignup'))
-            ->type($this->faker->firstName, 'first_name')
-            ->type($this->faker->lastName, 'last_name')
+            ->type($this->faker->firstName(), 'first_name')
+            ->type($this->faker->lastName(), 'last_name')
             ->type('test@test', 'email')
             ->type('password', 'password')
             ->type('password', 'password_confirmation')
@@ -66,9 +66,9 @@ class UserSignUpTest extends TestCase
     public function test_signup_is_unsuccessful_because_of_unmatched_password()
     {
         $this->visit(route('showSignup'))
-            ->type($this->faker->firstName, 'first_name')
-            ->type($this->faker->lastName, 'last_name')
-            ->type($this->faker->email, 'email')
+            ->type($this->faker->firstName(), 'first_name')
+            ->type($this->faker->lastName(), 'last_name')
+            ->type($this->faker->email(), 'email')
             ->type('password', 'password')
             ->type('incorrect_matching', 'password_confirmation')
             ->press('Sign Up')

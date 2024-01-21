@@ -20,9 +20,9 @@ class AccountFactory extends Factory
     public function definition()
     {
         return [
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'email' => $this->faker->email,
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->email(),
             'timezone_id' => function () {
                 return Timezone::factory()->create()->id;
             },
@@ -35,14 +35,14 @@ class AccountFactory extends Factory
             'currency_id' => function () {
                 return Currency::factory()->create()->id;
             },
-            'name' => $this->faker->name,
+            'name' => $this->faker->name(),
             'last_ip' => '127.0.0.1',
             'last_login_date' => Carbon::now()->subDays(2),
-            'address1' => $this->faker->address,
+            'address1' => $this->faker->address(),
             'address2' => '',
-            'city' => $this->faker->city,
-            'state' => $this->faker->stateAbbr,
-            'postal_code' => $this->faker->postcode,
+            'city' => $this->faker->city(),
+            'state' => $this->faker->stateAbbr(),
+            'postal_code' => $this->faker->postcode(),
             //        'country_id'             => \App\Models\Country::factory()->create()->id,
             'email_footer' => 'Email footer text',
             'is_active' => false,

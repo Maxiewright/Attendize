@@ -21,9 +21,9 @@ class OrderFactory extends Factory
             'order_status_id' => function () {
                 return \App\Models\OrderStatus::factory()->create()->id;
             },
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'email' => $this->faker->email,
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->email(),
             'ticket_pdf_path' => '/ticket/pdf/path',
             'order_reference' => $this->faker->text(15),
             'transaction_id' => $this->faker->text(50),
@@ -31,7 +31,7 @@ class OrderFactory extends Factory
             'booking_fee' => .10,
             'organiser_booking_fee' => .10,
             'order_date' => Carbon::now(),
-            'notes' => $this->faker->text,
+            'notes' => $this->faker->text(),
             'is_deleted' => 0,
             'is_cancelled' => 0,
             'is_partially_refunded' => 0,

@@ -14,8 +14,8 @@ class TimezoneFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->timezone,
-            'location' => $this->faker->city,
+            'name' => $this->faker->timezone(),
+            'location' => $this->faker->city(),
         ];
     }
 

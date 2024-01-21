@@ -14,11 +14,11 @@ class PaymentGatewayFactory extends Factory
     public function definition()
     {
         return [
-            'provider_name' => $this->faker->company,
-            'provider_url' => $this->faker->url,
+            'provider_name' => $this->faker->company(),
+            'provider_url' => $this->faker->url(),
             'is_on_site' => $this->faker->boolean(),
             'can_refund' => $this->faker->boolean(),
-            'name' => $this->faker->company,
+            'name' => $this->faker->company(),
             'default' => $this->faker->boolean(),
             'admin_blade_template' => '',
             'checkout_blade_template' => '',
