@@ -66,7 +66,6 @@ class CreateUsersTable extends Migration
             $table->nullableTimestamps();
         });
 
-
         /*
          * Accounts table
          */
@@ -160,8 +159,6 @@ class CreateUsersTable extends Migration
 
             $table->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
         });
-
-
 
         Schema::create('events', function ($t) {
             $t->increments('id');
@@ -274,7 +271,7 @@ class CreateUsersTable extends Migration
         Schema::create('tickets', function ($t) {
 
             $t->increments('id');
-                        $t->nullableTimestamps();
+            $t->nullableTimestamps();
             $t->softDeletes();
 
             $t->unsignedInteger('edited_by_user_id')->nullable();
@@ -326,78 +323,78 @@ class CreateUsersTable extends Migration
         /*
          * checkbox, multiselect, select, radio, text etc.
          */
-//        Schema::create('question_types', function($t) {
-//            $t->increments('id');
-//            $t->string('name');
-//            $t->boolean('allow_multiple')->default(FALSE);
-//        });
-//
-//
-//        Schema::create('questions', function($t) {
-//            $t->nullableTimestamps();
-//            $t->softDeletes();
-//
-//            $t->increments('id');
-//
-//            $t->string('title', 255);
-//            $t->text('instructions');
-//            $t->text('options');
-//
-//
-//            $t->unsignedInteger('question_type_id');
-//            $t->unsignedInteger('account_id')->index();
-//
-//            $t->tinyInteger('is_required')->default(0);
-//
-//
-//            /*
-//             * If multi select - have question options
-//             */
-//            $t->foreign('question_type_id')->references('id')->on('question_types');
-//            $t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');$t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
-//
-//        });
-//
-//        /**
-//         * Related to each question  , can have one or many
-//         * Whats you name etc?
-//         *
-//         */
-//        Schema::create('question_options', function($t) {
-//            $t->increments('id');
-//            $t->string('name');
-//            $t->integer('question_id')->unsigned()->index();
-//            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-//        });
-//
-//
-//        Schema::create('answers', function($t) {
-//            $t->increments('id');
-//
-//
-//            $t->integer('question_id')->unsigned()->index();
-//            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-//
-//            $t->integer('ticket_id')->unsigned()->index();
-//            $t->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
-//
-//            $t->text('answer');
-//        });
-//
-//
-//
-//
-//        /**
-//         * Tickets / Questions pivot table
-//         */
-//        Schema::create('event_question', function($t) {
-//            $t->increments('id');
-//            $t->integer('event_id')->unsigned()->index();
-//            $t->foreign('event_id')->references('id')->on('event')->onDelete('cascade');
-//            $t->integer('question_id')->unsigned()->index();
-//            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-//        });
-//
+        //        Schema::create('question_types', function($t) {
+        //            $t->increments('id');
+        //            $t->string('name');
+        //            $t->boolean('allow_multiple')->default(FALSE);
+        //        });
+        //
+        //
+        //        Schema::create('questions', function($t) {
+        //            $t->nullableTimestamps();
+        //            $t->softDeletes();
+        //
+        //            $t->increments('id');
+        //
+        //            $t->string('title', 255);
+        //            $t->text('instructions');
+        //            $t->text('options');
+        //
+        //
+        //            $t->unsignedInteger('question_type_id');
+        //            $t->unsignedInteger('account_id')->index();
+        //
+        //            $t->tinyInteger('is_required')->default(0);
+        //
+        //
+        //            /*
+        //             * If multi select - have question options
+        //             */
+        //            $t->foreign('question_type_id')->references('id')->on('question_types');
+        //            $t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');$t->foreign('account_id')->references('id')->on('accounts')->onDelete('cascade');
+        //
+        //        });
+        //
+        //        /**
+        //         * Related to each question  , can have one or many
+        //         * Whats you name etc?
+        //         *
+        //         */
+        //        Schema::create('question_options', function($t) {
+        //            $t->increments('id');
+        //            $t->string('name');
+        //            $t->integer('question_id')->unsigned()->index();
+        //            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+        //        });
+        //
+        //
+        //        Schema::create('answers', function($t) {
+        //            $t->increments('id');
+        //
+        //
+        //            $t->integer('question_id')->unsigned()->index();
+        //            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+        //
+        //            $t->integer('ticket_id')->unsigned()->index();
+        //            $t->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
+        //
+        //            $t->text('answer');
+        //        });
+        //
+        //
+        //
+        //
+        //        /**
+        //         * Tickets / Questions pivot table
+        //         */
+        //        Schema::create('event_question', function($t) {
+        //            $t->increments('id');
+        //            $t->integer('event_id')->unsigned()->index();
+        //            $t->foreign('event_id')->references('id')->on('event')->onDelete('cascade');
+        //            $t->integer('question_id')->unsigned()->index();
+        //            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+        //        });
+        //
 
         /*
          * Tickets / Orders pivot table
@@ -410,17 +407,16 @@ class CreateUsersTable extends Migration
             $t->foreign('ticket_id')->references('id')->on('users')->onDelete('cascade');
         });
 
-
         /*
          * Tickets / Questions pivot table
          */
-//        Schema::create('ticket_question', function($t) {
-//            $t->increments('id');
-//            $t->integer('ticket_id')->unsigned()->index();
-//            $t->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
-//            $t->integer('question_id')->unsigned()->index();
-//            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
-//        });
+        //        Schema::create('ticket_question', function($t) {
+        //            $t->increments('id');
+        //            $t->integer('ticket_id')->unsigned()->index();
+        //            $t->foreign('ticket_id')->references('id')->on('tickets')->onDelete('cascade');
+        //            $t->integer('question_id')->unsigned()->index();
+        //            $t->foreign('question_id')->references('id')->on('questions')->onDelete('cascade');
+        //        });
 
         Schema::create('event_stats', function ($table) {
             $table->increments('id')->index();
@@ -530,7 +526,7 @@ class CreateUsersTable extends Migration
 
         DB::statement('SET FOREIGN_KEY_CHECKS=0;');
 
-        foreach($tables as $table) {
+        foreach ($tables as $table) {
             Schema::drop($table);
         }
 

@@ -37,7 +37,7 @@ class RemindersController extends Controller
      */
     protected function getEmailSubject()
     {
-        return isset($this->subject) ? $this->subject : trans("Controllers.your_password_reset_link");
+        return isset($this->subject) ? $this->subject : trans('Controllers.your_password_reset_link');
     }
 
     /**
@@ -73,8 +73,7 @@ class RemindersController extends Controller
     /**
      * Display the password reset view for the given token.
      *
-     * @param string $token
-     *
+     * @param  string  $token
      * @return Response
      */
     public function getReset($token = null)
@@ -94,8 +93,8 @@ class RemindersController extends Controller
     public function postReset(Request $request)
     {
         $this->validate($request, [
-            'token'    => 'required',
-            'email'    => 'required',
+            'token' => 'required',
+            'email' => 'required',
             'password' => 'required|confirmed',
         ]);
 
@@ -113,7 +112,7 @@ class RemindersController extends Controller
 
         switch ($response) {
             case PasswordBroker::PASSWORD_RESET:
-                \Session::flash('message', trans("Controllers.password_successfully_reset"));
+                \Session::flash('message', trans('Controllers.password_successfully_reset'));
 
                 return redirect(route('login'));
 

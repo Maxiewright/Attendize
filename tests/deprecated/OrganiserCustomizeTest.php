@@ -1,10 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Models\Organiser;
-
 class OrganiserCustomizeTest extends TestCase
 {
     /**
@@ -22,7 +17,7 @@ class OrganiserCustomizeTest extends TestCase
             ->type($this->faker->word, 'twitter')
             ->press('Save Organiser')
             ->seeJson([
-                'status' => 'success'
+                'status' => 'success',
             ]);
     }
 }

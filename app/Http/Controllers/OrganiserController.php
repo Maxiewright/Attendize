@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Organiser;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Image;
 
 class OrganiserController extends MyBaseController
 {
@@ -32,9 +31,9 @@ class OrganiserController extends MyBaseController
     /**
      * Create the organiser
      *
-     * @param Request $request
      *
      * @return \Illuminate\Http\JsonResponse
+     *
      * @throws \Symfony\Component\HttpFoundation\File\Exception\FileException
      */
     public function postCreateOrganiser(Request $request)
@@ -46,9 +45,9 @@ class OrganiserController extends MyBaseController
             $organiser->addExtraValidationRules();
         }
 
-        if (!$organiser->validate($request->all())) {
+        if (! $organiser->validate($request->all())) {
             return response()->json([
-                'status'   => 'error',
+                'status' => 'error',
                 'messages' => $organiser->errors(),
             ]);
         }
@@ -61,7 +60,7 @@ class OrganiserController extends MyBaseController
         $organiser->confirmation_key = Str::random(15);
 
         $organiser->tax_name = $request->get('tax_name');
-        $organiser->tax_value = round($request->get('tax_value'),2);
+        $organiser->tax_value = round($request->get('tax_value'), 2);
         $organiser->tax_id = $request->get('tax_id');
         $organiser->charge_tax = ($chargeTax == 1) ? 1 : 0;
 
@@ -71,14 +70,14 @@ class OrganiserController extends MyBaseController
 
         $organiser->save();
 
-        session()->flash('message', trans("Controllers.successfully_created_organiser"));
+        session()->flash('message', trans('Controllers.successfully_created_organiser'));
 
         return response()->json([
-            'status'      => 'success',
-            'message'     => trans("Controllers.refreshing"),
+            'status' => 'success',
+            'message' => trans('Controllers.refreshing'),
             'redirectUrl' => route('showOrganiserEvents', [
                 'organiser_id' => $organiser->id,
-                'first_run'    => 1
+                'first_run' => 1,
             ]),
         ]);
     }

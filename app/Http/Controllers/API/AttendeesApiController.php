@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class AttendeesApiController extends ApiBaseController
 {
-
     /**
-     * @param Request $request
      * @return mixed
      */
     public function index(Request $request)
@@ -17,10 +15,7 @@ class AttendeesApiController extends ApiBaseController
         return Attendee::scope($this->account_id)->paginate($request->get('per_page', 25));
     }
 
-
     /**
-     * @param Request $request
-     * @param $attendee_id
      * @return mixed
      */
     public function show(Request $request, $attendee_id)
@@ -43,6 +38,4 @@ class AttendeesApiController extends ApiBaseController
     public function destroy(Request $request)
     {
     }
-
-
 }

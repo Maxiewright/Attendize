@@ -1,8 +1,7 @@
 <?php
 
-use Illuminate\Database\Schema\Blueprint;
-use Illuminate\Database\Migrations\Migration;
 use App\Models\Message;
+use Illuminate\Database\Migrations\Migration;
 
 class FixMessagesTable extends Migration
 {
@@ -13,9 +12,9 @@ class FixMessagesTable extends Migration
      */
     public function up()
     {
-            Schema::table('messages', function ($table) {
-                $table->string('recipients')->nullable()->change();
-            });
+        Schema::table('messages', function ($table) {
+            $table->string('recipients')->nullable()->change();
+        });
     }
 
     /**
@@ -25,9 +24,9 @@ class FixMessagesTable extends Migration
      */
     public function down()
     {
-	    Message::where('recipients', null)->delete();
-            Schema::table('messages', function ($table) {
-                $table->string('recipients')->nullable(false)->change();
-            });
+        Message::where('recipients', null)->delete();
+        Schema::table('messages', function ($table) {
+            $table->string('recipients')->nullable(false)->change();
+        });
     }
 }

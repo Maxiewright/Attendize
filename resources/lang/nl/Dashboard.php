@@ -1,9 +1,9 @@
 <?php
 /*************************************************************************
- Generated via "php artisan localization:missing" at 2018/04/19 18:57:21 
+ Generated via "php artisan localization:missing" at 2018/04/19 18:57:21
 *************************************************************************/
 
-return array (
+return [
     //==================================== Translations ====================================//
     'this_event_has_started' => 'Dit event is begonnen.',
     'create_tickets' => 'Creëer tickets',
@@ -22,4 +22,4 @@ return array (
     'ticket_sales_volume' => 'Ticket omzet',
     'tickets_sold' => 'Tickets verkocht',
     'website_embed_code' => 'Website Embed Code',
-);
+];

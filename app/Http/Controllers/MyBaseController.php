@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Auth;
-
-
 class MyBaseController extends Controller
 {
     /**

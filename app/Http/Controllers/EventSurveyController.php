@@ -21,8 +21,6 @@ class EventSurveyController extends MyBaseController
     /**
      * Show the event survey page
      *
-     * @param Request $request
-     * @param $event_id
      * @return mixed
      */
     public function showEventSurveys(Request $request, $event_id)
@@ -34,11 +32,11 @@ class EventSurveyController extends MyBaseController
         ]);
 
         $data = [
-            'event'      => $event,
-            'questions'  => $event->questions->sortBy('sort_order'),
+            'event' => $event,
+            'questions' => $event->questions->sortBy('sort_order'),
             'sort_order' => 'asc',
-            'sort_by'    => 'title',
-            'q'          => '',
+            'sort_by' => 'title',
+            'q' => '',
         ];
 
         return view('ManageEvent.Surveys', $data);
@@ -54,7 +52,7 @@ class EventSurveyController extends MyBaseController
         $event = Event::scope()->findOrFail($event_id);
 
         return view('ManageEvent.Modals.CreateQuestion', [
-            'event'          => $event,
+            'event' => $event,
             'question_types' => QuestionType::all(),
         ]);
     }
@@ -62,8 +60,6 @@ class EventSurveyController extends MyBaseController
     /**
      * Store a newly created resource in storage.
      *
-     * @access public
-     * @param  StoreEventQuestionRequest $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function postCreateEventQuestion(StoreEventQuestionRequest $request, $event_id)
@@ -99,22 +95,18 @@ class EventSurveyController extends MyBaseController
 
         $event->questions()->attach($question->id);
 
-        session()->flash('message', trans("Controllers.successfully_created_question"));
+        session()->flash('message', trans('Controllers.successfully_created_question'));
 
         return response()->json([
-            'status'      => 'success',
-            'message'     => trans("Controllers.refreshing"),
+            'status' => 'success',
+            'message' => trans('Controllers.refreshing'),
             'redirectUrl' => '',
         ]);
     }
 
-
     /**
      * Show the Edit Question Modal
      *
-     * @param Request $request
-     * @param $event_id
-     * @param $question_id
      * @return mixed
      */
     public function showEditEventQuestion(Request $request, $event_id, $question_id)
@@ -123,21 +115,17 @@ class EventSurveyController extends MyBaseController
         $event = Event::scope()->findOrFail($event_id);
 
         $data = [
-            'question'       => $question,
-            'event'          => $event,
+            'question' => $question,
+            'event' => $event,
             'question_types' => QuestionType::all(),
         ];
 
         return view('ManageEvent.Modals.EditQuestion', $data);
     }
 
-
     /**
      * Edit a question
      *
-     * @param Request $request
-     * @param $event_id
-     * @param $question_id
      * @return \Illuminate\Http\JsonResponse
      */
     public function postEditEventQuestion(Request $request, $event_id, $question_id)
@@ -174,15 +162,15 @@ class EventSurveyController extends MyBaseController
         }
 
         // Get tickets.
-        $ticket_ids = (array)$request->get('tickets');
+        $ticket_ids = (array) $request->get('tickets');
 
         $question->tickets()->sync($ticket_ids);
 
-        session()->flash('message', trans("Controllers.successfully_edited_question"));
+        session()->flash('message', trans('Controllers.successfully_edited_question'));
 
         return response()->json([
-            'status'      => 'success',
-            'message'     => trans("Controllers.refreshing"),
+            'status' => 'success',
+            'message' => trans('Controllers.refreshing'),
             'redirectUrl' => '',
         ]);
 
@@ -191,8 +179,6 @@ class EventSurveyController extends MyBaseController
     /**
      * Delete a question
      *
-     * @param Request $request
-     * @param $event_id
      * @return \Illuminate\Http\JsonResponse
      */
     public function postDeleteEventQuestion(Request $request, $event_id)
@@ -205,28 +191,25 @@ class EventSurveyController extends MyBaseController
 
         if ($question->delete()) {
 
-            session()->flash('message', trans("Controllers.successfully_deleted_question"));
+            session()->flash('message', trans('Controllers.successfully_deleted_question'));
 
             return response()->json([
-                'status'      => 'success',
-                'message'     => trans("Controllers.refreshing"),
+                'status' => 'success',
+                'message' => trans('Controllers.refreshing'),
                 'redirectUrl' => '',
             ]);
         }
 
         return response()->json([
-            'status'  => 'error',
-            'id'      => $question->id,
-            'message' => trans("Controllers.this_question_cant_be_deleted"),
+            'status' => 'error',
+            'id' => $question->id,
+            'message' => trans('Controllers.this_question_cant_be_deleted'),
         ]);
     }
 
     /**
      * Show all attendees answers to questions
      *
-     * @param Request $request
-     * @param $event_id
-     * @param $question_id
      * @return mixed
      */
     public function showEventQuestionAnswers(Request $request, $event_id, $question_id)
@@ -240,26 +223,23 @@ class EventSurveyController extends MyBaseController
             ->get();
 
         $data = [
-            'answers'  => $answers,
+            'answers' => $answers,
             'question' => $question,
         ];
 
         return view('ManageEvent.Modals.ViewAnswers', $data);
     }
 
-
     /**
      * Export answers to xls, csv etc.
      *
-     * @param Request $request
-     * @param $event_id
-     * @param string $export_as
+     * @param  string  $export_as
      */
     public function showExportAnswers(Request $request, $event_id, $export_as = 'xlsx')
     {
-        Excel::create('answers-as-of-' . date('d-m-Y-g.i.a'), function ($excel) use ($event_id) {
+        Excel::create('answers-as-of-'.date('d-m-Y-g.i.a'), function ($excel) use ($event_id) {
 
-            $excel->setTitle(trans("Controllers.survey_answers"));
+            $excel->setTitle(trans('Controllers.survey_answers'));
 
             // Chain the setters
             $excel->setCreator(config('attendize.app_name'))
@@ -282,9 +262,6 @@ class EventSurveyController extends MyBaseController
     /**
      * Toggle the enabled status of question
      *
-     * @param Request $request
-     * @param $event_id
-     * @param $question_id
      * @return \Illuminate\Http\JsonResponse
      */
     public function postEnableQuestion(Request $request, $event_id, $question_id)
@@ -295,24 +272,22 @@ class EventSurveyController extends MyBaseController
 
         if ($question->save()) {
             return response()->json([
-                'status'  => 'success',
-                'message' => trans("Controllers.successfully_updated_question"),
-                'id'      => $question->id,
+                'status' => 'success',
+                'message' => trans('Controllers.successfully_updated_question'),
+                'id' => $question->id,
             ]);
         }
 
         return response()->json([
-            'status'  => 'error',
-            'id'      => $question->id,
-            'message' => trans("basic.whoops"),
+            'status' => 'error',
+            'id' => $question->id,
+            'message' => trans('basic.whoops'),
         ]);
     }
-
 
     /**
      * Updates the sort order of event questions
      *
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
     public function postUpdateQuestionsOrder(Request $request)
@@ -328,8 +303,8 @@ class EventSurveyController extends MyBaseController
         }
 
         return response()->json([
-            'status'  => 'success',
-            'message' => trans("Controllers.successfully_updated_question_order"),
+            'status' => 'success',
+            'message' => trans('Controllers.successfully_updated_question_order'),
         ]);
     }
 }

@@ -38,7 +38,7 @@ class Kernel extends HttpKernel
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
 
             // Attendize Middleware
-            \App\Http\Middleware\SetViewVariables::class
+            \App\Http\Middleware\SetViewVariables::class,
         ],
 
         'api' => [
@@ -67,14 +67,14 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
 
         /**** ATTENDIZE MIDDLEWARE ****/
-        'first.run'  => \App\Http\Middleware\FirstRunMiddleware::class,
-        'installed'  => \App\Http\Middleware\CheckInstalled::class,
+        'first.run' => \App\Http\Middleware\FirstRunMiddleware::class,
+        'installed' => \App\Http\Middleware\CheckInstalled::class,
 
         /**** OTHER MIDDLEWARE ****/
         'localize' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRoutes::class,
         'localizationRedirect' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationRedirectFilter::class,
         'localeSessionRedirect' => \Mcamara\LaravelLocalization\Middleware\LocaleSessionRedirect::class,
-        'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class
+        'localeViewPath' => \Mcamara\LaravelLocalization\Middleware\LaravelLocalizationViewPath::class,
         // REDIRECTION MIDDLEWARE
     ];
 

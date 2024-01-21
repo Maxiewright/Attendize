@@ -2,17 +2,14 @@
 
 namespace App\Transformers;
 
-
 abstract class Transformer
 {
     /**
-     * @param $item
      * @return array
      */
-    public abstract function transform($item);
+    abstract public function transform($item);
 
     /**
-     * @param array $items
      * @return array
      */
     public function transformCollection(array $items)

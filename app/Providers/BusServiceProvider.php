@@ -10,7 +10,6 @@ class BusServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      *
-     * @param \Illuminate\Bus\Dispatcher $dispatcher
      *
      * @return void
      */

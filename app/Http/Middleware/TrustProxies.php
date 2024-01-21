@@ -2,8 +2,8 @@
 
 namespace App\Http\Middleware;
 
-use Illuminate\Http\Request;
 use Fideloper\Proxy\TrustProxies as Middleware;
+use Illuminate\Http\Request;
 
 class TrustProxies extends Middleware
 {
@@ -13,9 +13,10 @@ class TrustProxies extends Middleware
      * @var array|string
      */
     protected $proxies = [
-      '192.168.1.1',
-      '192.168.1.2',
-	];
+        '192.168.1.1',
+        '192.168.1.2',
+    ];
+
     /**
      * The headers that should be used to detect proxies.
      *

@@ -10,9 +10,7 @@ class FirstRunMiddleware
     /**
      * Handle an incoming request.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param Closure $next
-     *
+     * @param  \Illuminate\Http\Request  $request
      * @return mixed
      */
     public function handle($request, Closure $next)
@@ -22,7 +20,7 @@ class FirstRunMiddleware
          * else - if there's only one organiser bring the user straight there.
          */
         $organizerCount = Organiser::scope()->count();
-        if ($organizerCount === 0 && !($request->route()->getName() === 'showCreateOrganiser') && !($request->route()->getName() === 'postCreateOrganiser')) {
+        if ($organizerCount === 0 && ! ($request->route()->getName() === 'showCreateOrganiser') && ! ($request->route()->getName() === 'postCreateOrganiser')) {
             return redirect(route('showCreateOrganiser', [
                 'first_run' => '1',
             ]));
