@@ -10,7 +10,7 @@ class OrganisationWithoutTaxTest extends TestCase
 {
     use OrganisationWithoutTax;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->withoutMiddleware([
