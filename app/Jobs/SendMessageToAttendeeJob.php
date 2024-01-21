@@ -5,13 +5,12 @@ namespace App\Jobs;
 use App\Mail\SendMessageToAttendeeMail;
 use App\Models\Attendee;
 use App\Models\Event;
-use Carbon\Carbon;
+use Config;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use Config;
 use Mail;
 
 class SendMessageToAttendeeJob implements ShouldQueue
@@ -19,9 +18,13 @@ class SendMessageToAttendeeJob implements ShouldQueue
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
     public $subject;
+
     public $content;
+
     public $event;
+
     public $attendee;
+
     public $send_copy;
 
     /**
@@ -56,7 +59,7 @@ class SendMessageToAttendeeJob implements ShouldQueue
             ->send($mail);
 
         if ($this->send_copy == '1') {
-            $mail->subject = $mail->subject . trans("Email.organiser_copy");
+            $mail->subject = $mail->subject.trans('Email.organiser_copy');
             Mail::to($this->event->organiser->email, $this->event->organiser->name)
                 ->locale(Config::get('app.locale'))
                 ->send($mail);

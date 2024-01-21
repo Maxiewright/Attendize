@@ -42,20 +42,20 @@ class AddDefaultGateways extends Migration
 
         if ($stripe) {
             $stripe->update([
-                'admin_blade_template'    => 'ManageAccount.Partials.Stripe',
-                'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripe'
+                'admin_blade_template' => 'ManageAccount.Partials.Stripe',
+                'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripe',
             ]);
         } else {
             DB::table('payment_gateways')->insert(
                 [
-                    'provider_name'           => 'Stripe',
-                    'provider_url'            => 'https://www.stripe.com',
-                    'is_on_site'              => 1,
-                    'can_refund'              => 1,
-                    'name'                    => 'Stripe',
-                    'default'                 => 0,
-                    'admin_blade_template'    => 'ManageAccount.Partials.Stripe',
-                    'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripe'
+                    'provider_name' => 'Stripe',
+                    'provider_url' => 'https://www.stripe.com',
+                    'is_on_site' => 1,
+                    'can_refund' => 1,
+                    'name' => 'Stripe',
+                    'default' => 0,
+                    'admin_blade_template' => 'ManageAccount.Partials.Stripe',
+                    'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripe',
                 ]
             );
         }
@@ -66,14 +66,14 @@ class AddDefaultGateways extends Migration
             // user doesn't exist
             DB::table('payment_gateways')->insert(
                 [
-                    'provider_name'           => 'Dummy/Test Gateway',
-                    'provider_url'            => 'none',
-                    'is_on_site'              => 1,
-                    'can_refund'              => 1,
-                    'name'                    => 'Dummy',
-                    'default'                 => 0,
-                    'admin_blade_template'    => '',
-                    'checkout_blade_template' => 'Public.ViewEvent.Partials.Dummy'
+                    'provider_name' => 'Dummy/Test Gateway',
+                    'provider_url' => 'none',
+                    'is_on_site' => 1,
+                    'can_refund' => 1,
+                    'name' => 'Dummy',
+                    'default' => 0,
+                    'admin_blade_template' => '',
+                    'checkout_blade_template' => 'Public.ViewEvent.Partials.Dummy',
                 ]
             );
         }
@@ -84,14 +84,14 @@ class AddDefaultGateways extends Migration
         if ($stripePaymentIntents === null) {
             DB::table('payment_gateways')->insert(
                 [
-                    'provider_name'           => 'Stripe SCA',
-                    'provider_url'            => 'https://www.stripe.com',
-                    'is_on_site'              => 0,
-                    'can_refund'              => 1,
-                    'name'                    => 'Stripe\PaymentIntents',
-                    'default'                 => 0,
-                    'admin_blade_template'    => 'ManageAccount.Partials.StripeSCA',
-                    'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripeSCA'
+                    'provider_name' => 'Stripe SCA',
+                    'provider_url' => 'https://www.stripe.com',
+                    'is_on_site' => 0,
+                    'can_refund' => 1,
+                    'name' => 'Stripe\PaymentIntents',
+                    'default' => 0,
+                    'admin_blade_template' => 'ManageAccount.Partials.StripeSCA',
+                    'checkout_blade_template' => 'Public.ViewEvent.Partials.PaymentStripeSCA',
                 ]
             );
         }

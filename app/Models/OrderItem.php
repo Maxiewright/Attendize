@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-    /*
-      Attendize.com   - Event Management & Ticketing
-     */
+/*
+  Attendize.com   - Event Management & Ticketing
+ */
 
 /**
  * Description of OrderItems.
@@ -16,12 +16,12 @@ class OrderItem extends MyBaseModel
     /**
      * Indicates if the model should be timestamped.
      *
-     * @var bool $timestamps
+     * @var bool
      */
     public $timestamps = false;
 
     /**
-     * @var array $fillable
+     * @var array
      */
     protected $fillable = [
         'title',

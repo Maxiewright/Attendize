@@ -1,4 +1,6 @@
-<?php namespace Tests\Features;
+<?php
+
+namespace Tests\Features;
 
 use App\Models\Attendee;
 use Tests\Concerns\OrganisationWithoutTax;
@@ -8,7 +10,7 @@ class OrganisationWithoutTaxTest extends TestCase
 {
     use OrganisationWithoutTax;
 
-    public function setUp(): void
+    protected function setUp(): void
     {
         parent::setUp();
         $this->withoutMiddleware([
@@ -36,23 +38,23 @@ class OrganisationWithoutTaxTest extends TestCase
         // Assert database is correct after refund and cancel
         $this->assertDatabaseHasMany([
             'event_stats' => [
-                'tickets_sold'          => 0,
-                'sales_volume'          => 0.00,
+                'tickets_sold' => 0,
+                'sales_volume' => 0.00,
                 'organiser_fees_volume' => 0.00,
             ],
-            'tickets'     => [
-                'sales_volume'          => 0.00,
+            'tickets' => [
+                'sales_volume' => 0.00,
                 'organiser_fees_volume' => 0.00,
-                'quantity_sold'         => 0,
+                'quantity_sold' => 0,
             ],
-            'orders'      => [
+            'orders' => [
                 'organiser_booking_fee' => 0.00,
-                'amount'                => 100.00,
-                'amount_refunded'       => 100.00,
-                'is_refunded'           => true,
+                'amount' => 100.00,
+                'amount_refunded' => 100.00,
+                'is_refunded' => true,
             ],
-            'attendees'   => [
-                'is_refunded'  => true,
+            'attendees' => [
+                'is_refunded' => true,
                 'is_cancelled' => true,
             ],
         ]);
@@ -80,19 +82,19 @@ class OrganisationWithoutTaxTest extends TestCase
         // Assert database is correct after refund and cancel
         $this->assertDatabaseHasMany([
             'event_stats' => [
-                'tickets_sold'          => 2,
-                'sales_volume'          => 200.00,
+                'tickets_sold' => 2,
+                'sales_volume' => 200.00,
                 'organiser_fees_volume' => 0.00,
             ],
-            'tickets'     => [
-                'sales_volume'          => 200.00,
+            'tickets' => [
+                'sales_volume' => 200.00,
                 'organiser_fees_volume' => 0.00,
-                'quantity_sold'         => 2,
+                'quantity_sold' => 2,
             ],
-            'orders'      => [
+            'orders' => [
                 'organiser_booking_fee' => 0.00,
-                'amount'                => 500.00,
-                'amount_refunded'       => 300.00,
+                'amount' => 500.00,
+                'amount_refunded' => 300.00,
                 'is_partially_refunded' => true,
             ],
         ]);
@@ -123,23 +125,23 @@ class OrganisationWithoutTaxTest extends TestCase
         // Assert database is correct after refund and cancel
         $this->assertDatabaseHasMany([
             'event_stats' => [
-                'tickets_sold'          => 0,
-                'sales_volume'          => 0.00,
+                'tickets_sold' => 0,
+                'sales_volume' => 0.00,
                 'organiser_fees_volume' => 0.00,
             ],
-            'tickets'     => [
-                'sales_volume'          => 0.00,
+            'tickets' => [
+                'sales_volume' => 0.00,
                 'organiser_fees_volume' => 0.00,
-                'quantity_sold'         => 0,
+                'quantity_sold' => 0,
             ],
-            'orders'      => [
+            'orders' => [
                 'organiser_booking_fee' => 5.00,
-                'amount'                => 100.00,
-                'amount_refunded'       => 105.00,
-                'is_refunded'           => true,
+                'amount' => 100.00,
+                'amount_refunded' => 105.00,
+                'is_refunded' => true,
             ],
-            'attendees'   => [
-                'is_refunded'  => true,
+            'attendees' => [
+                'is_refunded' => true,
                 'is_cancelled' => true,
             ],
         ]);
@@ -167,19 +169,19 @@ class OrganisationWithoutTaxTest extends TestCase
         // Assert database is correct after refund and cancel
         $this->assertDatabaseHasMany([
             'event_stats' => [
-                'tickets_sold'          => 2,
-                'sales_volume'          => 200.00,
+                'tickets_sold' => 2,
+                'sales_volume' => 200.00,
                 'organiser_fees_volume' => 10.00,
             ],
-            'tickets'     => [
-                'sales_volume'          => 200.00,
+            'tickets' => [
+                'sales_volume' => 200.00,
                 'organiser_fees_volume' => 10.00,
-                'quantity_sold'         => 2,
+                'quantity_sold' => 2,
             ],
-            'orders'      => [
+            'orders' => [
                 'organiser_booking_fee' => 25.00,
-                'amount'                => 500.00,
-                'amount_refunded'       => 315.00,
+                'amount' => 500.00,
+                'amount_refunded' => 315.00,
                 'is_partially_refunded' => true,
             ],
         ]);
@@ -210,23 +212,23 @@ class OrganisationWithoutTaxTest extends TestCase
         // Assert database is correct after refund and cancel
         $this->assertDatabaseHasMany([
             'event_stats' => [
-                'tickets_sold'          => 0,
-                'sales_volume'          => 0.00,
+                'tickets_sold' => 0,
+                'sales_volume' => 0.00,
                 'organiser_fees_volume' => 0.00,
             ],
-            'tickets'     => [
-                'sales_volume'          => 0.00,
+            'tickets' => [
+                'sales_volume' => 0.00,
                 'organiser_fees_volume' => 0.00,
-                'quantity_sold'         => 0,
+                'quantity_sold' => 0,
             ],
-            'orders'      => [
+            'orders' => [
                 'organiser_booking_fee' => 2.50,
-                'amount'                => 100.00,
-                'amount_refunded'       => 102.50,
-                'is_refunded'           => true,
+                'amount' => 100.00,
+                'amount_refunded' => 102.50,
+                'is_refunded' => true,
             ],
-            'attendees'   => [
-                'is_refunded'  => true,
+            'attendees' => [
+                'is_refunded' => true,
                 'is_cancelled' => true,
             ],
         ]);
@@ -254,19 +256,19 @@ class OrganisationWithoutTaxTest extends TestCase
         // Assert database is correct after refund and cancel
         $this->assertDatabaseHasMany([
             'event_stats' => [
-                'tickets_sold'          => 2,
-                'sales_volume'          => 200.00,
+                'tickets_sold' => 2,
+                'sales_volume' => 200.00,
                 'organiser_fees_volume' => 5.00,
             ],
-            'tickets'     => [
-                'sales_volume'          => 200.00,
+            'tickets' => [
+                'sales_volume' => 200.00,
                 'organiser_fees_volume' => 5.00,
-                'quantity_sold'         => 2,
+                'quantity_sold' => 2,
             ],
-            'orders'      => [
+            'orders' => [
                 'organiser_booking_fee' => 12.50,
-                'amount'                => 500.00,
-                'amount_refunded'       => 307.50,
+                'amount' => 500.00,
+                'amount_refunded' => 307.50,
                 'is_partially_refunded' => true,
             ],
         ]);

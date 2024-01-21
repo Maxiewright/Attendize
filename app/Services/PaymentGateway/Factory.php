@@ -10,15 +10,12 @@ use Omnipay\Omnipay;
  * having a factory should make it easier to implement any Omnipay Gateway
  *
  * Class GatewayFactory
- * @package App\Services\PaymentGateway
  */
 class Factory
 {
-
     /**
-     * @param $name
-     * @param $paymentGatewayConfig
      * @return Dummy|Stripe|StripeSCA
+     *
      * @throws \Exception
      */
     public function create($name, $paymentGatewayConfig)
@@ -26,38 +23,30 @@ class Factory
 
         switch ($name) {
 
-            case Dummy::GATEWAY_NAME :
-                {
+            case Dummy::GATEWAY_NAME:
 
-                    $gateway = Omnipay::create($name);
-                    $gateway->initialize();
+                $gateway = Omnipay::create($name);
+                $gateway->initialize();
 
-                    return new Dummy($gateway, $paymentGatewayConfig);
-                }
+                return new Dummy($gateway, $paymentGatewayConfig);
 
-            case Stripe::GATEWAY_NAME :
-                {
+            case Stripe::GATEWAY_NAME:
 
-                    $gateway = Omnipay::create($name);
-                    $gateway->initialize($paymentGatewayConfig);
+                $gateway = Omnipay::create($name);
+                $gateway->initialize($paymentGatewayConfig);
 
-                    return new Stripe($gateway, $paymentGatewayConfig);
-                }
+                return new Stripe($gateway, $paymentGatewayConfig);
 
-            case StripeSCA::GATEWAY_NAME :
-                {
+            case StripeSCA::GATEWAY_NAME:
 
-                    $gateway = Omnipay::create($name);
-                    $gateway->initialize($paymentGatewayConfig);
+                $gateway = Omnipay::create($name);
+                $gateway->initialize($paymentGatewayConfig);
 
-                    return new StripeSCA($gateway, $paymentGatewayConfig);
+                return new StripeSCA($gateway, $paymentGatewayConfig);
 
-                }
+            default:
 
-            default :
-                {
-                    throw New \Exception('Invalid gateway specified');
-                }
+                throw new \Exception('Invalid gateway specified');
         }
     }
 }

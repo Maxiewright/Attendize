@@ -18,7 +18,6 @@ use Utils;
 
 class InstallerController extends Controller
 {
-
     /**
      * @var array Stores the installation data
      */
@@ -28,7 +27,6 @@ class InstallerController extends Controller
      * @var array Stores the installer data
      */
     private $data;
-
 
     protected function constructInstallerData(): void
     {
@@ -64,7 +62,6 @@ class InstallerController extends Controller
     /**
      * Attempts to install the system
      *
-     * @param  Request  $request
      * @return JsonResponse|RedirectResponse
      */
     public function postInstaller(Request $request)
@@ -88,7 +85,7 @@ class InstallerController extends Controller
         $this->constructInstallerData();
 
         // If the database settings are invalid, return to the installer page.
-        if (!$this->validateConnectionDetails($request)) {
+        if (! $this->validateConnectionDetails($request)) {
             return view('Installer.Installer', $this->data);
         }
 
@@ -98,7 +95,7 @@ class InstallerController extends Controller
         // If a user doesn't use the default database details, enters incorrect values in the form, and then proceeds
         // the installation fails miserably. Rather check if the database connection details are valid and fail
         // gracefully
-        if (!$this->testDatabase($this->installation_data['database'])) {
+        if (! $this->testDatabase($this->installation_data['database'])) {
             return view('Installer.Installer', $this->data)->withErrors(
                 new MessageBag(['Database connection failed. Please check the details you have entered and try again.']));
         }
@@ -136,20 +133,21 @@ class InstallerController extends Controller
             'remote_version' => null,
             'local_version' => null,
             'installed_version' => null,
-            'upgrade_done' => false
+            'upgrade_done' => false,
         ];
 
         try {
             $http_client = new Client();
             $response = $http_client->get('https://raw.githubusercontent.com/Attendize/Attendize/master/VERSION');
-            $data["remote_version"] = Utils::parse_version((string)$response->getBody());
+            $data['remote_version'] = Utils::parse_version((string) $response->getBody());
         } catch (\Exception $exception) {
-            \Log::warn("Error retrieving the latest Attendize version. InstallerController.getVersionInfo()");
+            \Log::warn('Error retrieving the latest Attendize version. InstallerController.getVersionInfo()');
             \Log::warn($exception);
         }
 
-        $data["local_version"] = trim(file_get_contents(base_path('VERSION')));
-        $data["installed_version"] = trim(file_get_contents(base_path('installed')));
+        $data['local_version'] = trim(file_get_contents(base_path('VERSION')));
+        $data['installed_version'] = trim(file_get_contents(base_path('installed')));
+
         return $data;
     }
 
@@ -163,9 +161,9 @@ class InstallerController extends Controller
         /**
          * If we haven't yet installed, redirect to installer page.
          */
-
-        if (!self::isInstalled()) {
+        if (! self::isInstalled()) {
             $this->constructInstallerData();
+
             return view('Installer.Installer', $this->data);
         }
 
@@ -177,13 +175,12 @@ class InstallerController extends Controller
     /**
      * Attempts to upgrade the system
      *
-     * @param  Request  $request
      * @return JsonResponse|RedirectResponse
      */
     public function postUpgrader(Request $request)
     {
         //  Do not run the installation if it is already installed
-        if (!$this->canUpgrade()) {
+        if (! $this->canUpgrade()) {
             // Return 409 Conflict HTTP Code and a friendly message
             abort(409, trans('Installer.no_updgrade'));
         }
@@ -201,7 +198,7 @@ class InstallerController extends Controller
         Artisan::call('config:clear');
 
         $data = $this->constructUpgraderData();
-        $data["upgrade_done"] = true;
+        $data['upgrade_done'] = true;
 
         return view('Installer.Upgrader', $data);
     }
@@ -213,20 +210,20 @@ class InstallerController extends Controller
     {
         $database_default = Config::get('database.default');
         $this->data['default_config'] = [
-            'application_url'   => Config::get('app.url'),
-            'database_type'     => $database_default,
-            'database_host'     => Config::get('database.connections.' . $database_default . '.host'),
-            'database_name'     => Config::get('database.connections.' . $database_default . '.database'),
-            'database_username' => Config::get('database.connections.' . $database_default . '.username'),
-            'database_password' => Config::get('database.connections.' . $database_default . '.password'),
+            'application_url' => Config::get('app.url'),
+            'database_type' => $database_default,
+            'database_host' => Config::get('database.connections.'.$database_default.'.host'),
+            'database_name' => Config::get('database.connections.'.$database_default.'.database'),
+            'database_username' => Config::get('database.connections.'.$database_default.'.username'),
+            'database_password' => Config::get('database.connections.'.$database_default.'.password'),
             'mail_from_address' => Config::get('mail.from.address'),
-            'mail_from_name'    => Config::get('mail.from.name'),
-            'mail_driver'       => Config::get('mail.driver'),
-            'mail_port'         => Config::get('mail.port'),
-            'mail_encryption'   => Config::get('mail.encryption'),
-            'mail_host'         => Config::get('mail.host'),
-            'mail_username'     => Config::get('mail.username'),
-            'mail_password'     => Config::get('mail.password')
+            'mail_from_name' => Config::get('mail.from.name'),
+            'mail_driver' => Config::get('mail.driver'),
+            'mail_port' => Config::get('mail.port'),
+            'mail_encryption' => Config::get('mail.encryption'),
+            'mail_host' => Config::get('mail.host'),
+            'mail_username' => Config::get('mail.username'),
+            'mail_password' => Config::get('mail.password'),
         ];
     }
 
@@ -276,20 +273,20 @@ class InstallerController extends Controller
 
         $database_default = Config::get('database.default');
         $this->data['default_config'] = [
-            'application_url'   => Config::get('app.url'),
-            'database_type'     => $database_default,
-            'database_host'     => Config::get('database.connections.' . $database_default . '.host'),
-            'database_name'     => Config::get('database.connections.' . $database_default . '.database'),
-            'database_username' => Config::get('database.connections.' . $database_default . '.username'),
-            'database_password' => Config::get('database.connections.' . $database_default . '.password'),
+            'application_url' => Config::get('app.url'),
+            'database_type' => $database_default,
+            'database_host' => Config::get('database.connections.'.$database_default.'.host'),
+            'database_name' => Config::get('database.connections.'.$database_default.'.database'),
+            'database_username' => Config::get('database.connections.'.$database_default.'.username'),
+            'database_password' => Config::get('database.connections.'.$database_default.'.password'),
             'mail_from_address' => Config::get('mail.from.address'),
-            'mail_from_name'    => Config::get('mail.from.name'),
-            'mail_driver'       => Config::get('mail.driver'),
-            'mail_port'         => Config::get('mail.port'),
-            'mail_encryption'   => Config::get('mail.encryption'),
-            'mail_host'         => Config::get('mail.host'),
-            'mail_username'     => Config::get('mail.username'),
-            'mail_password'     => Config::get('mail.password')
+            'mail_from_name' => Config::get('mail.from.name'),
+            'mail_driver' => Config::get('mail.driver'),
+            'mail_port' => Config::get('mail.port'),
+            'mail_encryption' => Config::get('mail.encryption'),
+            'mail_host' => Config::get('mail.host'),
+            'mail_username' => Config::get('mail.username'),
+            'mail_password' => Config::get('mail.password'),
         ];
     }
 
@@ -312,69 +309,63 @@ class InstallerController extends Controller
     {
         $data = $this->constructUpgraderData();
         if (
-        (version_compare($data['local_version'], $data['remote_version']) === -1) ||
-        (
-            version_compare($data['local_version'], $data['remote_version']) === 0 &&
-            version_compare($data['installed_version'], $data['local_version']) === -1
-        )) {
+            (version_compare($data['local_version'], $data['remote_version']) === -1) ||
+            (
+                version_compare($data['local_version'], $data['remote_version']) === 0 &&
+                version_compare($data['installed_version'], $data['local_version']) === -1
+            )) {
             return true;
         }
+
         return false;
     }
 
     /**
      * Checks the database and returns a JSON response with the result
-     *
-     * @param  Request  $request
-     * @return JsonResponse
      */
     protected function checkDatabaseJSON(Request $request): JsonResponse
     {
         // If we can connect to database, return a success message
         if ($this->validateConnectionDetails($request) && $this->testDatabase($this->getDatabaseData($request))) {
             return response()->json([
-                'status'  => 'success',
+                'status' => 'success',
                 'message' => trans('Installer.connection_success'),
-                'test'    => 1,
+                'test' => 1,
             ]);
         }
 
         // If the database configuration is invalid or we cannot connect to the database, return an error message
         return response()->json([
-            'status'  => 'error',
+            'status' => 'error',
             'message' => trans('Installer.connection_failure'),
-            'test'    => 1,
+            'test' => 1,
         ]);
     }
 
     /**
      * Checks whether the database connection data in the request is valid.
-     *
-     * @param  Request  $request
-     * @return bool
      */
     protected function validateConnectionDetails(Request $request): bool
     {
         try {
             $this->validate($request, [
-                'database_type'     => 'required',
-                'database_host'     => 'required',
-                'database_name'     => 'required',
+                'database_type' => 'required',
+                'database_host' => 'required',
+                'database_name' => 'required',
                 'database_username' => 'required',
-                'database_password' => 'required'
+                'database_password' => 'required',
             ]);
+
             return true;
         } catch (Exception $e) {
             Log::error('Please enter all app settings. '.$e->getMessage());
         }
+
         return false;
     }
 
     /**
      * Test the database connection
-     *
-     * @param $database
-     * @return bool
      */
     private function testDatabase($database): bool
     {
@@ -389,7 +380,7 @@ class InstallerController extends Controller
         try {
             DB::reconnect();
             $pdo = DB::connection()->getPdo();
-            if (!empty($pdo)) {
+            if (! empty($pdo)) {
                 return true;
             }
         } catch (Exception $e) {
@@ -401,24 +392,18 @@ class InstallerController extends Controller
 
     /**
      * Get the database data from request
-     *
-     * @param  Request  $request
-     * @return array
      */
     protected function getDatabaseData(Request $request): array
     {
         return [
-            'type'     => $request->get('database_type'),
-            'host'     => $request->get('database_host'),
-            'name'     => $request->get('database_name'),
+            'type' => $request->get('database_type'),
+            'host' => $request->get('database_host'),
+            'name' => $request->get('database_name'),
             'username' => $request->get('database_username'),
-            'password' => $request->get('database_password')
+            'password' => $request->get('database_password'),
         ];
     }
 
-    /**
-     * @param  Request  $request
-     */
     protected function getInstallationData(Request $request): void
     {
         // Create the database data array
@@ -431,21 +416,17 @@ class InstallerController extends Controller
         $this->installation_data['app_key'] = Str::random(32);
     }
 
-    /**
-     * @param  Request  $request
-     * @return array
-     */
     protected function getMailData(Request $request): array
     {
         return [
-            'driver'       => $request->get('mail_driver'),
-            'port'         => $request->get('mail_port'),
-            'username'     => $request->get('mail_username'),
-            'password'     => $request->get('mail_password'),
-            'encryption'   => $request->get('mail_encryption'),
+            'driver' => $request->get('mail_driver'),
+            'port' => $request->get('mail_port'),
+            'username' => $request->get('mail_username'),
+            'password' => $request->get('mail_password'),
+            'encryption' => $request->get('mail_encryption'),
             'from_address' => $request->get('mail_from_address'),
-            'from_name'    => $request->get('mail_from_name'),
-            'host'         => $request->get('mail_host')
+            'from_name' => $request->get('mail_from_name'),
+            'host' => $request->get('mail_host'),
         ];
     }
 
@@ -465,23 +446,23 @@ class InstallerController extends Controller
 
         // Installer data to be stored in the new env file
         $config = [
-            'APP_ENV'           => 'production',
-            'APP_DEBUG'         => 'false',
-            'APP_URL'           => $this->installation_data['app_url'],
-            'APP_KEY'           => $this->installation_data['app_key'],
-            'DB_TYPE'           => $this->installation_data['database']['type'],
-            'DB_HOST'           => $this->installation_data['database']['host'],
-            'DB_DATABASE'       => $this->installation_data['database']['name'],
-            'DB_USERNAME'       => $this->installation_data['database']['username'],
-            'DB_PASSWORD'       => $this->installation_data['database']['password'],
-            'MAIL_DRIVER'       => $this->installation_data['mail']['driver'],
-            'MAIL_PORT'         => $this->installation_data['mail']['port'],
-            'MAIL_ENCRYPTION'   => $this->installation_data['mail']['encryption'],
-            'MAIL_HOST'         => $this->installation_data['mail']['host'],
-            'MAIL_USERNAME'     => $this->installation_data['mail']['username'],
-            'MAIL_FROM_NAME'    => $this->installation_data['mail']['from_name'],
+            'APP_ENV' => 'production',
+            'APP_DEBUG' => 'false',
+            'APP_URL' => $this->installation_data['app_url'],
+            'APP_KEY' => $this->installation_data['app_key'],
+            'DB_TYPE' => $this->installation_data['database']['type'],
+            'DB_HOST' => $this->installation_data['database']['host'],
+            'DB_DATABASE' => $this->installation_data['database']['name'],
+            'DB_USERNAME' => $this->installation_data['database']['username'],
+            'DB_PASSWORD' => $this->installation_data['database']['password'],
+            'MAIL_DRIVER' => $this->installation_data['mail']['driver'],
+            'MAIL_PORT' => $this->installation_data['mail']['port'],
+            'MAIL_ENCRYPTION' => $this->installation_data['mail']['encryption'],
+            'MAIL_HOST' => $this->installation_data['mail']['host'],
+            'MAIL_USERNAME' => $this->installation_data['mail']['username'],
+            'MAIL_FROM_NAME' => $this->installation_data['mail']['from_name'],
             'MAIL_FROM_ADDRESS' => $this->installation_data['mail']['from_address'],
-            'MAIL_PASSWORD'     => $this->installation_data['mail']['password'],
+            'MAIL_PASSWORD' => $this->installation_data['mail']['password'],
         ];
 
         // Merge new config data with example env
@@ -497,7 +478,7 @@ class InstallerController extends Controller
             }
 
             // If no replaced is a new config key/value set
-            if (!$replaced_line) {
+            if (! $replaced_line) {
                 $env_lines[] = [$key, $val];
             }
         }

@@ -1,10 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Models\Event;
-
 class EventTest extends TestCase
 {
     public function test_event_is_created_successfully()
@@ -13,9 +8,9 @@ class EventTest extends TestCase
 
         $organiser = factory(App\Models\Organiser::class)->create(['account_id' => 1]);
 
-        $server = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
+        $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
-        $post = array(
+        $post = [
             'organiser_id' => $organiser->id,
             'title' => $this->faker->text,
             'description' => $this->faker->paragraph,
@@ -26,7 +21,7 @@ class EventTest extends TestCase
             'location_post_code' => $this->faker->postcode,
             'start_date' => date('d-m-Y H:i', strtotime('+ 30 days')),
             'end_date' => date('d-m-Y H:i', strtotime('+ 60 days')),
-        );
+        ];
 
         $this->call('post', route('postCreateEvent'), $post, $server);
 
@@ -42,11 +37,11 @@ class EventTest extends TestCase
 
         $organiser = factory(App\Models\Organiser::class)->create(['account_id' => 1]);
 
-        $server = array('HTTP_X-Requested-With' => 'XMLHttpRequest');
+        $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
-        $post = array(
+        $post = [
             'organiser_id' => $organiser->id,
-        );
+        ];
 
         $this->call('post', route('postCreateEvent'), $post, $server);
 
@@ -59,9 +54,9 @@ class EventTest extends TestCase
     {
         $organiser = factory(App\Models\Organiser::class)->create(['account_id' => 1]);
         $event = factory(App\Models\Event::class)->create([
-            'account_id'   => $organiser->account_id,
+            'account_id' => $organiser->account_id,
             'organiser_id' => $organiser->id,
-            'user_id'      => $this->test_user->id,
+            'user_id' => $this->test_user->id,
         ]);
 
         $this->actingAs($this->test_user)

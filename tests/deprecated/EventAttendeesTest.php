@@ -1,17 +1,12 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Models\Event;
-
 class EventAttendeesTest extends TestCase
 {
     public function test_event_attendees_are_displayed()
     {
         // Create organiser with account id = 1 to skip first run
         $organiser = factory(App\Models\Organiser::class)->create([
-            'account_id' => 1
+            'account_id' => 1,
         ]);
 
         $event = factory(App\Models\Event::class)->create([

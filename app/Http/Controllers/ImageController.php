@@ -4,14 +4,12 @@ namespace App\Http\Controllers;
 
 class ImageController extends Controller
 {
-
     /**
      * Generate a thumbnail for a given image
      *
-     * @param $image_src
-     * @param bool $width
-     * @param bool $height
-     * @param int $quality
+     * @param  bool  $width
+     * @param  bool  $height
+     * @param  int  $quality
      */
     public function generateThumbnail($image_src, $width = false, $height = false, $quality = 90)
     {

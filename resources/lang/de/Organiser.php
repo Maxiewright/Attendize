@@ -3,27 +3,27 @@
  Generated via "php artisan localization:missing" at 2018/04/26 10:16:27
 *************************************************************************/
 
-return array (
-  //============================== New strings to translate ==============================//
-  'save_organiser' => 'Veranstalter speichern',
-  //==================================== Translations ====================================//
-  'additional_organiser_options' => 'Zustätzliche Optionen zum Veranstalter',
-  'background_color' => 'Hintergrundfarbe',
-  'continue_to' => 'Weitermachen als',
-  'create_an_organiser' => 'Veranstalter anlegen',
-  'create_new_organiser' => 'Neuen Veranstalter anlegen',
-  'create_organiser' => 'Veranstalter anlegen',
-  'create_organiser_text' => 'Before you create events you\'ll need to create an organiser. An Veranstalter is simply whoever is organising the event. It can be anyone, from a person to an organisation.',
-  'current_logo' => 'Aktuelles Logo',
-  'customize' => 'Anpassen',
-  'dashboard' => 'Dashboard',
-  'delete_logo?' => 'Logo löschen?',
-  'enable_public_organiser_page' => 'Öffentlich Veranstalter Seite aktivieren',
-  'event' => 'Veranstaltung',
-  'event_calendar' => 'Veranstaltungskalender',
-  'events' => 'Veranstaltungen',
-  'google_analytics_code' => 'Google Analytics Code',
-  'google_analytics_code_placeholder' => 'UA-XXXXX-X',
+return [
+    //============================== New strings to translate ==============================//
+    'save_organiser' => 'Veranstalter speichern',
+    //==================================== Translations ====================================//
+    'additional_organiser_options' => 'Zustätzliche Optionen zum Veranstalter',
+    'background_color' => 'Hintergrundfarbe',
+    'continue_to' => 'Weitermachen als',
+    'create_an_organiser' => 'Veranstalter anlegen',
+    'create_new_organiser' => 'Neuen Veranstalter anlegen',
+    'create_organiser' => 'Veranstalter anlegen',
+    'create_organiser_text' => 'Before you create events you\'ll need to create an organiser. An Veranstalter is simply whoever is organising the event. It can be anyone, from a person to an organisation.',
+    'current_logo' => 'Aktuelles Logo',
+    'customize' => 'Anpassen',
+    'dashboard' => 'Dashboard',
+    'delete_logo?' => 'Logo löschen?',
+    'enable_public_organiser_page' => 'Öffentlich Veranstalter Seite aktivieren',
+    'event' => 'Veranstaltung',
+    'event_calendar' => 'Veranstaltungskalender',
+    'events' => 'Veranstaltungen',
+    'google_analytics_code' => 'Google Analytics Code',
+    'google_analytics_code_placeholder' => 'UA-XXXXX-X',
     'header_background_color' => 'Header Hintergrundfarbe',
     'hide_additional_organiser_options' => 'Weitere Optionen zum Veranstalter verbergen',
     'make_organiser_hidden' => 'Öffentliche Veranstalterseite verbergen',
@@ -69,4 +69,4 @@ return array (
     'select_organiser' => 'Wähle den Veranstalter',
     'text_color' => 'Textfarbe',
     'tickets_sold' => 'Tickets verkauft',
-);
+];

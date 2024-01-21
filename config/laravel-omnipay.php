@@ -8,15 +8,15 @@ return [
     // Add in each gateway here
     'gateways' => [
         'paypal' => [
-            'driver'  => 'PayPal_Express',
+            'driver' => 'PayPal_Express',
             'options' => [
-                'solutionType'   => '',
-                'landingPage'    => '',
+                'solutionType' => '',
+                'landingPage' => '',
                 'headerImageUrl' => '',
             ],
         ],
         'stripe' => [
-            'driver'  => 'Stripe',
+            'driver' => 'Stripe',
             'options' => [],
         ],
     ],

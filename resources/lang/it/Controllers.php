@@ -1,16 +1,15 @@
 <?php
 
 return [
-    'sort' =>
-        [
-            'event_title' => 'Titolo Evento',
-            'start_date' => 'Data d\'inizio',
-            'created_at' => 'Data di creazione',
-            'quantity_sold' => 'Quantità Vendute',
-            'sales_volume' => 'Volume delle vendite',
-            'sort_order' => 'Ordinamento personalizzato',
-            'title' => 'Titolo Biglietto',
-        ],
+    'sort' => [
+        'event_title' => 'Titolo Evento',
+        'start_date' => 'Data d\'inizio',
+        'created_at' => 'Data di creazione',
+        'quantity_sold' => 'Quantità Vendute',
+        'sales_volume' => 'Volume delle vendite',
+        'sort_order' => 'Ordinamento personalizzato',
+        'title' => 'Titolo Biglietto',
+    ],
     'account_successfully_updated' => 'L\'account è stato aggiornato',
     'addInviteError' => 'È necessario creare un biglietto prima di poter invitare un partecipante. ',
     'attendee_already_cancelled' => 'Partecipante già cancellato',
@@ -23,35 +22,28 @@ return [
     'check_in_all_tickets' => 'I check-in tutti i biglietti associati a questo ordine',
     'confirmation_malformed' => 'Il codice di conferma è mancante o errato. ',
     'confirmation_successful' => 'Congratulazioni! Il tuo indirizzo email è verificato. Ora è possibile effettuare il login. ',
-    'error' =>
-        [
-            'email' =>
-                [
-                    'email' => 'Si prega di inserire un indirizzo email valido.',
-                    'required' => 'è richiesto l\'indirizzo e-mail. ',
-                    'unique' => 'E-mail già in uso per questo account. ',
-                ],
-            'first_name' =>
-                [
-                    'required' => 'Per favore immettere il proprio nome.',
-                ],
-            'last_name' =>
-                [
-                    'required' => 'Inserisci il tuo cognome.',
-                ],
-            'page_bg_color' =>
-                [
-                    'required' => 'Si prega di inserire un colore di sfondo.',
-                ],
-            'page_header_bg_color' =>
-                [
-                    'required' => 'Si prega di inserire un colore di sfondo dell\'intestazione.',
-                ],
-            'password' =>
-                [
-                    'passcheck' => 'Questa password non è corretta. ',
-                ],
+    'error' => [
+        'email' => [
+            'email' => 'Si prega di inserire un indirizzo email valido.',
+            'required' => 'è richiesto l\'indirizzo e-mail. ',
+            'unique' => 'E-mail già in uso per questo account. ',
         ],
+        'first_name' => [
+            'required' => 'Per favore immettere il proprio nome.',
+        ],
+        'last_name' => [
+            'required' => 'Inserisci il tuo cognome.',
+        ],
+        'page_bg_color' => [
+            'required' => 'Si prega di inserire un colore di sfondo.',
+        ],
+        'page_header_bg_color' => [
+            'required' => 'Si prega di inserire un colore di sfondo dell\'intestazione.',
+        ],
+        'password' => [
+            'passcheck' => 'Questa password non è corretta. ',
+        ],
+    ],
     'event_create_exception' => 'Ops! C\'è stato un problema durante la creazione dell\'evento. Per favore riprova.',
     'event_page_successfully_updated' => 'Pagina Evento aggiornata con successo. ',
     'event_successfully_updated' => 'Evento aggiornato con successo!',

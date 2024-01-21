@@ -5,12 +5,9 @@ namespace App\Cancellation;
 use App\Models\Attendee;
 use App\Models\EventStats;
 use Superbalist\Money\Money;
-use Services\PaymentGateway\Factory;
-use Log;
 
 class OrderCancel extends OrderRefundAbstract
 {
-
     public function __construct($order, $attendees)
     {
         $this->order = $order;

@@ -14,9 +14,9 @@ return [
     */
 
     'password' => 'Wachtwoord moet minimaal 6 characters lang zijn en aan de eisen voldoen.',
-    'user'     => "Geen gebruiker gevonden met dit e-mailadres.",
-    'token'    => 'Deze wachtwoord hetstel link is ongeldig.',
-    'sent'     => 'Er wordt een email gestuurd met daarin een link om het wachtwoord te herstellen.',
-    'reset'    => 'Uw wachtwoord is opnieuw ingesteld!',
+    'user' => 'Geen gebruiker gevonden met dit e-mailadres.',
+    'token' => 'Deze wachtwoord hetstel link is ongeldig.',
+    'sent' => 'Er wordt een email gestuurd met daarin een link om het wachtwoord te herstellen.',
+    'reset' => 'Uw wachtwoord is opnieuw ingesteld!',
 
 ];

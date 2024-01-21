@@ -7,9 +7,7 @@ use Illuminate\Http\Request;
 
 class EventsApiController extends ApiBaseController
 {
-
     /**
-     * @param Request $request
      * @return mixed
      */
     public function index(Request $request)
@@ -18,8 +16,6 @@ class EventsApiController extends ApiBaseController
     }
 
     /**
-     * @param Request $request
-     * @param $attendee_id
      * @return mixed
      */
     public function show(Request $request, $attendee_id)
@@ -42,6 +38,4 @@ class EventsApiController extends ApiBaseController
     public function destroy(Request $request)
     {
     }
-
-
 }

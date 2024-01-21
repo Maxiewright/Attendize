@@ -75,19 +75,19 @@ class Utils
 
     public static function isDownForMaintenance()
     {
-        return file_exists(storage_path() . '/framework/down');
+        return file_exists(storage_path().'/framework/down');
     }
 
     /**
      * Check if a user has admin access to events etc.
      *
      * @todo - This is a temp fix until user roles etc. are implemented
-     * @param $object
+     *
      * @return bool
      */
     public static function userOwns($object)
     {
-        if (!Auth::check()) {
+        if (! Auth::check()) {
             return false;
         }
 
@@ -131,7 +131,6 @@ class Utils
     /**
      * Parses the given size
      *
-     * @param $size
      * @return float
      */
     public static function parse_size($size)
@@ -148,8 +147,6 @@ class Utils
 
     /**
      * Check if Attendize is installed
-     *
-     * @return bool
      */
     public static function installed(): bool
     {
@@ -158,14 +155,13 @@ class Utils
 
     /**
      * Safely parse a version number from a string
-     *
-     * @return string
      */
     public static function parse_version($string): string
     {
         if (preg_match('/(\d+\.?\d+\.?\d+)/', $string, $matches) === 1) {
             return $matches[0];
         }
+
         return '';
     }
 }

@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 class EventPromoteController extends MyBaseController
 {
     /**
-     * @param $event_id
      * @return mixed
      */
     public function showPromote($event_id)

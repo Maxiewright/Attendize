@@ -1,10 +1,5 @@
 <?php
 
-use Illuminate\Foundation\Testing\WithoutMiddleware;
-use Illuminate\Foundation\Testing\DatabaseMigrations;
-use Illuminate\Foundation\Testing\DatabaseTransactions;
-use App\Models\Organiser;
-
 class OrganiserEventsTest extends TestCase
 {
     public function test_show_events_displays_events()
@@ -12,15 +7,15 @@ class OrganiserEventsTest extends TestCase
         $organiser = factory(App\Models\Organiser::class)->create(['account_id' => 1]);
 
         $event1 = factory(App\Models\Event::class)->create([
-            'account_id'   => $organiser->account_id,
+            'account_id' => $organiser->account_id,
             'organiser_id' => $organiser->id,
-            'user_id'      => $this->test_user->id,
+            'user_id' => $this->test_user->id,
         ]);
 
         $event2 = factory(App\Models\Event::class)->create([
-            'account_id'   => $organiser->account_id,
+            'account_id' => $organiser->account_id,
             'organiser_id' => $organiser->id,
-            'user_id'      => $this->test_user->id,
+            'user_id' => $this->test_user->id,
         ]);
 
         $this->actingAs($this->test_user)

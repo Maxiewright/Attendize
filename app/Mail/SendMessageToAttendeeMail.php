@@ -5,7 +5,6 @@ namespace App\Mail;
 use App\Models\Attendee;
 use App\Models\Event;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
@@ -14,9 +13,13 @@ class SendMessageToAttendeeMail extends Mailable
     use Queueable, SerializesModels;
 
     public $subject;
+
     public $content;
+
     public $event;
+
     public $attendee;
+
     public $email_logo;
 
     /**
@@ -41,8 +44,8 @@ class SendMessageToAttendeeMail extends Mailable
     public function build()
     {
         return $this->subject($this->subject)
-                    ->from(config('attendize.outgoing_email_noreply'), $this->event->organiser->name)
-                    ->replyTo($this->event->organiser->email, $this->event->organiser->name)
-                    ->view('Emails.MessageToAttendees');
+            ->from(config('attendize.outgoing_email_noreply'), $this->event->organiser->name)
+            ->replyTo($this->event->organiser->email, $this->event->organiser->name)
+            ->view('Emails.MessageToAttendees');
     }
 }
