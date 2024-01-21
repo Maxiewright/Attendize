@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->boolean('is_payment_received')->default(0);
@@ -34,10 +32,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('is_payment_received');

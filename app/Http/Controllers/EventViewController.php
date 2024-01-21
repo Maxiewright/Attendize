@@ -9,8 +9,11 @@ use App\Models\EventAccessCodes;
 use App\Models\EventStats;
 use Auth;
 use Cookie;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 use Mail;
 use Redirect;
 use Services\Captcha\Factory;
@@ -30,12 +33,8 @@ class EventViewController extends Controller
 
     /**
      * Show the homepage for an event
-     *
-     * @param  string  $slug
-     * @param  bool  $preview
-     * @return mixed
      */
-    public function showEventHome(Request $request, $event_id, $slug = '', $preview = false)
+    public function showEventHome(Request $request, $event_id, string $slug = '', bool $preview = false): View
     {
         $event = Event::findOrFail($event_id);
 
@@ -142,7 +141,7 @@ class EventViewController extends Controller
         ]);
     }
 
-    public function showCalendarIcs(Request $request, $event_id)
+    public function showCalendarIcs(Request $request, $event_id): Response
     {
         $event = Event::findOrFail($event_id);
 
@@ -154,10 +153,7 @@ class EventViewController extends Controller
         ]);
     }
 
-    /**
-     * @return \Illuminate\Http\JsonResponse
-     */
-    public function postShowHiddenTickets(Request $request, $event_id)
+    public function postShowHiddenTickets(Request $request, $event_id): JsonResponse
     {
         $event = Event::findOrFail($event_id);
 

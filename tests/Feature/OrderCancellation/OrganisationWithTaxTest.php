@@ -23,7 +23,7 @@ class OrganisationWithTaxTest extends TestCase
     /**
      * @test
      */
-    public function cancels_and_refunds_order_with_single_ticket_and_tax()
+    public function cancels_and_refunds_order_with_single_ticket_and_tax(): void
     {
         // Setup single attendee order
         [$order, $attendees] = $this->makeTicketOrder(1, 150.00);
@@ -64,7 +64,7 @@ class OrganisationWithTaxTest extends TestCase
     /**
      * @test
      */
-    public function cancels_and_refunds_order_with_multiple_tickets_and_tax()
+    public function cancels_and_refunds_order_with_multiple_tickets_and_tax(): void
     {
         // Setup multiple attendee order but refund only 3 out of 5
         [$order, $attendees] = $this->makeTicketOrder(5, 150.00);
@@ -112,7 +112,7 @@ class OrganisationWithTaxTest extends TestCase
     /**
      * @test
      */
-    public function cancels_and_refunds_order_with_single_ticket_with_tax_and_percentage_booking_fees()
+    public function cancels_and_refunds_order_with_single_ticket_with_tax_and_percentage_booking_fees(): void
     {
         // Setup single attendee order with % fees
         [$order, $attendees] = $this->makeTicketOrder(1, 150.00, true);
@@ -153,7 +153,7 @@ class OrganisationWithTaxTest extends TestCase
     /**
      * @test
      */
-    public function cancels_and_refunds_order_with_multiple_tickets_with_tax_and_percentage_booking_fees()
+    public function cancels_and_refunds_order_with_multiple_tickets_with_tax_and_percentage_booking_fees(): void
     {
         // Setup single attendee order with % fees
         [$order, $attendees] = $this->makeTicketOrder(5, 120.00, true);
@@ -208,7 +208,7 @@ class OrganisationWithTaxTest extends TestCase
     /**
      * @test
      */
-    public function cancels_and_refunds_order_with_single_ticket_with_tax_and_fixed_booking_fees()
+    public function cancels_and_refunds_order_with_single_ticket_with_tax_and_fixed_booking_fees(): void
     {
         // Setup single attendee order with % fees
         [$order, $attendees] = $this->makeTicketOrder(1, 50.00, false, true);
@@ -249,7 +249,7 @@ class OrganisationWithTaxTest extends TestCase
     /**
      * @test
      */
-    public function cancels_and_refunds_order_with_multiple_tickets_with_tax_and_fixed_booking_fees()
+    public function cancels_and_refunds_order_with_multiple_tickets_with_tax_and_fixed_booking_fees(): void
     {
         // Setup single attendee order with % fees
         [$order, $attendees] = $this->makeTicketOrder(5, 240.00, false, true);

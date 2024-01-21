@@ -11,8 +11,10 @@ use App\Models\Event;
 use App\Models\Order;
 use App\Services\Order as OrderService;
 use Illuminate\Database\Eloquent\Collection;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 use Log;
 use Mail;
 use Session;
@@ -22,11 +24,8 @@ class EventOrdersController extends MyBaseController
 {
     /**
      * Show event orders page
-     *
-     * @param  string  $event_id
-     * @return mixed
      */
-    public function showOrders(Request $request, $event_id = '')
+    public function showOrders(Request $request, string $event_id = ''): View
     {
         $allowed_sorts = ['first_name', 'email', 'order_reference', 'order_status_id', 'created_at'];
 
@@ -71,10 +70,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Shows  'Manage Order' modal
-     *
-     * @return mixed
      */
-    public function manageOrder(Request $request, $order_id)
+    public function manageOrder(Request $request, $order_id): View
     {
         $order = Order::scope()->find($order_id);
 
@@ -91,10 +88,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Shows 'Edit Order' modal
-     *
-     * @return mixed
      */
-    public function showEditOrder(Request $request, $order_id)
+    public function showEditOrder(Request $request, $order_id): View
     {
         $order = Order::scope()->find($order_id);
 
@@ -110,10 +105,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Shows 'Cancel Order' modal
-     *
-     * @return mixed
      */
-    public function showCancelOrder(Request $request, $order_id)
+    public function showCancelOrder(Request $request, $order_id): View
     {
         $order = Order::scope()->find($order_id);
 
@@ -129,11 +122,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Resend an entire order
-     *
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function resendOrder($order_id)
+    public function resendOrder($order_id): JsonResponse
     {
         $order = Order::scope()->find($order_id);
         $orderService = new OrderService($order->amount, $order->booking_fee, $order->event);
@@ -148,10 +138,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Cancels an order
-     *
-     * @return mixed
      */
-    public function postEditOrder(Request $request, $order_id)
+    public function postEditOrder(Request $request, $order_id): JsonResponse
     {
         $rules = [
             'first_name' => ['required'],
@@ -187,11 +175,10 @@ class EventOrdersController extends MyBaseController
     /**
      * Cancels attendees in an order
      *
-     * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Exception
      */
-    public function postCancelOrder(Request $request, $order_id)
+    public function postCancelOrder(Request $request, $order_id): JsonResponse
     {
         $validator = Validator::make(
             $request->all(),
@@ -237,7 +224,7 @@ class EventOrdersController extends MyBaseController
      *
      * @param  string  $export_as Accepted: xls, xlsx, csv, pdf, html
      */
-    public function showExportOrders($event_id, $export_as = 'xls')
+    public function showExportOrders($event_id, string $export_as = 'xls')
     {
         $event = Event::scope()->findOrFail($event_id);
         $date = date('d-m-Y-g.i.a');
@@ -247,10 +234,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * shows 'Message Order Creator' modal
-     *
-     * @return mixed
      */
-    public function showMessageOrder(Request $request, $event_id, $order_id)
+    public function showMessageOrder(Request $request, $event_id, $order_id): View
     {
         $order = Order::scope()->findOrFail($order_id);
 
@@ -264,10 +249,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Sends message to order creator
-     *
-     * @return mixed
      */
-    public function postMessageOrder(Request $request, $event_id, $order_id)
+    public function postMessageOrder(Request $request, $event_id, $order_id): JsonResponse
     {
         $rules = [
             'subject' => 'required|max:250',
@@ -317,10 +300,8 @@ class EventOrdersController extends MyBaseController
 
     /**
      * Mark an order as payment received
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postMarkPaymentReceived(Request $request, $order_id)
+    public function postMarkPaymentReceived(Request $request, $order_id): JsonResponse
     {
         $order = Order::scope()->findOrFail($order_id);
 

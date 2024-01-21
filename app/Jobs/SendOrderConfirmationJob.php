@@ -34,12 +34,10 @@ class SendOrderConfirmationJob implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
-        GenerateTicketsJob::dispatchNow($this->order);
+        GenerateTicketsJob::dispatchSync($this->order);
         $mail = new SendOrderConfirmationMail($this->order, $this->orderService);
         Mail::to($this->order->email)
             ->locale(Config::get('app.locale'))

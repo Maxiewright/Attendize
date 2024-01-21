@@ -22,13 +22,8 @@ class EventStats extends \Illuminate\Database\Eloquent\Model
     /**
      * @todo This shouldn't be in a view.
      * Update the amount of revenue a ticket has earned.
-     *
-     * @param  int  $ticket_id
-     * @param  float  $amount
-     * @param  bool  $deduct
-     * @return bool
      */
-    public function updateTicketRevenue($ticket_id, $amount, $deduct = false)
+    public function updateTicketRevenue(int $ticket_id, float $amount, bool $deduct = false): bool
     {
         $ticket = Ticket::find($ticket_id);
 
@@ -43,11 +38,8 @@ class EventStats extends \Illuminate\Database\Eloquent\Model
 
     /**
      * Update the amount of views a ticket has earned.
-     *
-     *
-     * @return bool
      */
-    public function updateViewCount($event_id)
+    public function updateViewCount($event_id): bool
     {
         $stats = $this->updateOrCreate([
             'event_id' => $event_id,
@@ -84,11 +76,8 @@ class EventStats extends \Illuminate\Database\Eloquent\Model
 
     /**
      * Updates the number of tickets sold for the event.
-     *
-     *
-     * @return bool
      */
-    public function updateTicketsSoldCount($event_id, $count)
+    public function updateTicketsSoldCount($event_id, $count): bool
     {
         $stats = $this->updateOrCreate([
             'event_id' => $event_id,

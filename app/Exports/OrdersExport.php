@@ -4,6 +4,7 @@ namespace App\Exports;
 
 use App\Models\Order;
 use DB;
+use Illuminate\Support\Query;
 use Maatwebsite\Excel\Concerns\Exportable;
 use Maatwebsite\Excel\Concerns\FromQuery;
 use Maatwebsite\Excel\Concerns\WithEvents;
@@ -19,10 +20,7 @@ class OrdersExport implements FromQuery, WithEvents, WithHeadings
         $this->event_id = $event_id;
     }
 
-    /**
-     * @return \Illuminate\Support\Query
-     */
-    public function query()
+    public function query(): Query
     {
         $yes = strtoupper(trans('basic.yes'));
         $no = strtoupper(trans('basic.no'));

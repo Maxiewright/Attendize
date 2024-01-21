@@ -9,10 +9,8 @@ class PaymentGatewaySeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
 
         $dummyGateway = DB::table('payment_gateways')->where('name', '=', 'Dummy')->first();

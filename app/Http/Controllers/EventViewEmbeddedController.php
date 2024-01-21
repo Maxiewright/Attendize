@@ -3,15 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Event;
+use Illuminate\View\View;
 
 class EventViewEmbeddedController extends Controller
 {
     /**
      * Show an embedded version of the event page
-     *
-     * @return mixed
      */
-    public function showEmbeddedEvent($event_id)
+    public function showEmbeddedEvent($event_id): View
     {
         $event = Event::findOrFail($event_id);
 

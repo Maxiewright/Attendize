@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Collection;
 use Str;
+use Superbalist\Money\Currency;
 use Superbalist\Money\Money;
 use URL;
 
@@ -40,7 +43,7 @@ class Event extends MyBaseModel
      *
      * @return array $rules
      */
-    public function rules()
+    public function rules(): array
     {
         $format = config('attendize.default_datetime_format');
 
@@ -58,30 +61,24 @@ class Event extends MyBaseModel
 
     /**
      * The questions associated with the event.
-     *
-     * @return BelongsToMany
      */
-    public function questions()
+    public function questions(): BelongsToMany
     {
         return $this->belongsToMany(Question::class, 'event_question');
     }
 
     /**
      * The questions associated with the event.
-     *
-     * @return BelongsToMany
      */
-    public function questions_with_trashed()
+    public function questions_with_trashed(): BelongsToMany
     {
         return $this->belongsToMany(Question::class, 'event_question')->withTrashed();
     }
 
     /**
      * The images associated with the event.
-     *
-     * @return HasMany
      */
-    public function images()
+    public function images(): HasMany
     {
         return $this->hasMany(EventImage::class);
     }
@@ -98,50 +95,40 @@ class Event extends MyBaseModel
 
     /**
      * The tickets associated with the event.
-     *
-     * @return HasMany
      */
-    public function tickets()
+    public function tickets(): HasMany
     {
         return $this->hasMany(Ticket::class);
     }
 
     /**
      * The affiliates associated with the event.
-     *
-     * @return HasMany
      */
-    public function affiliates()
+    public function affiliates(): HasMany
     {
         return $this->hasMany(Affiliate::class);
     }
 
     /**
      * The orders associated with the event.
-     *
-     * @return HasMany
      */
-    public function orders()
+    public function orders(): HasMany
     {
         return $this->hasMany(Order::class);
     }
 
     /**
      * The account associated with the event.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function account()
+    public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
 
     /**
      * The organizer associated with the event.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function organiser()
+    public function organiser(): BelongsTo
     {
         return $this->belongsTo(Organiser::class);
     }
@@ -181,7 +168,7 @@ class Event extends MyBaseModel
      *
      * @param  string  $date  DateTime
      */
-    public function setStartDateAttribute($date)
+    public function setStartDateAttribute(string $date)
     {
         $format = config('attendize.default_datetime_format');
 
@@ -197,7 +184,7 @@ class Event extends MyBaseModel
      *
      * @return string Formatted date
      */
-    public function startDateFormatted()
+    public function startDateFormatted(): string
     {
         return $this->start_date->format(config('attendize.default_datetime_format'));
     }
@@ -207,7 +194,7 @@ class Event extends MyBaseModel
      *
      * @param  string  $date  DateTime
      */
-    public function setEndDateAttribute($date)
+    public function setEndDateAttribute(string $date)
     {
         $format = config('attendize.default_datetime_format');
 
@@ -223,47 +210,39 @@ class Event extends MyBaseModel
      *
      * @return string Formatted date
      */
-    public function endDateFormatted()
+    public function endDateFormatted(): string
     {
         return $this->end_date->format(config('attendize.default_datetime_format'));
     }
 
     /**
      * Indicates whether the event is currently happening.
-     *
-     * @return bool
      */
-    public function getHappeningNowAttribute()
+    public function getHappeningNowAttribute(): bool
     {
         return Carbon::now()->between($this->start_date, $this->end_date);
     }
 
     /**
      * Get the currency symbol.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getCurrencySymbolAttribute()
+    public function getCurrencySymbolAttribute(): Collection
     {
         return $this->currency->symbol_left;
     }
 
     /**
      * Get the currency code.
-     *
-     * @return \Illuminate\Support\Collection
      */
-    public function getCurrencyCodeAttribute()
+    public function getCurrencyCodeAttribute(): Collection
     {
         return $this->currency->code;
     }
 
     /**
      * Return an array of attendees and answers they gave to questions at checkout
-     *
-     * @return array
      */
-    public function getSurveyAnswersAttribute()
+    public function getSurveyAnswersAttribute(): array
     {
         $rows[] = array_merge([
             'Order Ref',
@@ -298,20 +277,16 @@ class Event extends MyBaseModel
 
     /**
      * The attendees associated with the event.
-     *
-     * @return HasMany
      */
-    public function attendees()
+    public function attendees(): HasMany
     {
         return $this->hasMany(Attendee::class);
     }
 
     /**
      * Get the embed html code.
-     *
-     * @return string
      */
-    public function getEmbedHtmlCodeAttribute()
+    public function getEmbedHtmlCodeAttribute(): string
     {
         return "<!--Attendize.com Ticketing Embed Code-->
                 <iframe style='overflow:hidden; min-height: 350px;' frameBorder='0' seamless='seamless' width='100%' height='100%' src='".$this->embed_url."' vspace='0' hspace='0' scrolling='auto' allowtransparency='true'></iframe>
@@ -336,10 +311,8 @@ class Event extends MyBaseModel
 
     /**
      * Get the big image url.
-     *
-     * @return string
      */
-    public function getBgImageUrlAttribute()
+    public function getBgImageUrlAttribute(): string
     {
         return URL::to('/').'/'.$this->bg_image_path;
     }
@@ -359,7 +332,7 @@ class Event extends MyBaseModel
      *
      * @return array $dates
      */
-    public function getDates()
+    public function getDates(): array
     {
         return ['created_at', 'updated_at', 'start_date', 'end_date'];
     }
@@ -394,38 +367,27 @@ ICSTemplate;
 
     /**
      * Get the url of the event.
-     *
-     * @return string
      */
-    public function getEventUrlAttribute()
+    public function getEventUrlAttribute(): string
     {
         return route('showEventPage', ['event_id' => $this->id, 'event_slug' => Str::slug($this->title)]);
         //return URL::to('/') . '/e/' . $this->id . '/' . Str::slug($this->title);
     }
 
-    /**
-     * @param  int  $accessCodeId
-     * @return bool
-     */
-    public function hasAccessCode($accessCodeId)
+    public function hasAccessCode(int $accessCodeId): bool
     {
         return is_null($this->access_codes()->where('id', $accessCodeId)->first()) === false;
     }
 
     /**
      * The access codes associated with the event.
-     *
-     * @return HasMany
      */
-    public function access_codes()
+    public function access_codes(): HasMany
     {
         return $this->hasMany(EventAccessCodes::class, 'event_id', 'id');
     }
 
-    /**
-     * @return Money
-     */
-    public function getEventRevenueAmount()
+    public function getEventRevenueAmount(): Money
     {
         $currency = $this->getEventCurrency();
 
@@ -439,10 +401,7 @@ ICSTemplate;
         return new Money($eventRevenue, $currency);
     }
 
-    /**
-     * @return \Superbalist\Money\Currency
-     */
-    private function getEventCurrency()
+    private function getEventCurrency(): Currency
     {
         // Get the event currency
         $eventCurrency = $this->currency()->first();
@@ -460,20 +419,16 @@ ICSTemplate;
 
     /**
      * The currency associated with the event.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function currency()
+    public function currency(): BelongsTo
     {
         return $this->belongsTo(Currency::class);
     }
 
     /**
      * The stats associated with the event.
-     *
-     * @return HasMany
      */
-    public function stats()
+    public function stats(): HasMany
     {
         return $this->hasMany(EventStats::class);
     }

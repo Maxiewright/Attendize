@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Session;
 
 class UserLogoutController extends Controller
@@ -16,10 +17,8 @@ class UserLogoutController extends Controller
 
     /**
      * Log a user out and redirect them
-     *
-     * @return mixed
      */
-    public function doLogout()
+    public function doLogout(): RedirectResponse
     {
         $this->auth->logout();
         Session::flush();

@@ -2,7 +2,7 @@
 
 class UserTest extends TestCase
 {
-    public function test_edit_user_is_successful()
+    public function test_edit_user_is_successful(): void
     {
         $this->actingAs($this->test_user);
 
@@ -33,7 +33,7 @@ class UserTest extends TestCase
         $this->assertEquals($email, $user->email);
     }
 
-    public function test_edit_user_is_successful_when_changing_password()
+    public function test_edit_user_is_successful_when_changing_password(): void
     {
         $this->actingAs($this->test_user);
 
@@ -70,7 +70,7 @@ class UserTest extends TestCase
         $this->assertNotEquals($previousPassword, $user->password);
     }
 
-    public function test_edit_user_is_unsuccessful_because_of_invalid_email()
+    public function test_edit_user_is_unsuccessful_because_of_invalid_email(): void
     {
         $this->actingAs($this->test_user);
 
@@ -94,7 +94,7 @@ class UserTest extends TestCase
         ]);
     }
 
-    public function test_edit_user_is_unsuccessful_because_of_no_first_name()
+    public function test_edit_user_is_unsuccessful_because_of_no_first_name(): void
     {
         $this->actingAs($this->test_user);
 
@@ -117,7 +117,7 @@ class UserTest extends TestCase
         ]);
     }
 
-    public function test_edit_user_is_unsuccessful_because_of_no_last_name()
+    public function test_edit_user_is_unsuccessful_because_of_no_last_name(): void
     {
         $this->actingAs($this->test_user);
 

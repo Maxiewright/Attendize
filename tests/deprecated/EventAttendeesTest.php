@@ -2,7 +2,7 @@
 
 class EventAttendeesTest extends TestCase
 {
-    public function test_event_attendees_are_displayed()
+    public function test_event_attendees_are_displayed(): void
     {
         // Create organiser with account id = 1 to skip first run
         $organiser = \App\Models\Organiser::factory()->create([

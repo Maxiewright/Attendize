@@ -6,12 +6,8 @@ class ImageController extends Controller
 {
     /**
      * Generate a thumbnail for a given image
-     *
-     * @param  bool  $width
-     * @param  bool  $height
-     * @param  int  $quality
      */
-    public function generateThumbnail($image_src, $width = false, $height = false, $quality = 90)
+    public function generateThumbnail($image_src, bool $width = false, bool $height = false, int $quality = 90)
     {
         $img = Image::make('public/foo.jpg');
 

@@ -6,10 +6,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('attendees', function ($t) {
             $t->boolean('is_refunded')->default(0);
@@ -18,10 +16,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('attendees', function ($t) {
             $t->dropColumn('is_refunded');

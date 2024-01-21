@@ -8,6 +8,8 @@ use Carbon\Carbon;
 use DateInterval;
 use DatePeriod;
 use DateTime;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class EventDashboardController extends MyBaseController
 {
@@ -15,9 +17,8 @@ class EventDashboardController extends MyBaseController
      * Show the event dashboard
      *
      * @param  bool|false  $event_id
-     * @return \Illuminate\View\View
      */
-    public function showDashboard($event_id = false)
+    public function showDashboard($event_id = false): View
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -94,9 +95,8 @@ class EventDashboardController extends MyBaseController
      * Redirect to event dashboard
      *
      * @param  int|false  $event_id
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function redirectToDashboard($event_id = false)
+    public function redirectToDashboard($event_id = false): RedirectResponse
     {
         return redirect()->action(
             'EventDashboardController@showDashboard', ['event_id' => $event_id]

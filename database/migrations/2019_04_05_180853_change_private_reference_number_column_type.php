@@ -10,10 +10,8 @@ return new class extends Migration
      * Run the migrations.
      * Change Private Reference Number from INT to VARCHAR ColumnType
      * and increases the character count to 15
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('attendees', function (Blueprint $table) {
             $table->string('private_reference_number', 15)->change();
@@ -22,10 +20,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         // Schema::table('attendees', function ($table) {
         //     $table->integer('private_reference_number')->change();

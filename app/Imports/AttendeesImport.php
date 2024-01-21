@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderItem;
 use App\Models\Ticket;
 use Auth;
+use Illuminate\Database\Eloquent\Model;
 use Maatwebsite\Excel\Concerns\Importable;
 use Maatwebsite\Excel\Concerns\OnEachRow;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
@@ -26,11 +27,7 @@ class AttendeesImport implements OnEachRow, WithHeadingRow
         $this->emailAttendees = $emailAttendees;
     }
 
-    /**
-     * @param  array  $row
-     * @return \Illuminate\Database\Eloquent\Model|null
-     */
-    public function onRow(Row $row)
+    public function onRow(Row $row): ?Model
     {
         $rowArr = $row->toArray();
         $firstName = $rowArr['first_name'];

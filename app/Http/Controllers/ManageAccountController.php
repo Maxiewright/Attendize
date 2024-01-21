@@ -18,6 +18,7 @@ use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 use Services\PaymentGateway\Dummy;
 use Services\PaymentGateway\Stripe;
 use Services\PaymentGateway\StripeSCA;
@@ -27,10 +28,8 @@ class ManageAccountController extends MyBaseController
 {
     /**
      * Show the account modal
-     *
-     * @return mixed
      */
-    public function showEditAccount(Request $request)
+    public function showEditAccount(Request $request): View
     {
         $data = [
             'account' => Account::find(Auth::user()->account_id),
@@ -75,10 +74,8 @@ class ManageAccountController extends MyBaseController
 
     /**
      * Edit an account
-     *
-     * @return JsonResponse
      */
-    public function postEditAccount(Request $request)
+    public function postEditAccount(Request $request): JsonResponse
     {
         $account = Account::find(Auth::user()->account_id);
 
@@ -105,10 +102,8 @@ class ManageAccountController extends MyBaseController
 
     /**
      * Save account payment information
-     *
-     * @return mixed
      */
-    public function postEditAccountPayment(Request $request)
+    public function postEditAccountPayment(Request $request): JsonResponse
     {
         $account = Account::find(Auth::user()->account_id);
         $gateway_id = $request->get('payment_gateway');
@@ -157,10 +152,8 @@ class ManageAccountController extends MyBaseController
 
     /**
      * Invite a user to the application
-     *
-     * @return JsonResponse
      */
-    public function postInviteUser(Request $request)
+    public function postInviteUser(Request $request): JsonResponse
     {
         $rules = [
             'email' => ['required', 'email', 'unique:users,email,NULL,id,account_id,'.Auth::user()->account_id],

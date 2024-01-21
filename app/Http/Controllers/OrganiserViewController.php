@@ -5,19 +5,14 @@ namespace App\Http\Controllers;
 use App\Attendize\Utils;
 use App\Models\Organiser;
 use Auth;
-use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
 class OrganiserViewController extends Controller
 {
     /**
      * Show the public organiser page
-     *
-     * @param  string  $slug
-     * @param  bool  $preview
-     * @return View
      */
-    public function showOrganiserHome(Request $request, $organiser_id, $slug = '', $preview = false)
+    public function showOrganiserHome(Request $request, $organiser_id, string $slug = '', bool $preview = false): \Illuminate\View\View
     {
         /** @var Organiser $organiser */
         $organiser = Organiser::findOrFail($organiser_id);

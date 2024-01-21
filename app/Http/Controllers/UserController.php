@@ -5,17 +5,17 @@ namespace App\Http\Controllers;
 use App\Rules\Passcheck;
 use Auth;
 use Hash;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Validator;
 
 class UserController extends Controller
 {
     /**
      * Show the edit user modal
-     *
-     * @return \Illuminate\Contracts\View\View
      */
-    public function showEditUser()
+    public function showEditUser(): View
     {
         $data = [
             'user' => Auth::user(),
@@ -26,10 +26,8 @@ class UserController extends Controller
 
     /**
      * Updates the current user
-     *
-     * @return mixed
      */
-    public function postEditUser(Request $request)
+    public function postEditUser(Request $request): JsonResponse
     {
         $rules = [
             'email' => [

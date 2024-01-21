@@ -6,7 +6,10 @@ use App\Models\Event;
 use App\Models\EventImage;
 use App\Models\Organiser;
 use Auth;
+use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Image;
 use Log;
 use Validator;
@@ -15,10 +18,8 @@ class EventController extends MyBaseController
 {
     /**
      * Show the 'Create Event' Modal
-     *
-     * @return \Illuminate\View\View
      */
-    public function showCreateEvent(Request $request)
+    public function showCreateEvent(Request $request): View
     {
         $data = [
             'modal_id' => $request->get('modal_id'),
@@ -31,10 +32,8 @@ class EventController extends MyBaseController
 
     /**
      * Create an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postCreateEvent(Request $request)
+    public function postCreateEvent(Request $request): JsonResponse
     {
         $event = Event::createNew();
 
@@ -198,10 +197,8 @@ class EventController extends MyBaseController
 
     /**
      * Edit an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEvent(Request $request, $event_id)
+    public function postEditEvent(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -304,10 +301,8 @@ class EventController extends MyBaseController
 
     /**
      * Upload event image
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postUploadEventImage(Request $request)
+    public function postUploadEventImage(Request $request): JsonResponse
     {
         if ($request->hasFile('event_image')) {
             $the_file = \File::get($request->file('event_image')->getRealPath());
@@ -340,9 +335,8 @@ class EventController extends MyBaseController
      * Puplish event and redirect
      *
      * @param  int|false  $event_id
-     * @return \Illuminate\Http\RedirectResponse
      */
-    public function postMakeEventLive($event_id = false)
+    public function postMakeEventLive($event_id = false): RedirectResponse
     {
         $event = Event::scope()->findOrFail($event_id);
         $event->is_live = 1;

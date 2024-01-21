@@ -6,10 +6,8 @@ class UserSignUpTest extends TestCase
 {
     /**
      * Test sign up page is successful
-     *
-     * @return void
      */
-    public function test_signup_is_successful()
+    public function test_signup_is_successful(): void
     {
         $this->visit(route('showSignup'))
             ->type($this->faker->firstName(), 'first_name')
@@ -31,10 +29,8 @@ class UserSignUpTest extends TestCase
 
     /**
      * Test sign up page is unsuccessful
-     *
-     * @return void
      */
-    public function test_signup_is_unsuccessful_because_of_no_values()
+    public function test_signup_is_unsuccessful_because_of_no_values(): void
     {
         $this->visit(route('showSignup'))
             ->press('Sign Up')
@@ -43,10 +39,8 @@ class UserSignUpTest extends TestCase
 
     /**
      * Test sign up page is unsuccessful
-     *
-     * @return void
      */
-    public function test_signup_is_unsuccessful_because_of_invalid_email()
+    public function test_signup_is_unsuccessful_because_of_invalid_email(): void
     {
         $this->visit(route('showSignup'))
             ->type($this->faker->firstName(), 'first_name')
@@ -60,10 +54,8 @@ class UserSignUpTest extends TestCase
 
     /**
      * Test sign up page is unsuccessful
-     *
-     * @return void
      */
-    public function test_signup_is_unsuccessful_because_of_unmatched_password()
+    public function test_signup_is_unsuccessful_because_of_unmatched_password(): void
     {
         $this->visit(route('showSignup'))
             ->type($this->faker->firstName(), 'first_name')

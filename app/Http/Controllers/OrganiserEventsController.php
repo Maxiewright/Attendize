@@ -5,15 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use App\Models\Organiser;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class OrganiserEventsController extends MyBaseController
 {
     /**
      * Show the organiser events page
-     *
-     * @return mixed
      */
-    public function showEvents(Request $request, $organiser_id)
+    public function showEvents(Request $request, $organiser_id): View
     {
         $organiser = Organiser::scope()->findOrfail($organiser_id);
 

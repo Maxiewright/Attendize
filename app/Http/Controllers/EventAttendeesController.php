@@ -21,21 +21,22 @@ use App\Services\Order as OrderService;
 use Auth;
 use DB;
 use Exception;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 use Log;
 use Mail;
 use PDF;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Validator;
 
 class EventAttendeesController extends MyBaseController
 {
     /**
      * Show the attendees list
-     *
-     * @return View
      */
-    public function showAttendees(Request $request, $event_id)
+    public function showAttendees(Request $request, $event_id): View
     {
         $allowed_sorts = ['first_name', 'email', 'ticket_id', 'order_reference'];
 
@@ -103,10 +104,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Invite an attendee
-     *
-     * @return mixed
      */
-    public function postInviteAttendee(Request $request, $event_id)
+    public function postInviteAttendee(Request $request, $event_id): JsonResponse
     {
         $rules = [
             'first_name' => 'required',
@@ -254,10 +253,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Import attendees
-     *
-     * @return mixed
      */
-    public function postImportAttendee(Request $request, $event_id)
+    public function postImportAttendee(Request $request, $event_id): JsonResponse
     {
         $rules = [
             'ticket_id' => 'required|exists:tickets,id,account_id,'.\Auth::user()->account_id,
@@ -296,10 +293,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the printable attendee list
-     *
-     * @return View
      */
-    public function showPrintAttendees($event_id)
+    public function showPrintAttendees($event_id): View
     {
         $data['event'] = Event::scope()->find($event_id);
         $data['attendees'] = $data['event']->attendees()->withoutCancelled()->orderBy('first_name')->get();
@@ -309,10 +304,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the 'Message Attendee' modal
-     *
-     * @return View
      */
-    public function showMessageAttendee(Request $request, $attendee_id)
+    public function showMessageAttendee(Request $request, $attendee_id): View
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
 
@@ -326,10 +319,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Send a message to an attendee
-     *
-     * @return mixed
      */
-    public function postMessageAttendee(Request $request, $attendee_id)
+    public function postMessageAttendee(Request $request, $attendee_id): JsonResponse
     {
         $rules = [
             'subject' => 'required',
@@ -364,10 +355,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Shows the 'Message Attendees' modal
-     *
-     * @return View
      */
-    public function showMessageAttendees(Request $request, $event_id)
+    public function showMessageAttendees(Request $request, $event_id): View
     {
         $data = [
             'event' => Event::scope()->find($event_id),
@@ -379,10 +368,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Send a message to attendees
-     *
-     * @return mixed
      */
-    public function postMessageAttendees(Request $request, $event_id)
+    public function postMessageAttendees(Request $request, $event_id): JsonResponse
     {
         $rules = [
             'subject' => 'required',
@@ -417,10 +404,7 @@ class EventAttendeesController extends MyBaseController
         ]);
     }
 
-    /**
-     * @return \Symfony\Component\HttpFoundation\BinaryFileResponse
-     */
-    public function showExportTicket($event_id, $attendee_id)
+    public function showExportTicket($event_id, $attendee_id): BinaryFileResponse
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
         $attendee_reference = $attendee->getReferenceAttribute();
@@ -434,7 +418,7 @@ class EventAttendeesController extends MyBaseController
 
         $pdf_file = public_path(config('attendize.event_pdf_tickets_path')).'/'.$attendee_reference.'.pdf';
 
-        $this->dispatchNow(new GenerateTicketJob($attendee));
+        $this->dispatchSync(new GenerateTicketJob($attendee));
 
         return response()->download($pdf_file);
     }
@@ -444,7 +428,7 @@ class EventAttendeesController extends MyBaseController
      *
      * @param  string  $export_as (xlsx, xls, csv, html)
      */
-    public function showExportAttendees($event_id, $export_as = 'xls')
+    public function showExportAttendees($event_id, string $export_as = 'xls')
     {
         $event = Event::scope()->findOrFail($event_id);
         $date = date('d-m-Y-g.i.a');
@@ -454,10 +438,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the 'Edit Attendee' modal
-     *
-     * @return View
      */
-    public function showEditAttendee(Request $request, $event_id, $attendee_id)
+    public function showEditAttendee(Request $request, $event_id, $attendee_id): View
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
 
@@ -472,10 +454,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Updates an attendee
-     *
-     * @return mixed
      */
-    public function postEditAttendee(Request $request, $event_id, $attendee_id)
+    public function postEditAttendee(Request $request, $event_id, $attendee_id): JsonResponse
     {
         $rules = [
             'first_name' => 'required',
@@ -511,10 +491,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Shows the 'Cancel Attendee' modal
-     *
-     * @return View
      */
-    public function showCancelAttendee(Request $request, $event_id, $attendee_id)
+    public function showCancelAttendee(Request $request, $event_id, $attendee_id): View
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
 
@@ -529,10 +507,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Cancels an attendee
-     *
-     * @return mixed
      */
-    public function postCancelAttendee(Request $request, $event_id, $attendee_id)
+    public function postCancelAttendee(Request $request, $event_id, $attendee_id): JsonResponse
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
         if ($attendee->is_cancelled) {
@@ -600,10 +576,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Show the 'Message Attendee' modal
-     *
-     * @return View
      */
-    public function showResendTicketToAttendee(Request $request, $attendee_id)
+    public function showResendTicketToAttendee(Request $request, $attendee_id): View
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
 
@@ -617,10 +591,8 @@ class EventAttendeesController extends MyBaseController
 
     /**
      * Send a message to an attendee
-     *
-     * @return mixed
      */
-    public function postResendTicketToAttendee(Request $request, $attendee_id)
+    public function postResendTicketToAttendee(Request $request, $attendee_id): JsonResponse
     {
         $attendee = Attendee::scope()->findOrFail($attendee_id);
 

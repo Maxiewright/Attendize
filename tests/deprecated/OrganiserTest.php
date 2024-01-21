@@ -7,7 +7,7 @@ class OrganiserTest extends TestCase
     /**
      * @group passing
      */
-    public function test_create_organiser_is_successful_when_charge_tax_is_no()
+    public function test_create_organiser_is_successful_when_charge_tax_is_no(): void
     {
 
         $email = $this->faker->email();
@@ -31,7 +31,7 @@ class OrganiserTest extends TestCase
     /**
      * @group passing
      */
-    public function test_create_organiser_is_successful_when_charge_tax_is_yes()
+    public function test_create_organiser_is_successful_when_charge_tax_is_yes(): void
     {
         $email = $this->faker->email();
 
@@ -57,7 +57,7 @@ class OrganiserTest extends TestCase
     /**
      * @group passing
      */
-    public function test_create_organiser_fails_when_organiser_details_missing()
+    public function test_create_organiser_fails_when_organiser_details_missing(): void
     {
         $this->actingAs($this->test_user)
             ->visit(route('showCreateOrganiser'))

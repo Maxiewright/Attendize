@@ -8,10 +8,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('organisers', function (Blueprint $table) {
             $table->string('google_tag_manager_code', 20)->after('google_analytics_code')
@@ -21,10 +19,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('organisers', function (Blueprint $table) {
             $table->dropColumn('google_tag_manager_code');

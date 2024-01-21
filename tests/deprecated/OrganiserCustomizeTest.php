@@ -5,7 +5,7 @@ class OrganiserCustomizeTest extends TestCase
     /**
      * @group passing
      */
-    public function test_customize_organiser_is_successful()
+    public function test_customize_organiser_is_successful(): void
     {
         $organiser = \App\Models\Organiser::factory()->create();
 

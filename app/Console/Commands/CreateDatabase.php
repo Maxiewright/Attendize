@@ -23,10 +23,8 @@ class CreateDatabase extends Command
 
     /**
      * Execute the console command.
-     *
-     * @return mixed
      */
-    public function handle()
+    public function handle(): void
     {
         DB::statement('CREATE DATABASE IF NOT EXISTS '.$this->argument('db_name').';');
     }

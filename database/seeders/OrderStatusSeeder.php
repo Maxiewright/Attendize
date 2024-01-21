@@ -9,10 +9,8 @@ class OrderStatusSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         $order_statuses = [
             [

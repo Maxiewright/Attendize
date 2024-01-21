@@ -43,10 +43,8 @@ class SendMessageToAttendeeJob implements ShouldQueue
 
     /**
      * Execute the job.
-     *
-     * @return void
      */
-    public function handle()
+    public function handle(): void
     {
         $mail = new SendMessageToAttendeeMail(
             $this->subject,

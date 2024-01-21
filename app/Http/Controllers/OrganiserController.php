@@ -3,27 +3,25 @@
 namespace App\Http\Controllers;
 
 use App\Models\Organiser;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\View\View;
 
 class OrganiserController extends MyBaseController
 {
     /**
      * Show the select organiser page
-     *
-     * @return \Illuminate\Contracts\View\View
      */
-    public function showSelectOrganiser()
+    public function showSelectOrganiser(): View
     {
         return view('ManageOrganiser.SelectOrganiser');
     }
 
     /**
      * Show the create organiser page
-     *
-     * @return \Illuminate\Contracts\View\View
      */
-    public function showCreateOrganiser()
+    public function showCreateOrganiser(): View
     {
         return view('ManageOrganiser.CreateOrganiser');
     }
@@ -32,11 +30,10 @@ class OrganiserController extends MyBaseController
      * Create the organiser
      *
      *
-     * @return \Illuminate\Http\JsonResponse
      *
      * @throws \Symfony\Component\HttpFoundation\File\Exception\FileException
      */
-    public function postCreateOrganiser(Request $request)
+    public function postCreateOrganiser(Request $request): JsonResponse
     {
         $organiser = Organiser::createNew(false, false, true);
 

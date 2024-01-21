@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 use PDF;
+use Superbalist\Money\Currency;
 use Superbalist\Money\Money;
 
 class Order extends MyBaseModel
@@ -62,50 +63,40 @@ class Order extends MyBaseModel
 
     /**
      * The items associated with the order.
-     *
-     * @return HasMany
      */
-    public function orderItems()
+    public function orderItems(): HasMany
     {
         return $this->hasMany(OrderItem::class);
     }
 
     /**
      * The attendees associated with the order.
-     *
-     * @return HasMany
      */
-    public function attendees()
+    public function attendees(): HasMany
     {
         return $this->hasMany(Attendee::class);
     }
 
     /**
      * The account associated with the order.
-     *
-     * @return BelongsTo
      */
-    public function account()
+    public function account(): BelongsTo
     {
         return $this->belongsTo(Account::class);
     }
 
     /**
      * The event associated with the order.
-     *
-     * @return BelongsTo
      */
-    public function event()
+    public function event(): BelongsTo
     {
         return $this->belongsTo(Event::class);
     }
 
     /**
      * The tickets associated with the order.
-     *
-     * @return BelongsToMany
      */
-    public function tickets()
+    public function tickets(): BelongsToMany
     {
         return $this->belongsToMany(
             Ticket::class,
@@ -115,20 +106,15 @@ class Order extends MyBaseModel
         );
     }
 
-    /**
-     * @return BelongsTo
-     */
-    public function payment_gateway()
+    public function payment_gateway(): BelongsTo
     {
         return $this->belongsTo(PaymentGateway::class);
     }
 
     /**
      * The status associated with the order.
-     *
-     * @return BelongsTo
      */
-    public function orderStatus()
+    public function orderStatus(): BelongsTo
     {
         return $this->belongsTo(OrderStatus::class);
     }
@@ -155,10 +141,8 @@ class Order extends MyBaseModel
 
     /**
      * Get the full name of the order.
-     *
-     * @return string
      */
-    public function getFullNameAttribute()
+    public function getFullNameAttribute(): string
     {
         return $this->first_name.' '.$this->last_name;
     }
@@ -167,10 +151,8 @@ class Order extends MyBaseModel
      * Generate and save the PDF tickets.
      *
      * @todo Move this from the order model
-     *
-     * @return bool
      */
-    public function generatePdfTickets()
+    public function generatePdfTickets(): bool
     {
         $data = [
             'order' => $this,
@@ -219,10 +201,7 @@ class Order extends MyBaseModel
         });
     }
 
-    /**
-     * @return Money
-     */
-    public function getOrderAmount()
+    public function getOrderAmount(): Money
     {
         // We need to show if an order has been refunded
         if ($this->is_refunded) {
@@ -235,10 +214,7 @@ class Order extends MyBaseModel
         return $orderValue->add($bookingFee);
     }
 
-    /**
-     * @return Money
-     */
-    public function getOrderTaxAmount()
+    public function getOrderTaxAmount(): Money
     {
         $currency = $this->getEventCurrency();
         $taxAmount = (new Money($this->taxamt, $currency));
@@ -246,10 +222,7 @@ class Order extends MyBaseModel
         return $taxAmount;
     }
 
-    /**
-     * @return Money
-     */
-    public function getMaxAmountRefundable()
+    public function getMaxAmountRefundable(): Money
     {
         $currency = $this->getEventCurrency();
         $organiserAmount = new Money($this->organiser_amount, $currency);
@@ -258,10 +231,7 @@ class Order extends MyBaseModel
         return $organiserAmount->subtract($refundedAmount);
     }
 
-    /**
-     * @return Money
-     */
-    public function getRefundedAmountExcludingTax()
+    public function getRefundedAmountExcludingTax(): Money
     {
         // Setup the currency on the event for transformation
         $currency = $this->getEventCurrency();
@@ -271,26 +241,17 @@ class Order extends MyBaseModel
         return $amountRefunded->subtract($taxAmount);
     }
 
-    /**
-     * @return Money
-     */
-    public function getRefundedAmountIncludingTax()
+    public function getRefundedAmountIncludingTax(): Money
     {
         return new Money($this->amount_refunded, $this->getEventCurrency());
     }
 
-    /**
-     * @return Money
-     */
-    public function getPartiallyRefundedAmount()
+    public function getPartiallyRefundedAmount(): Money
     {
         return new Money($this->amount_refunded, $this->getEventCurrency());
     }
 
-    /**
-     * @return \Superbalist\Money\Currency
-     */
-    public function getEventCurrency()
+    public function getEventCurrency(): Currency
     {
         // Get the event currency
         $eventCurrency = $this->event()->first()->currency()->first();
@@ -304,10 +265,7 @@ class Order extends MyBaseModel
         );
     }
 
-    /**
-     * @return bool
-     */
-    public function canRefund()
+    public function canRefund(): bool
     {
         // Guard against orders that does not contain a payment gateway, ex: Free tickets
         if (is_null($this->payment_gateway)) {
@@ -317,10 +275,7 @@ class Order extends MyBaseModel
         return $this->payment_gateway->can_refund;
     }
 
-    /**
-     * @return Collection
-     */
-    public function getAllNonCancelledAttendees()
+    public function getAllNonCancelledAttendees(): Collection
     {
         return $this->attendees()->where('is_cancelled', false)->get();
     }

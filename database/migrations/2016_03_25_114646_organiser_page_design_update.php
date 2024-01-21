@@ -7,10 +7,8 @@ return new class extends Migration
 {
     /**
      * Run the migrations.
-     *
-     * @return void
      */
-    public function up()
+    public function up(): void
     {
         Schema::table('organisers', function (Blueprint $table) {
             $table->boolean('show_twitter_widget')->default(false);
@@ -24,10 +22,8 @@ return new class extends Migration
 
     /**
      * Reverse the migrations.
-     *
-     * @return void
      */
-    public function down()
+    public function down(): void
     {
         Schema::table('organisers', function (Blueprint $table) {
             $table->dropColumn('show_twitter_widget');

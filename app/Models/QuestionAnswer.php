@@ -2,6 +2,9 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+
 class QuestionAnswer extends MyBaseModel
 {
     protected $fillable = [
@@ -14,26 +17,17 @@ class QuestionAnswer extends MyBaseModel
         'questionable_type',
     ];
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
-     */
-    public function event()
+    public function event(): BelongsToMany
     {
         return $this->belongsToMany(\App\Models\Event::class);
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function question()
+    public function question(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Question::class)->withTrashed();
     }
 
-    /**
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-     */
-    public function attendee()
+    public function attendee(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Attendee::class);
     }

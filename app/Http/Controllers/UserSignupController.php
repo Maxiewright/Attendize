@@ -9,8 +9,10 @@ use App\Models\PaymentGateway;
 use App\Models\User;
 use Hash;
 use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Lang;
+use Illuminate\View\View;
 use Mail;
 use Redirect;
 use Services\Captcha\Factory;
@@ -21,7 +23,7 @@ class UserSignupController extends Controller
 
     protected $captchaService;
 
-    public function __construct(Guard $auth)
+    public function __construct(Guard $auth): RedirectResponse
     {
         if (Account::count() > 0 && ! Utils::isAttendize()) {
             return redirect()->route('login')->send();
@@ -37,7 +39,7 @@ class UserSignupController extends Controller
         $this->middleware('guest');
     }
 
-    public function showSignup()
+    public function showSignup(): View
     {
         $is_attendize = Utils::isAttendize();
 
@@ -46,11 +48,8 @@ class UserSignupController extends Controller
 
     /**
      * Creates an account.
-     *
-     *
-     * @return Redirect
      */
-    public function postSignup(Request $request)
+    public function postSignup(Request $request): RedirectResponse
     {
         $is_attendize = Utils::isAttendizeCloud();
         $this->validate($request, [

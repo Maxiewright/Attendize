@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Currency;
 use App\Models\Event;
 use File;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Image;
 use Validator;
 
@@ -14,11 +16,9 @@ class EventCustomizeController extends MyBaseController
     /**
      * Returns data which is required in each view, optionally combined with additional data.
      *
-     * @param  int  $event_id
-     * @param  array  $additional_data
      * @return array
      */
-    public function getEventViewData($event_id, $additional_data = [])
+    public function getEventViewData(int $event_id, array $additional_data = [])
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -36,12 +36,8 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Show the event customize page
-     *
-     * @param  string  $event_id
-     * @param  string  $tab
-     * @return \Illuminate\View\View
      */
-    public function showCustomize($event_id = '', $tab = '')
+    public function showCustomize(string $event_id = '', string $tab = ''): View
     {
         $data = $this->getEventViewData($event_id, [
             'currencies' => Currency::pluck('title', 'id'),
@@ -91,10 +87,8 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit social settings of an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventSocial(Request $request, $event_id)
+    public function postEditEventSocial(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -136,10 +130,8 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Update ticket details
-     *
-     * @return mixed
      */
-    public function postEditEventTicketDesign(Request $request, $event_id)
+    public function postEditEventTicketDesign(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -179,10 +171,8 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit fees of an event
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventFees(Request $request, $event_id)
+    public function postEditEventFees(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -217,10 +207,8 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit the event order page settings
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventOrderPage(Request $request, $event_id)
+    public function postEditEventOrderPage(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 
@@ -251,10 +239,8 @@ class EventCustomizeController extends MyBaseController
 
     /**
      * Edit event page design/colors etc.
-     *
-     * @return \Illuminate\Http\JsonResponse
      */
-    public function postEditEventDesign(Request $request, $event_id)
+    public function postEditEventDesign(Request $request, $event_id): JsonResponse
     {
         $event = Event::scope()->findOrFail($event_id);
 

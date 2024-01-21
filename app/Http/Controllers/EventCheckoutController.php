@@ -19,7 +19,9 @@ use App\Services\Order as OrderService;
 use Carbon\Carbon;
 use Cookie;
 use DB;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 use Log;
 use Omnipay;
 use PDF;
@@ -52,7 +54,7 @@ class EventCheckoutController extends Controller
      *
      * @return \Illuminate\Http\JsonResponse|\Illuminate\Http\RedirectResponse
      */
-    public function postValidateTickets(Request $request, $event_id)
+    public function postValidateTickets(Request $request, $event_id): JsonResponse
     {
         /*
          * Order expires after X min
@@ -268,7 +270,7 @@ class EventCheckoutController extends Controller
 
     }
 
-    public function postValidateOrder(Request $request, $event_id)
+    public function postValidateOrder(Request $request, $event_id): JsonResponse
     {
         //If there's no session kill the request and redirect back to the event homepage.
         if (! session()->get('ticket_order_'.$event_id)) {
@@ -337,7 +339,7 @@ class EventCheckoutController extends Controller
 
     }
 
-    public function showEventPayment(Request $request, $event_id)
+    public function showEventPayment(Request $request, $event_id): View
     {
         $order_session = session()->get('ticket_order_'.$event_id);
         $event = Event::findOrFail($event_id);
@@ -739,10 +741,8 @@ class EventCheckoutController extends Controller
 
     /**
      * Show the order details page
-     *
-     * @return \Illuminate\View\View
      */
-    public function showOrderDetails(Request $request, $order_reference)
+    public function showOrderDetails(Request $request, $order_reference): View
     {
         $order = Order::where('order_reference', '=', $order_reference)->first();
 
@@ -770,10 +770,8 @@ class EventCheckoutController extends Controller
 
     /**
      * Shows the tickets for an order - either HTML or PDF
-     *
-     * @return \Illuminate\View\View
      */
-    public function showOrderTickets(Request $request, $order_reference)
+    public function showOrderTickets(Request $request, $order_reference): View
     {
         $order = Order::where('order_reference', '=', $order_reference)->first();
 

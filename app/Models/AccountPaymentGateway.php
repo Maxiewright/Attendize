@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class AccountPaymentGateway extends MyBaseModel
@@ -23,20 +24,16 @@ class AccountPaymentGateway extends MyBaseModel
 
     /**
      * Account associated with gateway
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function account()
+    public function account(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Account::class);
     }
 
     /**
      * Parent payment gateway
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function payment_gateway()
+    public function payment_gateway(): BelongsTo
     {
         return $this->belongsTo(\App\Models\PaymentGateway::class, 'payment_gateway_id', 'id');
     }

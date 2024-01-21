@@ -9,10 +9,8 @@ class CountriesSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     *
-     * @return void
      */
-    public function run()
+    public function run(): void
     {
         //Empty the countries table
         DB::table('countries')->delete();

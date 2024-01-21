@@ -5,6 +5,9 @@ namespace App\Models;
 use Illuminate\Auth\Authenticatable;
 use Illuminate\Contracts\Auth\Authenticatable as AuthenticatableContract;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 use Illuminate\Http\UploadedFile;
 use Image;
 use Str;
@@ -56,40 +59,32 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
 
     /**
      * The account associated with the organiser
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function account()
+    public function account(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Account::class);
     }
 
     /**
      * The events associated with the organizer.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function events()
+    public function events(): HasMany
     {
         return $this->hasMany(\App\Models\Event::class);
     }
 
     /**
      * The attendees associated with the organizer.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function attendees()
+    public function attendees(): HasManyThrough
     {
         return $this->hasManyThrough(\App\Models\Attendee::class, \App\Models\Event::class);
     }
 
     /**
      * Get the orders related to an organiser
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\HasManyThrough
      */
-    public function orders()
+    public function orders(): HasManyThrough
     {
         return $this->hasManyThrough(\App\Models\Order::class, \App\Models\Event::class);
     }
@@ -110,10 +105,8 @@ class Organiser extends MyBaseModel implements AuthenticatableContract
 
     /**
      * Get the url of the organizer.
-     *
-     * @return string
      */
-    public function getOrganiserUrlAttribute()
+    public function getOrganiserUrlAttribute(): string
     {
         return route('showOrganiserHome', [
             'organiser_id' => $this->id,

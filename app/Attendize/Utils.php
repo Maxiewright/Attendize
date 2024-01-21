@@ -9,30 +9,24 @@ class Utils
 {
     /**
      * Check if the current user is registered
-     *
-     * @return bool
      */
-    public static function isRegistered()
+    public static function isRegistered(): bool
     {
         return Auth::check() && Auth::user()->is_registered;
     }
 
     /**
      * Check if the current user is confirmed
-     *
-     * @return bool
      */
-    public static function isConfirmed()
+    public static function isConfirmed(): bool
     {
         return Auth::check() && Auth::user()->is_confirmed;
     }
 
     /**
      * Check if the DB has been set up
-     *
-     * @return bool
      */
-    public static function isDatabaseSetup()
+    public static function isDatabaseSetup(): bool
     {
         try {
             if (Schema::hasTable('accounts')) {
@@ -45,30 +39,24 @@ class Utils
 
     /**
      * Are we the cloud version of attendize or in dev enviornment?
-     *
-     * @return bool
      */
-    public static function isAttendize()
+    public static function isAttendize(): bool
     {
         return self::isAttendizeCloud() || self::isAttendizeDev();
     }
 
     /**
      * Are we the cloud version of Attendize?
-     *
-     * @return bool
      */
-    public static function isAttendizeCloud()
+    public static function isAttendizeCloud(): bool
     {
         return isset($_ENV['ATTENDIZE_CLOUD']) && $_ENV['ATTENDIZE_CLOUD'] == 'true';
     }
 
     /**
      * Are we in a dev enviornment?
-     *
-     * @return bool
      */
-    public static function isAttendizeDev()
+    public static function isAttendizeDev(): bool
     {
         return isset($_ENV['ATTENDIZE_DEV']) && $_ENV['ATTENDIZE_DEV'] == 'true';
     }
@@ -82,10 +70,8 @@ class Utils
      * Check if a user has admin access to events etc.
      *
      * @todo - This is a temp fix until user roles etc. are implemented
-     *
-     * @return bool
      */
-    public static function userOwns($object)
+    public static function userOwns($object): bool
     {
         if (! Auth::check()) {
             return false;
@@ -130,10 +116,8 @@ class Utils
 
     /**
      * Parses the given size
-     *
-     * @return float
      */
-    public static function parse_size($size)
+    public static function parse_size($size): float
     {
         $unit = preg_replace('/[^bkmgtpezy]/i', '', $size); // Remove the non-unit characters from the size.
         $size = preg_replace('/[^0-9\.]/', '', $size); // Remove the non-numeric characters from the size.

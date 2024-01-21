@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 /*
   Attendize.com   - Event Management & Ticketing
@@ -40,10 +41,8 @@ class Currency extends \Illuminate\Database\Eloquent\Model
 
     /**
      * The event associated with the currency.
-     *
-     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
-    public function event()
+    public function event(): BelongsTo
     {
         return $this->belongsTo(\App\Models\Event::class);
     }
