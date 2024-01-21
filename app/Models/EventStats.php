@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Cookie;
 use DB;
 
 class EventStats extends \Illuminate\Database\Eloquent\Model
 {
+    use HasFactory;
+
     /**
      * Indicates if the model should be timestamped.
      *

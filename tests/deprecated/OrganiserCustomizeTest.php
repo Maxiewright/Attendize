@@ -7,7 +7,7 @@ class OrganiserCustomizeTest extends TestCase
      */
     public function test_customize_organiser_is_successful()
     {
-        $organiser = factory(App\Models\Organiser::class)->create();
+        $organiser = \App\Models\Organiser::factory()->create();
 
         $this->actingAs($organiser)
             ->visit(route('showOrganiserCustomize', ['organiser_id' => $organiser->id]))

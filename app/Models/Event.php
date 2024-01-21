@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -15,6 +16,8 @@ use URL;
  */
 class Event extends MyBaseModel
 {
+    use HasFactory;
+
     use SoftDeletes;
 
     protected $dates = ['start_date', 'end_date', 'on_sale_date'];

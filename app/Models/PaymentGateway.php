@@ -2,11 +2,15 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 /**
  * Class PaymentGateway
  */
 class PaymentGateway extends MyBaseModel
 {
+    use HasFactory;
+
     public $timestamps = false;
 
     /**
