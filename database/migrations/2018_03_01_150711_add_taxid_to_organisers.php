@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class AddTaxidToOrganisers extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -27,4 +27,4 @@ class AddTaxidToOrganisers extends Migration
             $table->dropColumn('taxid');
         });
     }
-}
+};

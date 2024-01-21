@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Schema;
 
-class AddDefaultGateways extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -106,4 +106,4 @@ class AddDefaultGateways extends Migration
     {
         //
     }
-}
+};

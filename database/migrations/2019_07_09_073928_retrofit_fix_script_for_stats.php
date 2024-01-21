@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Database\Migrations\Migration;
 use Superbalist\Money\Money;
 
-class RetrofitFixScriptForStats extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -267,4 +267,4 @@ class RetrofitFixScriptForStats extends Migration
         // Nothing to do here. This can run multiple times and will only attempt to fix the stats across events,
         // tickets and orders in the database.
     }
-}
+};

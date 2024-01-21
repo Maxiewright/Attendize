@@ -14,7 +14,7 @@ class OrderItemFactory extends Factory
     public function definition()
     {
         return [
-            'title' => $this->faker->title,
+            'title' => $this->faker->title(),
             'quantity' => 5,
             'unit_price' => 20.00,
             'unit_booking_fee' => 2.00,

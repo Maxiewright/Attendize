@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use Eloquent;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -15,12 +16,14 @@ class DatabaseSeeder extends Seeder
     {
         Eloquent::unguard();
 
-        $this->call('CountriesSeeder');
-        $this->call('CurrencySeeder');
-        $this->call('OrderStatusSeeder');
-        $this->call('PaymentGatewaySeeder');
-        $this->call('QuestionTypesSeeder');
-        $this->call('TicketStatusSeeder');
-        $this->call('TimezoneSeeder');
+        $this->call([
+            CountriesSeeder::class,
+            CurrencySeeder::class,
+            OrderStatusSeeder::class,
+            PaymentGatewaySeeder::class,
+            QuestionTypesSeeder::class,
+            TicketStatusSeeder::class,
+            TimezoneSeeder::class,
+        ]);
     }
 }

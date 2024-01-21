@@ -18,7 +18,7 @@ class CountriesSeeder extends Seeder
         DB::table('countries')->delete();
 
         //Get all of the countries
-        $countries = json_decode(file_get_contents(database_path().'/seeds/countries.json'), true);
+        $countries = json_decode(file_get_contents(database_path().'/seeders/countries.json'), true);
         foreach ($countries as $countryId => $country) {
             DB::table('countries')->insert([
                 'id' => $countryId,

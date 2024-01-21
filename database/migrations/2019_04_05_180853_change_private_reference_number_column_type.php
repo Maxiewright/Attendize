@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class ChangePrivateReferenceNumberColumnType extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -31,4 +31,4 @@ class ChangePrivateReferenceNumberColumnType extends Migration
         //     $table->integer('private_reference_number')->change();
         // });
     }
-}
+};

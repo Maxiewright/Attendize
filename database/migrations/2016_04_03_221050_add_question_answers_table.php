@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class AddQuestionAnswersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -43,4 +43,4 @@ class AddQuestionAnswersTable extends Migration
         Schema::drop('question_answers');
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
-}
+};

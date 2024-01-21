@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class DisableRefundsOnStripeSca extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -25,4 +25,4 @@ class DisableRefundsOnStripeSca extends Migration
     {
         //
     }
-}
+};

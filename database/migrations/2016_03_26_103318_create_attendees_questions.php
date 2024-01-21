@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateAttendeesQuestions extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -103,4 +103,4 @@ class CreateAttendeesQuestions extends Migration
 
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
     }
-}
+};

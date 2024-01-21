@@ -12,13 +12,13 @@ class EventTest extends TestCase
 
         $post = [
             'organiser_id' => $organiser->id,
-            'title' => $this->faker->text,
-            'description' => $this->faker->paragraph,
-            'location_venue_name' => $this->faker->company,
-            'location_address_line_1' => $this->faker->streetAddress,
+            'title' => $this->faker->text(),
+            'description' => $this->faker->paragraph(),
+            'location_venue_name' => $this->faker->company(),
+            'location_address_line_1' => $this->faker->streetAddress(),
             'location_address_line_2' => '',
-            'location_state' => $this->faker->city,
-            'location_post_code' => $this->faker->postcode,
+            'location_state' => $this->faker->city(),
+            'location_post_code' => $this->faker->postcode(),
             'start_date' => date('d-m-Y H:i', strtotime('+ 30 days')),
             'end_date' => date('d-m-Y H:i', strtotime('+ 60 days')),
         ];
@@ -61,8 +61,8 @@ class EventTest extends TestCase
 
         $this->actingAs($this->test_user)
             ->visit(route('showEventCustomize', ['event_id' => $event->id]))
-            ->type($this->faker->text, 'title')
-            ->type($this->faker->paragraph, 'description')
+            ->type($this->faker->text(), 'title')
+            ->type($this->faker->paragraph(), 'description')
             ->press('Save Changes')
             ->seeJson([
                 'status' => 'success',

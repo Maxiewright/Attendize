@@ -18,7 +18,7 @@ class EventAccessCodesFactory extends Factory
             'event_id' => function () {
                 return \App\Models\Event::factory()->create()->id;
             },
-            'code' => $this->faker->word,
+            'code' => $this->faker->word(),
             'usage_count' => 0,
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),

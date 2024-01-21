@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUsersTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -533,4 +533,4 @@ class CreateUsersTable extends Migration
         DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 
     }
-}
+};

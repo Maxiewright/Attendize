@@ -3,7 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 
-class CreateGatewaysTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -44,4 +44,4 @@ class CreateGatewaysTable extends Migration
         Schema::drop('account_payment_gateways');
         Schema::drop('payment_gateways');
     }
-}
+};

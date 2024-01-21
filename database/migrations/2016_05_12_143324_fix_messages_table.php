@@ -3,7 +3,7 @@
 use App\Models\Message;
 use Illuminate\Database\Migrations\Migration;
 
-class FixMessagesTable extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -29,4 +29,4 @@ class FixMessagesTable extends Migration
             $table->string('recipients')->nullable(false)->change();
         });
     }
-}
+};

@@ -3,7 +3,7 @@
 use App\Models\PaymentGateway;
 use Illuminate\Database\Migrations\Migration;
 
-class DropCoinbaseAndMigsAsDefaults extends Migration
+return new class extends Migration
 {
     /**
      * Run the migrations.
@@ -25,4 +25,4 @@ class DropCoinbaseAndMigsAsDefaults extends Migration
     {
         //
     }
-}
+};

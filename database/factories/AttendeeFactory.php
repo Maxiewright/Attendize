@@ -24,9 +24,9 @@ class AttendeeFactory extends Factory
             'ticket_id' => function () {
                 return \App\Models\Ticket::factory()->create()->id;
             },
-            'first_name' => $this->faker->firstName,
-            'last_name' => $this->faker->lastName,
-            'email' => $this->faker->email,
+            'first_name' => $this->faker->firstName(),
+            'last_name' => $this->faker->lastName(),
+            'email' => $this->faker->email(),
             'reference_index' => $this->faker->numberBetween(),
             'private_reference_number' => 1,
             'is_cancelled' => false,

@@ -10,8 +10,8 @@ class UserTest extends TestCase
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
-        $firstName = $this->faker->firstName;
-        $lastName = $this->faker->lastName;
+        $firstName = $this->faker->firstName();
+        $lastName = $this->faker->lastName();
         $email = 'new@email.com.au';
         $post = [
             'first_name' => $firstName,
@@ -43,8 +43,8 @@ class UserTest extends TestCase
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
-        $firstName = $this->faker->firstName;
-        $lastName = $this->faker->lastName;
+        $firstName = $this->faker->firstName();
+        $lastName = $this->faker->lastName();
         $email = 'new@email.com.au';
         $post = [
             'first_name' => $firstName,
@@ -78,8 +78,8 @@ class UserTest extends TestCase
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
-        $firstName = $this->faker->firstName;
-        $lastName = $this->faker->lastName;
+        $firstName = $this->faker->firstName();
+        $lastName = $this->faker->lastName();
         $email = 'new@email';
         $post = [
             'first_name' => $firstName,
@@ -102,7 +102,7 @@ class UserTest extends TestCase
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
-        $lastName = $this->faker->lastName;
+        $lastName = $this->faker->lastName();
         $email = 'new@email';
         $post = [
             'first_name' => '',
@@ -125,7 +125,7 @@ class UserTest extends TestCase
 
         $server = ['HTTP_X-Requested-With' => 'XMLHttpRequest'];
 
-        $firstName = $this->faker->firstName;
+        $firstName = $this->faker->firstName();
         $email = 'new@email';
         $post = [
             'first_name' => $firstName,
