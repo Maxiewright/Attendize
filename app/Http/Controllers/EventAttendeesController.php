@@ -434,7 +434,7 @@ class EventAttendeesController extends MyBaseController
 
         $pdf_file = public_path(config('attendize.event_pdf_tickets_path')).'/'.$attendee_reference.'.pdf';
 
-        $this->dispatchNow(new GenerateTicketJob($attendee));
+        $this->dispatchSync(new GenerateTicketJob($attendee));
 
         return response()->download($pdf_file);
     }

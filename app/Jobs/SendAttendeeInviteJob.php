@@ -35,7 +35,7 @@ class SendAttendeeInviteJob implements ShouldQueue
      */
     public function handle()
     {
-        GenerateTicketJob::dispatchNow($this->attendee);
+        GenerateTicketJob::dispatchSync($this->attendee);
         $mail = new SendAttendeeInviteMail($this->attendee);
         Mail::to($this->attendee->email)
             ->locale(Config::get('app.locale'))
