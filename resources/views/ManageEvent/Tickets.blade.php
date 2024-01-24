@@ -76,15 +76,15 @@
         <!--/ Toolbar -->
     </div>
     <div class="col-md-3">
-        {!! Form::open(array('url' => route('showEventTickets', ['event_id'=>$event->id,'sort_by'=>$sort_by]), 'method' => 'get')) !!}
+        {{ html()->form('GET', route('showEventTickets', ['event_id' => $event->id, 'sort_by' => $sort_by]))->open() }}
         <div class="input-group">
             <input name='q' value="{{$q or ''}}" placeholder="@lang("Ticket.search_tickets")" type="text" class="form-control">
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit"><i class="ico-search"></i></button>
         </span>
-            {!!Form::hidden('sort_by', $sort_by)!!}
+            {{ html()->hidden('sort_by', $sort_by) }}
         </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
     </div>
 @stop
 
@@ -98,7 +98,7 @@
             </div>
             <div class="col-md-2 col-xs-6 col-md-offset-7">
                 <div class='order_options'>
-                    {!! Form::select('sort_by_select', $allowed_sorts, $sort_by, ['class' => 'form-control pull right']) !!}
+                    {{ html()->select('sort_by_select', $allowed_sorts, $sort_by)->class('form-control pull right') }}
                 </div>
             </div>
         </div>

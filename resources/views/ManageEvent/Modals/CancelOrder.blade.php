@@ -1,10 +1,5 @@
 <div role="dialog" class="modal fade " style="display: none;">
-    {!!
-        Form::open([
-            'url' => route('postCancelOrder', ['order_id' => $order->id]),
-            'class' => 'closeModalAfter ajax',
-        ])
-    !!}
+    {{ html()->form('POST', route('postCancelOrder', ['order_id' => $order->id]))->class('closeModalAfter ajax')->open() }}
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -32,8 +27,7 @@
                                     <td style="width: 20px;">
                                         <div class="checkbox">
                                             <label>
-                                                {!! Form::checkbox('all_attendees', 'on', false, ['class' => 'check-all',
-                                                'data-toggle-class'=>'attendee-check']) !!}
+                                                {{ html()->checkbox('all_attendees', false, 'on')->class('check-all')->data('toggle-class', 'attendee-check') }}
                                                 <script>
                                                     $(function () {
                                                         $('.check-all').on('click', function () {
@@ -50,7 +44,7 @@
                                     <tr class="{{ $attendee->is_cancelled ? 'danger' : '' }}">
                                         <td>
                                             @if (!$attendee->is_cancelled)
-                                                {!! Form::checkbox('attendees[]', $attendee->id, false, ['class' => 'attendee-check']) !!}
+                                                {{ html()->checkbox('attendees[]', false, $attendee->id)->class('attendee-check') }}
                                             @endif
                                         </td>
                                         <td>
@@ -76,16 +70,11 @@
             </div>
             @if($attendees->count() || !$order->is_refunded)
                 <div class="modal-footer">
-                    {!!
-                        Form::button(trans('basic.back_to_orders'), [
-                            'class' => 'btn modal-close btn-danger',
-                            'data-dismiss' => 'modal',
-                        ])
-                    !!}
-                    {!! Form::submit(trans('ManageEvent.confirm_order_cancel'), ['class' => 'btn btn-primary']) !!}
+                    {{ html()->button(trans('basic.back_to_orders'))->class('btn modal-close btn-danger')->data('dismiss', 'modal') }}
+                    {{ html()->submit(trans('ManageEvent.confirm_order_cancel'))->class('btn btn-primary') }}
                 </div>
             @endif
         </div>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
     </div>
 </div>

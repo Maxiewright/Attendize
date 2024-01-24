@@ -13,16 +13,15 @@
 </script>
 
 
-{!! Form::model($account, array('url' => route('postEditAccountPayment'), 'class' => 'ajax ')) !!}
+{{ html()->modelForm($account, 'POST', route('postEditAccountPayment'))->class('ajax ')->open() }}
 <div class="form-group">
-    {!! Form::label('payment_gateway_id', trans("ManageAccount.default_payment_gateway"), array('class'=>'control-label
-    ')) !!}<br/>
+    {{ html()->label(trans("ManageAccount.default_payment_gateway"), 'payment_gateway_id')->class('control-label
+    ') }}<br/>
 
     @foreach ($payment_gateways as $id => $payment_gateway)
-    {!! Form::radio('payment_gateway', $payment_gateway['id'], $payment_gateway['default'],
-    array('id'=>'payment_gateway_' . $payment_gateway['id'])) !!}
-    {!! Form::label($payment_gateway['provider_name'],$payment_gateway['provider_name'] , array('class'=>'control-label
-    gateway_selector')) !!}<br/>
+    {{ html()->radio('payment_gateway', $payment_gateway['default'], $payment_gateway['id'])->id('payment_gateway_' . $payment_gateway['id']) }}
+    {{ html()->label($payment_gateway['provider_name'], $payment_gateway['provider_name'])->class('control-label
+    gateway_selector') }}<br/>
     @endforeach
 
 
@@ -41,11 +40,11 @@
 <div class="row">
     <div class="col-md-12">
         <div class="panel-footer">
-            {!! Form::submit(trans("ManageAccount.save_payment_details_submit"), ['class' => 'btn btn-success
-            pull-right']) !!}
+            {{ html()->submit(trans("ManageAccount.save_payment_details_submit"))->class('btn btn-success
+            pull-right') }}
         </div>
     </div>
 </div>
 
 
-{!! Form::close() !!}
+{{ html()->closeModelForm() }}

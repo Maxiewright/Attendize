@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="col-md-3">
-        {!! Form::open(array('url' => route('showOrganiserEvents', ['organiser_id'=>$organiser->id]), 'method' => 'get')) !!}
+        {{ html()->form('GET', route('showOrganiserEvents', ['organiser_id' => $organiser->id]))->open() }}
         <div class="input-group">
             <input name="q" value="{{$search['q'] or ''}}" placeholder="@lang('Organiser.search_placeholder')" type="text" class="form-control">
         <span class="input-group-btn">
@@ -39,7 +39,7 @@
         </span>
         </div>
         <input type="hidden" name='sort_by' value="{{$search['sort_by']}}"/>
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
     </div>
 @stop
 
@@ -56,12 +56,7 @@
             </div>
             <div class="col-md-2 col-xs-6 col-md-offset-7">
                 <div class="order_options">
-                    {!!Form::select('sort_by_select', [
-                        'start_date' => trans("Controllers.sort.start_date"),
-                        'created_at' => trans("Controllers.sort.created_at"),
-                        'title' => trans("Controllers.sort.event_title")
-
-                        ], $search['sort_by'], ['class' => 'form-control pull right'])!!}
+                    {{ html()->select('sort_by_select', ['start_date' => trans("Controllers.sort.start_date"), 'created_at' => trans("Controllers.sort.created_at"), 'title' => trans("Controllers.sort.event_title")], $search['sort_by'])->class('form-control pull right') }}
                 </div>
             </div>
         </div>

@@ -1,5 +1,5 @@
 <div role="dialog"  class="modal fade" style="display: none;">
-   {!! Form::open(array('url' => route('postResendTicketToAttendee', array('attendee_id' => $attendee->id)), 'class' => 'ajax reset closeModalAfter')) !!}
+   {{ html()->form('POST', route('postResendTicketToAttendee', array('attendee_id' => $attendee->id)))->class('ajax reset closeModalAfter')->open() }}
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -15,10 +15,10 @@
                 </div>
             </div> <!-- /end modal body-->
             <div class="modal-footer">
-               {!! Form::button(trans("basic.cancel"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}
-               {!! Form::submit(trans("ManageEvent.send_ticket"), ['class'=>"btn btn-success"]) !!}
+               {{ html()->button(trans("basic.cancel"))->class("btn modal-close btn-danger")->data('dismiss', 'modal') }}
+               {{ html()->submit(trans("ManageEvent.send_ticket"))->class("btn btn-success") }}
             </div>
         </div><!-- /end modal content-->
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
     </div>
 </div>

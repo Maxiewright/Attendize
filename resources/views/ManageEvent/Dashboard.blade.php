@@ -172,7 +172,7 @@
                 </div>
 
                 <div class="panel-body">
-                    {!! Form::input('text', 'front_end_url', $event->event_url, ['class' => 'form-control', 'onclick' => 'this.select();']) !!}
+                    {{ html()->input('text', 'front_end_url', $event->event_url)->class('form-control')->attribute('onclick', 'this.select();') }}
                 </div>
 
             </div>

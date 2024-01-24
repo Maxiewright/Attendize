@@ -15,7 +15,7 @@
 </style>
 <div class="ticket">
     <div class="logo">
-        {!! Html::image(asset($image_path)) !!}
+        {{ html()->img(asset($image_path)) }}
     </div>
 
     <div class="layout_even">

@@ -25,7 +25,7 @@
             <div class="panel">
                 <div class="panel-body">
                     <div class="logo">
-                        {!!Html::image('assets/images/logo-dark.png')!!}
+                        {{ html()->img('assets/images/logo-dark.png') }}
                     </div>
 
                     <h1>@lang("Installer.setup")</h1>
@@ -96,66 +96,41 @@
 
                     @endforeach
 
-                    {!! Form::open(array('url' => route('postInstaller'), 'class' => 'installer_form')) !!}
+                    {{ html()->form('POST', route('postInstaller'))->class('installer_form')->open() }}
 
                     <h3>@lang("Installer.app_settings")</h3>
 
                     <div class="form-group">
-                        {!! Form::label('app_url', trans("Installer.application_url"), array('class'=>'required control-label ')) !!}
-                        {!!  Form::text('app_url', $default_config['application_url'],
-                                    array(
-                                    'class'=>'form-control',
-                                    'placeholder' => 'http://www.myticketsite.com'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.application_url"), 'app_url')->class('required control-label ') }}
+                        {{ html()->text('app_url', $default_config['application_url'])->class('form-control')->placeholder('http://www.myticketsite.com') }}
                     </div>
 
                     <h3>@lang("Installer.database_settings")</h3>
                     <p>@lang("Installer.database_message")</p>
 
                     <div class="form-group">
-                        {!! Form::label('database_type', trans("Installer.database_type"), array('class'=>'required control-label ')) !!}
-                        {!!  Form::select('database_type', array(
-                                  'mysql' => "MySQL",
-                                  'pgsql' => "Postgres",
-                                    ), $default_config['database_type'],
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.database_type"), 'database_type')->class('required control-label ') }}
+                        {{ html()->select('database_type', array('mysql' => "MySQL", 'pgsql' => "Postgres"), $default_config['database_type'])->class('form-control') }}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('database_host', trans("Installer.database_host"), array('class'=>'control-label required')) !!}
-                        {!!  Form::text('database_host', $value = $default_config['database_host'] ,
-                                    array(
-                                    'class'=>'form-control ',
-                                    'placeholder'=>''
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.database_host"), 'database_host')->class('control-label required') }}
+                        {{ html()->text('database_host', $value = $default_config['database_host'])->class('form-control ')->placeholder('') }}
 
 
                     </div>
                     <div class="form-group">
-                        {!! Form::label('database_name', trans("Installer.database_name"), array('class'=>'required control-label required')) !!}
-                        {!!  Form::text('database_name', $value = $default_config['database_name'] ,
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.database_name"), 'database_name')->class('required control-label required') }}
+                        {{ html()->text('database_name', $value = $default_config['database_name'])->class('form-control') }}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('database_username', trans("Installer.database_username"), array('class'=>'control-label required')) !!}
-                        {!!  Form::text('database_username', $value = $default_config['database_username'],
-                                    array(
-                                    'class'=>'form-control ',
-                                    'placeholder'=>'',
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.database_username"), 'database_username')->class('control-label required') }}
+                        {{ html()->text('database_username', $value = $default_config['database_username'])->class('form-control ')->placeholder('') }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('database_password', trans("Installer.database_password"), array('class'=>'control-label required')) !!}
-                        {!!  Form::text('database_password', $value = $default_config['database_password'],
-                                    array(
-                                    'class'=>'form-control ',
-                                    'placeholder'=>'',
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.database_password"), 'database_password')->class('control-label required') }}
+                        {{ html()->text('database_password', $value = $default_config['database_password'])->class('form-control ')->placeholder('') }}
                     </div>
 
                     <div class="form-group">
@@ -196,72 +171,46 @@
                     <h3>@lang("Installer.email_settings")</h3>
 
                     <div class="form-group">
-                        {!! Form::label('mail_from_address', trans("Installer.mail_from_address"), array('class'=>' control-label required')) !!}
-                        {!!  Form::text('mail_from_address', $value = $default_config['mail_from_address'] ,
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_from_address"), 'mail_from_address')->class(' control-label required') }}
+                        {{ html()->text('mail_from_address', $value = $default_config['mail_from_address'])->class('form-control') }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('mail_from_name', trans("Installer.mail_from_name"), array('class'=>' control-label required')) !!}
-                        {!!  Form::text('mail_from_name', $value = $default_config['mail_from_name'] ,
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_from_name"), 'mail_from_name')->class(' control-label required') }}
+                        {{ html()->text('mail_from_name', $value = $default_config['mail_from_name'])->class('form-control') }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('mail_driver', trans("Installer.mail_driver"), array('class'=>' control-label required')) !!}
-                        {!!  Form::text('mail_driver', $value = $default_config['mail_driver'],
-                                    array(
-                                    'class'=>'form-control ',
-                                    'placeholder' => 'mail'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_driver"), 'mail_driver')->class(' control-label required') }}
+                        {{ html()->text('mail_driver', $value = $default_config['mail_driver'])->class('form-control ')->placeholder('mail') }}
                         <div class="help-block">
                            {!! @trans("Installer.mail_driver_help") !!}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label('mail_port', trans("Installer.mail_port"), array('class'=>' control-label ')) !!}
-                        {!!  Form::text('mail_port', $value = $default_config['mail_port'],
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_port"), 'mail_port')->class(' control-label ') }}
+                        {{ html()->text('mail_port', $value = $default_config['mail_port'])->class('form-control') }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('mail_encryption', trans("Installer.mail_encryption"), array('class'=>' control-label ')) !!}
-                        {!!  Form::text('mail_encryption', $default_config['mail_encryption'],
-                                    array(
-                                    'class'=>'form-control',
-                                    'placeholder' => "tls/ssl"
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_encryption"), 'mail_encryption')->class(' control-label ') }}
+                        {{ html()->text('mail_encryption', $default_config['mail_encryption'])->class('form-control')->placeholder("tls/ssl") }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('mail_host', trans("Installer.mail_host"), array('class'=>' control-label ')) !!}
-                        {!!  Form::text('mail_host', $value = $default_config['mail_host'],
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_host"), 'mail_host')->class(' control-label ') }}
+                        {{ html()->text('mail_host', $value = $default_config['mail_host'])->class('form-control') }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('mail_username', trans("Installer.mail_username"), array('class'=>' control-label ')) !!}
-                        {!!  Form::text('mail_username', $default_config['mail_username'],
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_username"), 'mail_username')->class(' control-label ') }}
+                        {{ html()->text('mail_username', $default_config['mail_username'])->class('form-control') }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('mail_password', trans("Installer.mail_password"), array('class'=>' control-label ')) !!}
-                        {!!  Form::text('mail_password', $default_config['mail_password'],
-                                    array(
-                                    'class'=>'form-control'
-                                    ))  !!}
+                        {{ html()->label(trans("Installer.mail_password"), 'mail_password')->class(' control-label ') }}
+                        {{ html()->text('mail_password', $default_config['mail_password'])->class('form-control') }}
                     </div>
                     {!! csrf_field() !!}
                     @include("Installer.Partials.Footer")
 
-                    {!! Form::submit(trans("Installer.install"), ['class'=>" btn-block btn btn-success"]) !!}
-                    {!! Form::close() !!}
+                    {{ html()->submit(trans("Installer.install"))->class(" btn-block btn btn-success") }}
+                    {{ html()->form()->close() }}
 
                 </div>
             </div>

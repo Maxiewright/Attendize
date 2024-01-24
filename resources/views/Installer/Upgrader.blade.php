@@ -9,7 +9,7 @@
             <div class="panel">
                 <div class="panel-body">
                     <div class="logo">
-                        {!!Html::image('assets/images/logo-dark.png')!!}
+                        {{ html()->img('assets/images/logo-dark.png') }}
                     </div>
 
                     <h1>@lang("Installer.upgrade")</h1>
@@ -24,9 +24,9 @@
                         <h3>@lang("Installer.new_version_ready")</h3>
                         <p>@lang("Installer.current_version", ["version" => $installed_version])</p>
                         <p>@lang("Installer.now_installing", ["version" => $local_version])</p>
-                        {!! Form::open(array('url' => route('postUpgrader'), 'class' => 'upgrader_form')) !!}
-                        {!! Form::submit(trans("Installer.upgrade_button"), ['class'=>" btn-block btn btn-success"]) !!}
-                        {!! Form::close() !!}
+                        {{ html()->form('POST', route('postUpgrader'))->class('upgrader_form')->open() }}
+                        {{ html()->submit(trans("Installer.upgrade_button"))->class(" btn-block btn btn-success") }}
+                        {{ html()->form()->close() }}
                     @else
                         <h3>@lang("Installer.no_upgrade")</h3>
                         <p>@lang("Installer.current_version", ["version" => $local_version])</p>

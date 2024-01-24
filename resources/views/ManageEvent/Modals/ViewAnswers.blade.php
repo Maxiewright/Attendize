@@ -59,7 +59,7 @@
             @endif
 
             <div class="modal-footer">
-                {!! Form::button(trans("ManageEvent.close"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}
+                {{ html()->button(trans("ManageEvent.close"))->class("btn modal-close btn-danger")->data('dismiss', 'modal') }}
             </div>
         </div><!-- /end modal content-->
     </div>

@@ -13,7 +13,7 @@
 
         @if($tickets->count() > 0)
 
-            {!! Form::open(['url' => route('postValidateTickets', ['event_id' => $event->id]), 'class' => 'ajax']) !!}
+            {{ html()->form('POST', route('postValidateTickets', ['event_id' => $event->id]))->class('ajax')->open() }}
             <div class="row">
                 <div class="col-md-12">
                     <div class="content">
@@ -73,7 +73,7 @@
                                     @lang("Public_ViewEvent.sales_have_ended")
                                 </span>
                                                 @else
-                                                    {!! Form::hidden('tickets[]', $ticket->id) !!}
+                                                    {{ html()->hidden('tickets[]', $ticket->id) }}
                                                     <meta property="availability" content="http://schema.org/InStock">
                                                     <select name="ticket_{{$ticket->id}}" class="form-control"
                                                             style="text-align: center">
@@ -95,18 +95,8 @@
                                     <td colspan="3"  style="text-align: left">
                                         @lang("Public_ViewEvent.has_unlock_codes")
                                         <div class="form-group" style="display:inline-block;margin-bottom:0;margin-left:15px;">
-                                            {!!  Form::text('unlock_code', null, [
-                                            'class' => 'form-control',
-                                            'id' => 'unlock_code',
-                                            'style' => 'display:inline-block;width:65%;text-transform:uppercase;',
-                                            'placeholder' => 'ex: UNLOCKCODE01',
-                                        ]) !!}
-                                            {!! Form::button(trans("basic.apply"), [
-                                                'class' => "btn btn-success",
-                                                'id' => 'apply_access_code',
-                                                'style' => 'display:inline-block;margin-top:-2px;',
-                                                'data-dismiss' => 'modal',
-                                            ]) !!}
+                                            {{ html()->text('unlock_code')->class('form-control')->id('unlock_code')->style('display:inline-block;width:65%;text-transform:uppercase;')->placeholder('ex: UNLOCKCODE01') }}
+                                            {{ html()->button(trans("basic.apply"))->class("btn btn-success")->id('apply_access_code')->style('display:inline-block;margin-top:-2px;')->data('dismiss', 'modal') }}
                                         </div>
                                     </td>
                                 </tr>
@@ -131,7 +121,7 @@
                                             </div>
 
                                         @endif
-                                        {!!Form::submit(trans("Public_ViewEvent.register"), ['class' => 'btn btn-lg btn-primary pull-right'])!!}
+                                        {{ html()->submit(trans("Public_ViewEvent.register"))->class('btn btn-lg btn-primary pull-right') }}
                                     </td>
                                 </tr>
                             </table>
@@ -139,8 +129,8 @@
                     </div>
                 </div>
             </div>
-            {!! Form::hidden('is_embedded', $is_embedded) !!}
-            {!! Form::close() !!}
+            {{ html()->hidden('is_embedded', $is_embedded) }}
+            {{ html()->form()->close() }}
 
         @else
 

@@ -44,14 +44,7 @@
                                  <button @click="showQrModal" title="Scan QR Code" class="btn btn-default qr_search" type="button"><i
                                               class="ico-qrcode"></i></button>
                                 </span>
-                        {!!  Form::text('attendees_q', null, [
-                    'class' => 'form-control attendee_search',
-                            'id' => 'search',
-                            'v-model' => 'searchTerm',
-                            '@keyup' => 'fetchAttendees | debounce 500',
-                            '@keyup.esc' => 'clearSearch',
-                            'placeholder' => trans("ManageEvent.checkin_search_placeholder")
-                ])  !!}
+                        {{ html()->text('attendees_q')->class('form-control attendee_search')->id('search')->attribute('v-model', 'searchTerm')->attribute('@keyup', 'fetchAttendees | debounce 500')->attribute('@keyup.esc', 'clearSearch')->placeholder(trans("ManageEvent.checkin_search_placeholder")) }}
 
 
                     </div>

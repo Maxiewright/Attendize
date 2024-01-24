@@ -9,7 +9,7 @@
 
         <div id="card-errors" role="alert"></div>
     </div>
-    {!! Form::token() !!}
+    {{ html()->token() }}
 
     <input class="btn btn-lg btn-success card-submit" style="width:100%;" type="submit" value="@lang("Public_ViewEvent.complete_payment")">
 

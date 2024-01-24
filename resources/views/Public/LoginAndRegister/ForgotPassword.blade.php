@@ -8,12 +8,12 @@
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
-            {!! Form::open(array('url' => route('postForgotPassword'), 'class' => 'panel')) !!}
+            {{ html()->form('POST', route('postForgotPassword'))->class('panel')->open() }}
 
             <div class="panel-body">
 
                 <div class="logo">
-                   {!!Html::image('assets/images/logo-dark.png')!!}
+                   {{ html()->img('assets/images/logo-dark.png') }}
                 </div>
                 <h2>@lang("User.forgot_password")</h2>
 
@@ -31,8 +31,8 @@
                 @endif
 
                 <div class="form-group">
-                   {!! Form::label('email', trans("User.your_email")) !!}
-                   {!! Form::text('email', null, ['class' => 'form-control', 'autofocus' => true]) !!}
+                   {{ html()->label(trans("User.your_email"), 'email') }}
+                   {{ html()->text('email')->class('form-control')->autofocus(true) }}
                 </div>
 
                 <div class="form-group nm">
@@ -44,7 +44,7 @@
                     </a>
                 </div>
             </div>
-            {!! Form::close() !!}
+            {{ html()->form()->close() }}
             @endif
         </div>
     </div>
