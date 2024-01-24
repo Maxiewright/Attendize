@@ -147,7 +147,7 @@
                             {{ html()->label(trans("Organiser.current_logo"), 'current_logo')->class('control-label ') }}
 
                             <div class="thumbnail">
-                                {!!Html::image($organiser->logo_path)!!}
+                                {{ html()->img($organiser->logo_path) }}
                                 {{ html()->label(trans("Organiser.delete_logo?"), 'remove_current_image')->class('control-label ') }}
                                 {{ html()->checkbox('remove_current_image', false) }}
                             </div>

@@ -10,7 +10,7 @@
             {{ html()->form('POST', route("showSignup"))->class('panel')->id('signup-form')->open() }}
             <div class="panel-body">
                 <div class="logo">
-                   {!! Html::image('assets/images/logo-dark.png') !!}
+                   {{ html()->img('assets/images/logo-dark.png') }}
                 </div>
                 <h2>@lang("User.sign_up")</h2>
 
