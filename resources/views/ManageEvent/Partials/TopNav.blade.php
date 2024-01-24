@@ -7,9 +7,9 @@
         </style>
         <div class="alert alert-warning top_of_page_alert">
             {{ @trans("ManageEvent.event_not_live") }}
-            {!! Form::open(['url' => route('MakeEventLive', ['event_id' => $event->id]), 'id' => 'make-event-live-form', 'style' => 'display:inline-block;']) !!}
-                {!! Form::submit(trans('ManageEvent.publish_it'), ['class' => 'btn btn-success']) !!}
-            {!! Form::close() !!}
+            {{ html()->form('POST', route('MakeEventLive', ['event_id' => $event->id]))->id('make-event-live-form')->style('display:inline-block;')->open() }}
+                {{ html()->submit(trans('ManageEvent.publish_it'))->class('btn btn-success') }}
+            {{ html()->form()->close() }}
         </div>
     @endif
 @stop

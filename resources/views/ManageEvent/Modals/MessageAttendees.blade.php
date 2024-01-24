@@ -1,5 +1,5 @@
 <div role="dialog"  class="modal fade " style="display: none;">
-    {!! Form::open(array('url' => route('postMessageAttendees', array('event_id' => $event->id)), 'class' => 'reset ajax closeModalAfter')) !!}
+    {{ html()->form('POST', route('postMessageAttendees', array('event_id' => $event->id)))->class('reset ajax closeModalAfter')->open() }}
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -19,37 +19,22 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    {!! Form::label('subject',  trans("Message.subject"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::text('subject', old('subject'),
-                                        array(
-                                        'class'=>'form-control'
-                                        ))  !!}
+                                    {{ html()->label(trans("Message.subject"), 'subject')->class('control-label required') }}
+                                    {{ html()->text('subject', old('subject'))->class('form-control') }}
                                 </div>
 
                                 <div class="form-group">
-                                    {!! Form::label('message', trans("Message.content"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::textarea('message', old('message'),
-                                        array(
-                                        'class'=>'form-control',
-                                        'rows' => '5'
-                                        ))  !!}
+                                    {{ html()->label(trans("Message.content"), 'message')->class('control-label required') }}
+                                    {{ html()->textarea('message', old('message'))->class('form-control')->rows('5') }}
                                 </div>
                                 <div class="form-group">
-                                    {!! Form::label('recipients', trans("Message.send_to"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::select('recipients', [
-                                            'all' => trans("Message.all_event_attendees")
-                                        ] + [trans("Message.attendees_with_ticket_type") => $tickets] ,
-                                        null, [
-                                            'class'=>'form-control'
-                                        ])  !!}
+                                    {{ html()->label(trans("Message.send_to"), 'recipients')->class('control-label required') }}
+                                    {{ html()->select('recipients', ['all' => trans("Message.all_event_attendees")] + [trans("Message.attendees_with_ticket_type") => $tickets])->class('form-control') }}
                                 </div>
 
                                 <div class="form-group hide">
-                                    {!! Form::label('sent_time', trans("Message.schedule_send_time"), array('class'=>'control-label required')) !!}
-                                    {!!  Form::text('sent_time', old('sent_time'),
-                                        array(
-                                        'class'=>'form-control'
-                                        ))  !!}
+                                    {{ html()->label(trans("Message.schedule_send_time"), 'sent_time')->class('control-label required') }}
+                                    {{ html()->text('sent_time', old('sent_time'))->class('form-control') }}
                                     <div class="help-block">
                                         @lang("Message.leave_blank_to_send_immediately")
                                     </div>
@@ -113,10 +98,10 @@
                 </div>
             </div> <!-- /end modal body-->
             <div class="modal-footer">
-                {!! Form::button(trans("basic.cancel"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}
-                {!! Form::submit(trans("ManageEvent.send_message"), ['class'=>"btn btn-success"]) !!}
+                {{ html()->button(trans("basic.cancel"))->class("btn modal-close btn-danger")->data('dismiss', 'modal') }}
+                {{ html()->submit(trans("ManageEvent.send_message"))->class("btn btn-success") }}
             </div>
         </div><!-- /end modal content-->
-        {!! Form::close() !!}
+        {{ html()->form()->close() }}
     </div>
 </div>

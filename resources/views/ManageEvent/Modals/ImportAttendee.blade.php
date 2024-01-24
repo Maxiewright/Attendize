@@ -1,5 +1,5 @@
 <div role="dialog"  class="modal fade " style="display: none;">
-   {!! Form::open(array('url' => route('postImportAttendee', array('event_id' => $event->id)),'files' => true, 'class' => 'ajax')) !!}
+   {{ html()->form('POST', route('postImportAttendee', array('event_id' => $event->id)))->acceptsFiles()->class('ajax')->open() }}
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -14,8 +14,8 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
-                                   {!! Form::label('ticket_id', trans("ManageEvent.ticket"), array('class'=>'control-label required')) !!}
-                                   {!! Form::select('ticket_id', $tickets, null, ['class' => 'form-control']) !!}
+                                   {{ html()->label(trans("ManageEvent.ticket"), 'ticket_id')->class('control-label required') }}
+                                   {{ html()->select('ticket_id', $tickets)->class('form-control') }}
                                 </div>
                             </div>
                         </div>
@@ -23,9 +23,8 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                {!! Form::labelWithHelp('attendees_list', trans("ManageEvent.import_file"), array('class'=>'control-label required'),
-                                    trans("ManageEvent.attendees_file_requirements")) !!}
-                                {!!  Form::styledFile('attendees_list',1,array('id'=>'input-attendees_list'))  !!}
+                                {{ html()->labelwithhelp('attendees_list', trans("ManageEvent.import_file"), array('class' => 'control-label required'), trans("ManageEvent.attendees_file_requirements")) }}
+                                {{ html()->styledfile('attendees_list', 1, array('id' => 'input-attendees_list')) }}
                                 </div>
                             </div>
                         </div>
@@ -43,10 +42,10 @@
                 </div>
             </div> <!-- /end modal body-->
             <div class="modal-footer">
-               {!! Form::button(trans("basic.cancel"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}
-               {!! Form::submit(trans("ManageEvent.create_attendees"), ['class'=>"btn btn-success"]) !!}
+               {{ html()->button(trans("basic.cancel"))->class("btn modal-close btn-danger")->data('dismiss', 'modal') }}
+               {{ html()->submit(trans("ManageEvent.create_attendees"))->class("btn btn-success") }}
             </div>
         </div><!-- /end modal content-->
-       {!! Form::close() !!}
+       {{ html()->form()->close() }}
     </div>
 </div>

@@ -58,23 +58,23 @@
         </div>
         <div class="col-md-8 col-md-pull-4">
             <div class="event_order_form">
-                {!! Form::open(['url' => route('postValidateOrder', ['event_id' => $event->id ]), 'class' => 'ajax payment-form']) !!}
+                {{ html()->form('POST', route('postValidateOrder', ['event_id' => $event->id]))->class('ajax payment-form')->open() }}
 
-                {!! Form::hidden('event_id', $event->id) !!}
+                {{ html()->hidden('event_id', $event->id) }}
 
                 <h3> @lang("Public_ViewEvent.your_information")</h3>
 
                 <div class="row">
                     <div class="col-xs-6">
                         <div class="form-group">
-                            {!! Form::label("order_first_name", trans("Public_ViewEvent.first_name")) !!}
-                            {!! Form::text("order_first_name", null, ['required' => 'required', 'class' => 'form-control']) !!}
+                            {{ html()->label(trans("Public_ViewEvent.first_name"), "order_first_name") }}
+                            {{ html()->text("order_first_name")->required()->class('form-control') }}
                         </div>
                     </div>
                     <div class="col-xs-6">
                         <div class="form-group">
-                            {!! Form::label("order_last_name", trans("Public_ViewEvent.last_name")) !!}
-                            {!! Form::text("order_last_name", null, ['required' => 'required', 'class' => 'form-control']) !!}
+                            {{ html()->label(trans("Public_ViewEvent.last_name"), "order_last_name") }}
+                            {{ html()->text("order_last_name")->required()->class('form-control') }}
                         </div>
                     </div>
                 </div>
@@ -82,8 +82,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="form-group">
-                            {!! Form::label("order_email", trans("Public_ViewEvent.email")) !!}
-                            {!! Form::text("order_email", null, ['required' => 'required', 'class' => 'form-control']) !!}
+                            {{ html()->label(trans("Public_ViewEvent.email"), "order_email") }}
+                            {{ html()->text("order_email")->required()->class('form-control') }}
                         </div>
                     </div>
                 </div>
@@ -92,8 +92,8 @@
                     <div class="col-md-12">
                         <div class="form-group">
                             <div class="custom-checkbox">
-                                {!! Form::checkbox('is_business', 1, null, ['data-toggle' => 'toggle', 'id' => 'is_business']) !!}
-                                {!! Form::label('is_business', trans("Public_ViewEvent.is_business"), ['class' => 'control-label']) !!}
+                                {{ html()->checkbox('is_business', null, 1)->data('toggle', 'toggle')->id('is_business') }}
+                                {{ html()->label(trans("Public_ViewEvent.is_business"), 'is_business')->class('control-label') }}
                             </div>
                         </div>
                     </div>
@@ -105,48 +105,48 @@
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label("business_name", trans("Public_ViewEvent.business_name")) !!}
-                                        {!! Form::text("business_name", null, ['class' => 'form-control']) !!}
+                                        {{ html()->label(trans("Public_ViewEvent.business_name"), "business_name") }}
+                                        {{ html()->text("business_name")->class('form-control') }}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label("business_tax_number", trans("Public_ViewEvent.business_tax_number")) !!}
-                                        {!! Form::text("business_tax_number", null, ['class' => 'form-control']) !!}
+                                        {{ html()->label(trans("Public_ViewEvent.business_tax_number"), "business_tax_number") }}
+                                        {{ html()->text("business_tax_number")->class('form-control') }}
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label("business_address_line1", trans("Public_ViewEvent.business_address_line1")) !!}
-                                        {!! Form::text("business_address_line1", null, ['class' => 'form-control']) !!}
+                                        {{ html()->label(trans("Public_ViewEvent.business_address_line1"), "business_address_line1") }}
+                                        {{ html()->text("business_address_line1")->class('form-control') }}
                                     </div>
                                 </div>
                                 <div class="col-xs-6">
                                     <div class="form-group">
-                                        {!! Form::label("business_address_line2", trans("Public_ViewEvent.business_address_line2")) !!}
-                                        {!! Form::text("business_address_line2", null, ['class' => 'form-control']) !!}
+                                        {{ html()->label(trans("Public_ViewEvent.business_address_line2"), "business_address_line2") }}
+                                        {{ html()->text("business_address_line2")->class('form-control') }}
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-xs-4">
                                     <div class="form-group">
-                                        {!! Form::label("business_address_state", trans("Public_ViewEvent.business_address_state_province")) !!}
-                                        {!! Form::text("business_address_state", null, ['class' => 'form-control']) !!}
+                                        {{ html()->label(trans("Public_ViewEvent.business_address_state_province"), "business_address_state") }}
+                                        {{ html()->text("business_address_state")->class('form-control') }}
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
-                                        {!! Form::label("business_address_city", trans("Public_ViewEvent.business_address_city")) !!}
-                                        {!! Form::text("business_address_city", null, ['class' => 'form-control']) !!}
+                                        {{ html()->label(trans("Public_ViewEvent.business_address_city"), "business_address_city") }}
+                                        {{ html()->text("business_address_city")->class('form-control') }}
                                     </div>
                                 </div>
                                 <div class="col-xs-4">
                                     <div class="form-group">
-                                        {!! Form::label("business_address_code", trans("Public_ViewEvent.business_address_code")) !!}
-                                        {!! Form::text("business_address_code", null, ['class' => 'form-control']) !!}
+                                        {{ html()->label(trans("Public_ViewEvent.business_address_code"), "business_address_code") }}
+                                        {{ html()->text("business_address_code")->class('form-control') }}
                                     </div>
                                 </div>
                             </div>
@@ -180,22 +180,22 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    {!! Form::label("ticket_holder_first_name[{$i}][{$ticket['ticket']['id']}]", trans("Public_ViewEvent.first_name")) !!}
-                                                    {!! Form::text("ticket_holder_first_name[{$i}][{$ticket['ticket']['id']}]", null, ['required' => 'required', 'class' => "ticket_holder_first_name.$i.{$ticket['ticket']['id']} ticket_holder_first_name form-control"]) !!}
+                                                    {{ html()->label(trans("Public_ViewEvent.first_name"), "ticket_holder_first_name[{$i}][{$ticket['ticket']['id']}]") }}
+                                                    {{ html()->text("ticket_holder_first_name[{$i}][{$ticket['ticket']['id']}]")->required()->class("ticket_holder_first_name.{$i}.{$ticket['ticket']['id']} ticket_holder_first_name form-control") }}
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    {!! Form::label("ticket_holder_last_name[{$i}][{$ticket['ticket']['id']}]", trans("Public_ViewEvent.last_name")) !!}
-                                                    {!! Form::text("ticket_holder_last_name[{$i}][{$ticket['ticket']['id']}]", null, ['required' => 'required', 'class' => "ticket_holder_last_name.$i.{$ticket['ticket']['id']} ticket_holder_last_name form-control"]) !!}
+                                                    {{ html()->label(trans("Public_ViewEvent.last_name"), "ticket_holder_last_name[{$i}][{$ticket['ticket']['id']}]") }}
+                                                    {{ html()->text("ticket_holder_last_name[{$i}][{$ticket['ticket']['id']}]")->required()->class("ticket_holder_last_name.{$i}.{$ticket['ticket']['id']} ticket_holder_last_name form-control") }}
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-12">
                                                 <div class="form-group">
-                                                    {!! Form::label("ticket_holder_email[{$i}][{$ticket['ticket']['id']}]", trans("Public_ViewEvent.email_address")) !!}
-                                                    {!! Form::text("ticket_holder_email[{$i}][{$ticket['ticket']['id']}]", null, ['required' => 'required', 'class' => "ticket_holder_email.$i.{$ticket['ticket']['id']} ticket_holder_email form-control"]) !!}
+                                                    {{ html()->label(trans("Public_ViewEvent.email_address"), "ticket_holder_email[{$i}][{$ticket['ticket']['id']}]") }}
+                                                    {{ html()->text("ticket_holder_email[{$i}][{$ticket['ticket']['id']}]")->required()->class("ticket_holder_email.{$i}.{$ticket['ticket']['id']} ticket_holder_email form-control") }}
                                                 </div>
                                             </div>
                                             @include('Public.ViewEvent.Partials.AttendeeQuestions', ['ticket' => $ticket['ticket'],'attendee_number' => $total_attendee_increment++])
@@ -215,9 +215,9 @@
                 </div>
                 @endif
 
-               {!! Form::hidden('is_embedded', $is_embedded) !!}
-               {!! Form::submit(trans("Public_ViewEvent.checkout_order"), ['class' => 'btn btn-lg btn-success card-submit', 'style' => 'width:100%;']) !!}
-               {!! Form::close() !!}
+               {{ html()->hidden('is_embedded', $is_embedded) }}
+               {{ html()->submit(trans("Public_ViewEvent.checkout_order"))->class('btn btn-lg btn-success card-submit')->style('width:100%;') }}
+               {{ html()->form()->close() }}
 
             </div>
         </div>

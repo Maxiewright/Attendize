@@ -37,61 +37,52 @@
                         </ul>
                         <div class="tab-content panel">
                             <div class="tab-pane active" id="general_account">
-                                {!! Form::model($account, array('url' => route('postEditAccount'), 'class' => 'ajax ')) !!}
+                                {{ html()->modelForm($account, 'POST', route('postEditAccount'))->class('ajax ')->open() }}
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {!! Form::label('first_name', trans("ManageAccount.first_name"), array('class'=>'control-label required')) !!}
-                                            {!!  Form::text('first_name', old('first_name'),
-                                        array(
-                                        'class'=>'form-control'
-                                        ))  !!}
+                                            {{ html()->label(trans("ManageAccount.first_name"), 'first_name')->class('control-label required') }}
+                                            {{ html()->text('first_name', old('first_name'))->class('form-control') }}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {!! Form::label('last_name', trans("ManageAccount.last_name"), array('class'=>'control-label required')) !!}
-                                            {!!  Form::text('last_name', old('last_name'),
-                                        array(
-                                        'class'=>'form-control'
-                                        ))  !!}
+                                            {{ html()->label(trans("ManageAccount.last_name"), 'last_name')->class('control-label required') }}
+                                            {{ html()->text('last_name', old('last_name'))->class('form-control') }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            {!! Form::label('email', trans("ManageAccount.email"), array('class'=>'control-label required')) !!}
-                                            {!!  Form::text('email', old('email'),
-                                        array(
-                                        'class'=>'form-control'
-                                        ))  !!}
+                                            {{ html()->label(trans("ManageAccount.email"), 'email')->class('control-label required') }}
+                                            {{ html()->text('email', old('email'))->class('form-control') }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {!! Form::label('timezone_id', trans("ManageAccount.timezone"), array('class'=>'control-label required')) !!}
-                                            {!! Form::select('timezone_id', $timezones, $account->timezone_id, ['class' => 'form-control']) !!}
+                                            {{ html()->label(trans("ManageAccount.timezone"), 'timezone_id')->class('control-label required') }}
+                                            {{ html()->select('timezone_id', $timezones, $account->timezone_id)->class('form-control') }}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            {!! Form::label('currency_id', trans("ManageAccount.default_currency"), array('class'=>'control-label required')) !!}
-                                            {!! Form::select('currency_id', $currencies, $account->currency_id, ['class' => 'form-control']) !!}
+                                            {{ html()->label(trans("ManageAccount.default_currency"), 'currency_id')->class('control-label required') }}
+                                            {{ html()->select('currency_id', $currencies, $account->currency_id)->class('form-control') }}
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="panel-footer">
-                                            {!! Form::submit(trans("ManageAccount.save_account_details_submit"), ['class' => 'btn btn-success pull-right']) !!}
+                                            {{ html()->submit(trans("ManageAccount.save_account_details_submit"))->class('btn btn-success pull-right') }}
                                         </div>
                                     </div>
                                 </div>
 
-                                {!! Form::close() !!}
+                                {{ html()->closeModelForm() }}
                             </div>
                             <div class="tab-pane " id="payment_account">
 
@@ -99,7 +90,7 @@
 
                             </div>
                             <div class="tab-pane" id="users_account">
-                                {!! Form::open(array('url' => route('postInviteUser'), 'class' => 'ajax ')) !!}
+                                {{ html()->form('POST', route('postInviteUser'))->class('ajax ')->open() }}
 
                                 <div class="table-responsive">
                                     <table class="table table-bordered">
@@ -122,9 +113,9 @@
                                         <tr>
                                             <td colspan="3">
                                                 <div class="input-group">
-                                                    {!! Form::text('email', '',  ['class' => 'form-control', 'placeholder' => trans("ManageAccount.email_address_placeholder")]) !!}
+                                                    {{ html()->text('email', '')->class('form-control')->placeholder(trans("ManageAccount.email_address_placeholder")) }}
                                                     <span class="input-group-btn">
-                                                          {!!Form::submit(trans("ManageAccount.add_user_submit"), ['class' => 'btn btn-primary'])!!}
+                                                          {{ html()->submit(trans("ManageAccount.add_user_submit"))->class('btn btn-primary') }}
                                                     </span>
                                                 </div>
                                                 <span class="help-block">
@@ -137,7 +128,7 @@
                                         </tbody>
                                     </table>
                                 </div>
-                                {!! Form::close() !!}
+                                {{ html()->form()->close() }}
                             </div>
                             <div class="tab-pane " id="about">
                                 <h4>

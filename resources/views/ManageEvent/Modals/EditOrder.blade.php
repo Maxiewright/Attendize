@@ -10,7 +10,7 @@
 
     <div class="modal-dialog">
         <div class="modal-content">
-            {!! Form::open(array('url' => route('postOrderEdit', array('order_id' => $order->id)), 'class' => 'ajax reset closeModalAfter')) !!}
+            {{ html()->form('POST', route('postOrderEdit', array('order_id' => $order->id)))->class('ajax reset closeModalAfter')->open() }}
             <div class="modal-header text-center">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h3 class="modal-title">
@@ -41,10 +41,10 @@
             </div> <!-- /end modal body-->
 
             <div class="modal-footer">
-                {!! Form::button(trans("ManageEvent.close"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}
-                {!! Form::submit(trans("ManageEvent.update_order"), ['class'=>"btn btn-success"]) !!}
+                {{ html()->button(trans("ManageEvent.close"))->class("btn modal-close btn-danger")->data('dismiss', 'modal') }}
+                {{ html()->submit(trans("ManageEvent.update_order"))->class("btn btn-success") }}
             </div>
-            {!! Form::close() !!}
+            {{ html()->form()->close() }}
         </div><!-- /end modal content-->
     </div>
 </div>

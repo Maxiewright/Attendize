@@ -45,14 +45,14 @@
     <!--/ Toolbar -->
 </div>
 <div class="col-md-3 col-sm-6">
-   {!! Form::open(array('url' => route('showEventOrders', ['event_id'=>$event->id,'sort_by'=>$sort_by]), 'method' => 'get')) !!}
+   {{ html()->form('GET', route('showEventOrders', ['event_id' => $event->id, 'sort_by' => $sort_by]))->open() }}
     <div class="input-group">
         <input name='q' value="{{$q or ''}}" placeholder="@lang('Order.search_placeholder')" type="text" class="form-control">
         <span class="input-group-btn">
             <button class="btn btn-default" type="submit"><i class="ico-search"></i></button>
         </span>
     </div>
-   {!! Form::close() !!}
+   {{ html()->form()->close() }}
 </div>
 @stop
 

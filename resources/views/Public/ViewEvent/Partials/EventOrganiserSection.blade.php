@@ -34,30 +34,21 @@
                     </button>
                 </p>
                 <div class="contact_form well well-sm">
-                    {!! Form::open(['url' => route('postContactOrganiser', ['event_id' => $event->id]), 'class' => 'reset ajax', 'id' => 'contact-form']) !!}
+                    {{ html()->form('POST', route('postContactOrganiser', ['event_id' => $event->id]))->class('reset ajax')->id('contact-form')->open() }}
                     <h3>@lang("Public_ViewEvent.Contact") <i>{{$event->organiser->name}}</i></h3>
                     <div class="form-group">
-                        {!! Form::label(trans("Public_ViewEvent.your_name")) !!}
-                        {!! Form::text('name', null,
-                            array('required',
-                                  'class'=>'form-control',
-                                  'placeholder'=>trans("Public_ViewEvent.your_name"))) !!}
+                        {{ html()->label(trans("Public_ViewEvent.your_name")) }}
+                        {{ html()->text('name')->required()->class('form-control')->placeholder(trans("Public_ViewEvent.your_name")) }}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label(trans("Public_ViewEvent.your_email_address")) !!}
-                        {!! Form::text('email', null,
-                            array('required',
-                                  'class'=>'form-control',
-                                  'placeholder'=>trans("Public_ViewEvent.your_email_address"))) !!}
+                        {{ html()->label(trans("Public_ViewEvent.your_email_address")) }}
+                        {{ html()->text('email')->required()->class('form-control')->placeholder(trans("Public_ViewEvent.your_email_address")) }}
                     </div>
 
                     <div class="form-group">
-                        {!! Form::label(trans("Public_ViewEvent.your_message")) !!}
-                        {!! Form::textarea('message', null,
-                            array('required',
-                                  'class'=>'form-control',
-                                  'placeholder'=>trans("Public_ViewEvent.your_message"))) !!}
+                        {{ html()->label(trans("Public_ViewEvent.your_message")) }}
+                        {{ html()->textarea('message')->required()->class('form-control')->placeholder(trans("Public_ViewEvent.your_message")) }}
                     </div>
 
                     @include('Public.LoginAndRegister.Partials.CaptchaSection')
@@ -66,7 +57,7 @@
                         <p><input class="btn btn-primary" type="submit" value="@lang('Public_ViewEvent.send_message_submit')"></p>
                     </div>
                 </div>
-                {!! Form::close() !!}
+                {{ html()->form()->close() }}
             </div>
         </div>
     </div>

@@ -3,7 +3,7 @@
 @section('title', trans("User.login"))
 
 @section('content')
-    {!! Form::open(['url' => route("login"), 'id' => 'login-form']) !!}
+    {{ html()->form('POST', route("login"))->id('login-form')->open() }}
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel">
@@ -20,13 +20,13 @@
                     @endif
 
                     <div class="form-group">
-                        {!! Form::label('email', trans("User.email"), ['class' => 'control-label']) !!}
-                        {!! Form::text('email', null, ['class' => 'form-control', 'autofocus' => true]) !!}
+                        {{ html()->label(trans("User.email"), 'email')->class('control-label') }}
+                        {{ html()->text('email')->class('form-control')->autofocus(true) }}
                     </div>
                     <div class="form-group">
-                        {!! Form::label('password', trans("User.password"), ['class' => 'control-label']) !!}
+                        {{ html()->label(trans("User.password"), 'password')->class('control-label') }}
                         (<a class="forgotPassword" href="{{route('forgotPassword')}}" tabindex="-1">@lang("User.forgot_password?")</a>)
-                        {!! Form::password('password',  ['class' => 'form-control']) !!}
+                        {{ html()->password('password')->class('form-control') }}
                     </div>
 
                     @include('Public.LoginAndRegister.Partials.CaptchaSection')
@@ -44,5 +44,5 @@
             </div>
         </div>
     </div>
-    {!! Form::close() !!}
+    {{ html()->form()->close() }}
 @stop

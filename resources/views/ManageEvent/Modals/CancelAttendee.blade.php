@@ -1,5 +1,5 @@
 <div role="dialog"  class="modal fade " style="display: none;">
-   {!! Form::model($attendee, array('url' => route('postCancelAttendee', array('event_id' => $event->id, 'attendee_id' => $attendee->id)), 'class' => 'ajax')) !!}
+   {{ html()->modelForm($attendee, 'POST', route('postCancelAttendee', array('event_id' => $event->id, 'attendee_id' => $attendee->id)))->class('ajax')->open() }}
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header text-center">
@@ -30,12 +30,12 @@
                 </div>
             </div> <!-- /end modal body-->
             <div class="modal-footer">
-               {!! Form::hidden('attendee_id', $attendee->id) !!}
-               {!! Form::button(trans("basic.cancel"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}
-               {!! Form::submit(trans("ManageEvent.confirm_cancel"), ['class'=>"btn btn-success"]) !!}
+               {{ html()->hidden('attendee_id', $attendee->id) }}
+               {{ html()->button(trans("basic.cancel"))->class("btn modal-close btn-danger")->data('dismiss', 'modal') }}
+               {{ html()->submit(trans("ManageEvent.confirm_cancel"))->class("btn btn-success") }}
             </div>
         </div><!-- /end modal content-->
-       {!! Form::close() !!}
+       {{ html()->closeModelForm() }}
     </div>
 </div>
 

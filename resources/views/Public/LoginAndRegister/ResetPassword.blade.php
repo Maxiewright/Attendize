@@ -8,7 +8,7 @@ Reset Password
     <div class="row">
         <div class="col-md-4 col-md-offset-4">
 
-           {!! Form::open(array('url' => route('postResetPassword'), 'class' => 'panel')) !!}
+           {{ html()->form('POST', route('postResetPassword'))->class('panel')->open() }}
 
             <div class="panel-body">
                 <div class="logo">
@@ -33,18 +33,18 @@ Reset Password
                 @endif
 
                 <div class="form-group">
-                    {!! Form::label('email', trans("User.your_email"), ['class' => 'control-label']) !!}
-                    {!! Form::text('email', null, ['class' => 'form-control', 'autofocus' => true]) !!}
+                    {{ html()->label(trans("User.your_email"), 'email')->class('control-label') }}
+                    {{ html()->text('email')->class('form-control')->autofocus(true) }}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('password', trans("User.new_password"), ['class' => 'control-label']) !!}
-                    {!! Form::password('password',  ['class' => 'form-control']) !!}
+                    {{ html()->label(trans("User.new_password"), 'password')->class('control-label') }}
+                    {{ html()->password('password')->class('form-control') }}
                 </div>
                 <div class="form-group">
-                    {!! Form::label('password_confirmation', trans("User.confirm_new_password"), ['class' => 'control-label']) !!}
-                    {!! Form::password('password_confirmation',  ['class' => 'form-control']) !!}
+                    {{ html()->label(trans("User.confirm_new_password"), 'password_confirmation')->class('control-label') }}
+                    {{ html()->password('password_confirmation')->class('form-control') }}
                 </div>
-                {!! Form::hidden('token',  $token) !!}
+                {{ html()->hidden('token', $token) }}
                 <div class="form-group nm">
                     <button type="submit" class="btn btn-block btn-success">Submit</button>
                 </div>
@@ -54,7 +54,7 @@ Reset Password
                   </a>
                 </div>
             </div>
-            {!! Form::close() !!}
+            {{ html()->form()->close() }}
 
             @endif
         </div>

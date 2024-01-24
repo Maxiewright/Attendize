@@ -1,5 +1,5 @@
 <div id="QuestionForm" role="dialog" class="modal fade" style="display: none;">
-    {!!  Form::open(['url' => route('postCreateEventQuestion', ['event_id'=>$event->id]), 'id' => 'edit-question-form', 'class' => 'ajax']) !!}
+    {{ html()->form('POST', route('postCreateEventQuestion', ['event_id' => $event->id]))->id('edit-question-form')->class('ajax')->open() }}
 
     <script id="question-option-template" type="text/template">
         <tr>
@@ -22,11 +22,7 @@
                     <label for="question-title" class="required">
                         @lang("Question.question")
                     </label>
-                    {!! Form::text('title', '', [
-                        'id' => 'question-title',
-                        'class' => 'form-control',
-                        'placeholder' => trans("Question.question_placeholder"),//'e.g. Please enter your full address?',
-                    ]) !!}
+                    {{ html()->text('title', '')->id('question-title')->class('form-control')->placeholder(trans("Question.question_placeholder")) }}
                 </div>
                 <div class="form-group">
                     <label for="question-type">
@@ -71,8 +67,8 @@
 
                 <div class="form-group">
                     <div class="custom-checkbox">
-                        {!! Form::checkbox('is_required', 1, false, ['data-toggle' => 'toggle', 'id' => 'is_required']) !!}
-                        {!! Form::label('is_required', trans('Question.make_this_a_required_question')) !!}
+                        {{ html()->checkbox('is_required', false, 1)->data('toggle', 'toggle')->id('is_required') }}
+                        {{ html()->label(trans('Question.make_this_a_required_question'), 'is_required') }}
                     </div>
                 </div>
 
@@ -92,12 +88,12 @@
 
             </div> <!-- /end modal body-->
             <div class="modal-footer">
-                {!! Form::button(trans("basic.cancel"), ['class'=>"btn modal-close btn-danger",'data-dismiss'=>'modal']) !!}
-                {!! Form::submit(trans("ManageEvent.save_question"), ['class'=>"btn btn-success"]) !!}
+                {{ html()->button(trans("basic.cancel"))->class("btn modal-close btn-danger")->data('dismiss', 'modal') }}
+                {{ html()->submit(trans("ManageEvent.save_question"))->class("btn btn-success") }}
             </div>
         </div><!-- /end modal content-->
     </div>
-    {!! Form::close() !!}
+    {{ html()->form()->close() }}
 </div>
 
 

@@ -52,7 +52,7 @@ $is_free_event = true;
                                     @lang("Public_ViewEvent.sales_have_ended")
                                 </span>
                 @else
-                    {!! Form::hidden('tickets[]', $ticket->id) !!}
+                    {{ html()->hidden('tickets[]', $ticket->id) }}
                     <meta property="availability" content="http://schema.org/InStock">
                     <select name="ticket_{{$ticket->id}}" class="form-control"
                             style="text-align: center">
