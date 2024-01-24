@@ -25,7 +25,6 @@
         "laravel/framework": "^10.41",
         "laravel/socialite": "^5.6",
         "laravel/tinker": "^2.8",
-        "laravelcollective/html": "^6.4",
         "league/flysystem-aws-s3-v3": "^3.0",
         "league/omnipay": "^3.2",
         "maatwebsite/excel": "^3.1",
@@ -42,7 +41,8 @@
         "predis/predis": "~1.1",
         "stripe/stripe-php": "^7.1",
         "superbalist/php-money": "^2.0",
-        "vinelab/http": "~1.5"
+        "vinelab/http": "~1.5",
+        "spatie/laravel-html": "^3.2"
     },
     "require-dev": {
         "barryvdh/laravel-ide-helper": "^2.13",
